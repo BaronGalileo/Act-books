@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Овальная кнопка с тенью и светом</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .button {
+      position: relative;
+      width: 200px;
+      height: 100px;
+      background: 
+        radial-gradient(circle, #FFB7B6 0%, #FF938F 100%), /* Светлый блик сверху */
+        linear-gradient(180deg, transparent 0%, #000000 100%), /* Тень снизу */
+        linear-gradient(90deg, #FFFFFF 0%, transparent 100%); /* Блик справа */
+      border-radius: 40%;  /* Овальная форма */
+      box-shadow: 
+        inset 0 -5px 15px rgba(0, 0, 0, 0.4),  /* Внутренняя тень для объема (темнее снизу) */
+        0 15px 30px rgba(0, 0, 0, 0.2);  /* Внешняя тень более яркая снизу */
+      transform: perspective(200px) rotateX(1deg) rotateY(10deg); /* Эффект изогнутости */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="button"></div>
+
+</body>
+</html>

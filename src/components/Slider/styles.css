@@ -1,0 +1,55 @@
+
+.slider-reviews-wrapper {
+    position: relative;
+    top: 63%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .btn-reviews-slider {
+    position: absolute;
+    transform: scale(0.95);
+    transition: transform 0.2s ease-in-out;
+    transform-origin: center;
+    width: 86px;
+    height: 86px;
+    top: 20%;
+    background-color: transparent;
+    border: none;
+    transform: translateY(-50%);
+  }
+
+  .left {
+    left: 92px;
+    top: 20%;
+  }
+
+  .right {
+    right: 92px;
+    top: 87px;
+  }
+  
+  .btn-reviews-slider img {
+    position: absolute;          /* Абсолютное позиционирование для изображения */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(0.90) translate(0, 0); /* Уменьшаем изображение на 5%, но сохраняем позицию */
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-reviews-slider:hover img {
+    transform: scale(1) translate(0, 0); /* При наведении изображение возвращается к нормальному размеру */
+}
+
+.btn-reviews-slider:active img {
+  transform: scale(0.70) translate(0, 0); /* При наведении изображение возвращается к нормальному размеру */
+}

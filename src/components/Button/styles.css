@@ -1,0 +1,288 @@
+.btn {
+    display: inline-block;
+    margin: 5px;
+    font-family: 'Regular';
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: auto;
+    height: auto;
+    line-height: 2em;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    color: #e92d2d;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.4);
+    border-top-color: rgba(0,0,0,.3);
+    border-radius: 12px;
+    background:#BCE172;
+    box-shadow:
+     0 0 3px rgba(0,0,0,0) inset,
+     0 1px 1px 1px rgba(255,255,255,.2),
+     0 -1px 1px 1px rgba(0,0,0,0);
+    transition: .2s ease-in-out;
+  }
+  .btn:hover:not(:active) {
+    box-shadow:
+     0 0 3px rgba(0,0,0,0) inset,
+     0 1px 3px 1px #163E6C,
+     0 -1px 5px 3px #EBE6D6;
+  }
+  .btn:active {
+    background: linear-gradient(#EBE6D6, #163E6C);
+    color: #EC3837;
+    box-shadow:
+     0 0 3px #06a55b inset,
+     0 1px 1px 1px #163E6C,
+     0 -1px 1px 1px rgba(0,0,0,.1);
+  }
+
+  .btn:disabled {
+    background-color: #7cafe987;
+    cursor: not-allowed;
+    color: #163E6C;
+  }
+
+  .btn:disabled:hover:active {
+    background: linear-gradient(#f1d063, #e64a4a);
+    box-shadow:
+     0 0 3px #f7abab inset,
+     0 1px 1px 1px rgba(117, 4, 93, 0.4),
+     0 -1px 1px 1px #D20A11;
+    color: #D20A11;
+  }
+
+  .btn:disabled:hover:not(:active) {
+    box-shadow:
+     0 0 3px rgba(0,0,0,0) inset,
+     0 1px 1px 1px rgba(241, 3, 3, 0.5),
+     0 -1px 1px 1px rgba(247, 3, 3, 0.5);
+  }
+
+
+  .input-btn {
+    height: 60%;
+}
+
+.active {
+  background-color: #164983;
+  color: #EBE6D6;
+}
+
+
+.btn-table{
+  background-color:#EBE6D6;
+  text-decoration: none;
+  border: 0;
+  color: #EC3837;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+}
+
+.btn-table:hover:not(:active) {
+  color: #D20A11;
+  font-size: 0.85rem;  
+}
+
+
+
+/* кнопка передив цвета */
+.glass-btn {
+  position: relative;
+  width: 220px;
+  height: 35px;
+  margin: 0px;
+  display: inline-block;
+  text-align: center;
+}
+.glass-btn button,
+.glass-btn a {
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  width: 80%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E8FA93;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 0 1px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  z-index: 1;
+  transition: 0.5s;
+  backdrop-filter: blur(15px);
+  font-family: "Regular", serif;
+}
+
+.glass-btn button:disabled,
+.glass-btn a:disabled {
+  background-color: #7cafe987;
+  cursor: not-allowed;
+  color: #163E6C;
+}
+
+.glass-btn:hover button,
+.glass-btn:hover a {
+  letter-spacing: 3px;
+}
+.glass-btn button:before,
+.glass-btn a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(45deg) translate(0);
+  transition: 0.5s;
+  filter: blur(0px);
+}
+
+
+.glass-btn:hover button:before,
+.glass-btn:hover a:before {
+  transform: skewX(45deg) translate(200px);
+}
+
+.glass-btn:hover button:after,
+.glass-btn:hover a:after {
+  left: 0;
+  top: 30px;
+  width: 100%;
+  height: 100%;
+}
+.glass-btn:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+  bottom: 0;
+  width: 40px;
+  height: 6px;
+  background: #f00;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5;
+}
+
+
+.glass-btn:hover:before {
+  bottom: 0;
+  height: 80%;
+  width: 70%;
+  border-radius: 22px;
+}
+
+.glass-btn.glass-btn-green:disabled,
+.glass-btn.glass-btn-green button:disabled:after,
+.glass-btn.glass-btn-green:disabled:before {
+  background: #9dd5e5;
+  box-shadow: 0 0 5px #62dcf1, 0 0 15px #62dcf1, 0 0 30px #62dcf1, 0 0 60px #62dcf1;
+}
+
+.glass-btn.glass-btn-green button:after,
+.glass-btn.glass-btn-green a:after,
+.glass-btn.glass-btn-green:before {
+  background: rgba(255, 182, 181, 0.3);
+  box-shadow: 0 0 5px #38ba35, 0 0 15px #38ba35, 0 0 30px #38ba35, 0 0 60px #38ba35;
+}
+
+
+
+/* Стиль для кнопки  шарик обложка*/
+.balloon-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 25px;
+  padding: 40px 30px;
+  border: 10px;
+  background-image: url("../../../public/images/шарик-кнопка на веревочке.png");
+  background-repeat: no-repeat;
+  background-size: 107% 130%;
+  background-position: center top;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: visible;
+  transition: transform 0.3s ease;
+  line-height: 4.2;
+  padding-top: 0px;
+}
+
+
+.balloon-button:hover,
+.candy-balloon:hover,
+.mirrored-balloon-button:hover {
+  transform: scale(1.1); 
+}
+
+.balloon-button:active,
+.candy-balloon:active,
+.mirrored-balloon-button:active {
+  transform: scale(0.95); 
+}
+
+/* шарик конфета*/
+
+.candy-balloon {
+  display: inline-flex;      
+  flex-direction: column;    
+  align-items: center;       
+  justify-content: flex-start; 
+  font-size: 24px;                       
+  padding: 10px 0px; 
+  border: 10px;     
+  background-image: url('../../../public/images/candy.png'); 
+  background-repeat: no-repeat; 
+  background-size: 56% 93%; 
+  background-position: center; 
+  width: auto;               
+  height: auto;              
+  cursor: pointer;          
+  text-decoration: none;     
+  overflow: visible;
+  overflow-y: visible;         
+  transition: transform 0.3s ease;
+  line-height: 2.2;
+  box-sizing: border-box; 
+}
+
+.mirrored-balloon-button {
+  display: inline-flex;      
+  flex-direction: column;    
+  align-items: center;       
+  justify-content: flex-start; 
+  font-size: 25px;                       
+  padding: 12px 27px; 
+  border: 10px;     
+  background-image: url('../../../public/images/Шарик подвал.png'); 
+  background-repeat: no-repeat; 
+  background-size: 112% 105%; 
+  background-position: center top; 
+  width: auto;               
+  height: auto;              
+  cursor: pointer;          
+  text-decoration: none;     
+  overflow: visible;         
+  transition: transform 0.3s ease;
+  line-height: 3.2; 
+  padding-top: 10px; 
+}
+
+

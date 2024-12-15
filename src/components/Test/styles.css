@@ -1,0 +1,94 @@
+/* 
+.slider-reviews-wrapper {
+  position: relative;
+  top: 69%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-reviews-slider {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+} */
+
+
+.animation-container {
+  
+  background-color: aqua;
+  width: 20vw;  /* Ширина одного кадра */
+  height: 16vw; /* Высота одного кадра */
+  overflow: hidden; /* Скрываем все, что выходит за пределы контейнера */
+  position: relative;
+}
+
+.animation-frame {
+  width: 20vw;  /* Общая ширина для всех 5 кадров */
+  height: 16vw;  /* Высота блока */
+  background-image: url('../../images/stars.gif'); /* Путь к вашему изображению с кадрами */
+  background-size: cover;   /* Заполняет блок по высоте, сохраняя пропорции */
+  /* background-position: center center; */
+  /* background-repeat: no-repeat; */
+  /* background-position: 0 0; */
+  transition: background-position 0.1s ease-in-out; 
+}
+
+.a {
+  background-position: 24% 0; 
+
+}
+.b {
+  background-position: 50% 0;
+}
+.c {
+  background-position: 75% 0;
+  
+}
+.d {
+  background-position: 101% 0;
+  
+}
+.e {
+  background-position: 25% 0;
+}
+
+.animation-container:hover .animation-frame {
+  animation: changeFrame 3s forwards; 
+}
+
+@keyframes changeFrame {
+  0% {
+    background-position: 24% 0;     /* Начинаем с первого кадра */
+  }
+  20% {
+    background-position: 50% 0; /* Сдвигаем на 24 см для второго кадра */
+  }
+  40% {
+    background-position: 75% 0; /* Сдвигаем на 48 см для третьего кадра */
+  }
+  60% {
+    background-position: 101% 0; /* Сдвигаем на 72 см для четвёртого кадра */
+  }
+  80% {
+    background-position: 0 0; /* Сдвигаем на 96 см для пятого кадра */
+  }
+  100% {
+    background-position: 24% 0; /* Все 5 кадров, последний кадр */
+  }
+}
+
+.test-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+

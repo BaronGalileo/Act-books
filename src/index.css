@@ -1,0 +1,356 @@
+
+@font-face {
+  font-family: "Bond";
+  src: url("/public/fonts/ringbearmedium.ttf");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url("/public/fonts/Comfortaa.ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+html, body {
+  width: 100%;         
+  overflow-x: hidden;  
+  margin: 0;           
+  padding: 0;
+}   
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  padding: 0px;
+  display: flex;
+  background-color: #FFFFFF;
+  flex-direction: column;
+  align-items: center
+}
+
+footer:hover {
+  height: 10vh;
+}
+
+
+header , footer {
+  height: 5vh;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #E8FA93; 
+  color: white;           
+  display: flex;          
+  align-items: center;    
+  justify-content: center;
+}
+
+a {
+  color: #000000;
+  font-family: "Bond", serif;
+  transition: transform 0.5s ease;
+}
+
+@media screen and (max-width: 1200px) {
+  .text-in-ball {
+    width: 60%;
+  }
+  .squirrel-img {
+    bottom: -11%;
+    left: 9vw;
+}
+}
+
+@media screen and (max-width: 1100px) {
+  .text-in-ball {
+    width: 667px;
+  }
+  .txt-bolus {
+    font-size: 12px;
+  }
+  .squirrel-img {
+    bottom: -15%;
+    left: 9vw;
+}
+}
+
+@media screen and (max-width: 915px) {
+  .text-in-ball {
+    width: 75%;
+  }
+  .malvina {
+    right: 8vw;
+    height: 34vh;
+  }
+  .txt-footer {
+    bottom: 15vw;
+    width: 50%;
+}
+  .squirrel-img {
+    bottom: -6vw;
+    left: 9vw;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  
+  .squirrel-img {
+    bottom: -7vw;
+    left: 9vw;
+  }
+}
+@media screen and (max-width: 780px) {
+.cube-wrapper {
+  position: relative;
+  display: flex;
+  perspective: 1200px;
+  width: 100%;
+  height: 100%;
+  z-Index: 1;
+}
+}
+@media screen and (max-width: 730px) {
+  h1 {
+    font-size: 26px;    
+  }
+  .squirrel-img {
+    bottom: -9vw;
+    left: 9vw;
+  }
+  .text-in-ball {
+    width: 74%;
+  }
+  .txt-bolus {
+    font-size: 10px;
+  }
+  .slider-reviews-wrapper {
+    top: 63%;
+}
+.btn-reviews-slider {
+  width: 35px;
+  height: 35px;
+}
+.epilogue-txt {
+  width: 65%;
+  font-size: 12px;
+}
+.txt-footer {
+  bottom: 15vw;
+  width: 50%;
+  font-size: 25px;
+}
+.malvina {
+  right: 7vw;
+  height: 32vh;
+}
+}
+@media screen and (max-width: 650px) {
+  .squirrel-img {
+    bottom: -11vw;
+    left: 9vw;
+  }
+  .conteiner-image:nth-child(3) {
+    right: 1%;
+    top: 20%;
+}
+}
+
+@media screen and (max-width: 600px) {
+  .squirrel-img {
+    bottom: -13vw;
+    left: 9vw;
+  }
+  .book-present-wrapper {
+    padding-bottom: 22%;
+    justify-content: center;
+  }
+  .slider-reviews-wrapper {
+    top: 57%;
+  }
+  .malvina {
+    right: 3vw;
+    height: 29vh;
+  }
+  .txt-footer {
+    bottom: 15vw;
+    width: 55%;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .squirrel-img {
+    bottom: -15vw;
+  }
+  .conteiner-image:nth-child(3) {
+    right: 1%;
+    top: 40%;
+}
+
+}
+
+@media screen and (max-width: 525px) {
+  .squirrel-img {
+    bottom: -16vw;
+  }
+  .book-present-wrapper {
+    padding-bottom: 33%;
+    justify-content: center;
+  }
+  .wizard-foto {
+    width: 110px;
+    height: 110px;
+}
+  .txt-bolus {
+    font-size: 8px;
+  }
+  .slider-reviews-wrapper {
+    top: 52%;
+}
+.title-reviews {
+  top: 16%;
+}
+.btn-reviews-slider {
+  width: 30px;
+  height: 30px;
+}
+}
+
+@media screen and (max-width: 490px) {
+  .squirrel-img {
+    bottom: -18vw;
+  }
+}
+@media screen and (max-width: 460px) {
+  .squirrel-img {
+    bottom: -20vw;
+  }
+  .left {
+    left: 7px;
+  }
+  .wizard-foto {
+    width: 85px;
+    height: 85px;
+}
+  .txt-bolus {
+    font-size: 7px;
+  }
+  .bond {
+    font-size: 22px;
+  }
+
+  .right {
+    right: 7px;
+  }
+
+}
+@media screen and (max-width: 420px) {
+  .squirrel-img {
+    bottom: -15vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .squirrel-img {
+    bottom: -24vw;
+  }
+  .book-present-wrapper {
+    padding-bottom: 57%;
+    justify-content: center;
+  }
+  .cube-slider {
+    height: 220px;
+    max-width: 100%;
+  }
+  .swiper {
+    width: 220px;
+    margin-left: 8vw;
+  }
+}
+@media screen and (max-width: 400px) {
+  .balloon-button {
+    font-size: 13px;
+  }
+  .squirrel-img {
+    bottom: -15vh;
+  }
+}
+@media screen and (max-width: 345px) {
+  .cover-txt {
+    width: 72%;
+}
+  .conteiner-image:nth-child(3) {
+    right: 8%;
+    top: 44%;
+}
+.rabbit-book {
+  width: 46vw;
+}
+  .squirrel-img {
+    bottom: -16vh;
+  }
+  .team-of-wizards-element {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.mirrored-team-of-wizards-element {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+.text-bolus-wizard-right {
+  width: 100%;
+}
+.text-bolus-wizard {
+  width: 100%;
+}
+.text-bolus-wizard-right {
+  width: 100%;
+  background-size: 113% 150%;
+}
+.text-bolus-wizard {
+  width: 100%;
+  background-size: 112% 143%;
+}
+}
+
+@media screen and (max-width: 320px) {
+  .btn-reviews-slider {
+    width: 20px;
+    height: 20px;
+  }
+  .btn-reviews-slider:hover img {
+    transform: scale(1.1) translate(0, 0); 
+}
+
+.btn-reviews-slider:active img {
+  transform: scale(0.70) translate(0, 0); 
+}
+}
+
+@media screen and (max-width: 300px) {
+  .cube-slider {
+    height: 200px;
+    max-width: 100%;
+  }
+  .cube-slider .cube-bottom p {
+    font-size: 9px;
+  }
+
+  .swiper {
+    width: 200px;
+  }
+
+  .cube-slider .cube-bottom {
+    max-height: 70px;
+  }
+}
+

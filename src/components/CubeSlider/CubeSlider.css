@@ -1,0 +1,161 @@
+.cube-slider * {
+    box-sizing: border-box;
+  }
+  
+  
+  .cube-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    perspective: 1000px; /* Перспектива для 3D-эффекта */
+    width: 100%;
+    border-radius: 20px;
+    height: 100%;  
+    z-Index: 1;
+  }
+  
+  .cube-slider {
+    position: relative;
+    background: transparent;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    align-items: center;
+  }
+  
+  /* .cube-slider .swiper-slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(221, 233, 165, 1); 
+    z-index: 1; 
+  } */
+  
+  .cube-slider .swiper-slide {
+    position: relative;
+    user-select: none;
+    aspect-ratio: 1 / 1;
+    transform-style: preserve-3d;
+    background: rgba(0, 0, 0, 0.2);
+    background-image: url("../../images/Бабочка02.gif");
+    background-size: 20% 20%; /* Размер фона 10% от ширины и высоты блока */
+    background-position: center; 
+    background-repeat: repeat;
+    /* background-color: rgba(249, 250, 244, 0.1); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: inset 18px 10px 22px rgb(240, 124, 123, 0.1);
+  }
+  
+  .cube-slider .swiper-slide img {
+    width: 80%;
+    height: auto;
+    z-Index: 2;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    /* box-shadow: inset 0px 8px 20px rgb(240, 124, 123, 0.2); */
+  }
+  
+  /* .cube-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      filter: blur(4px);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; 
+    } */
+  
+  
+  .cube-top {
+    position: absolute;
+    top: 53px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 20px rgba(0, 0, 0, 0.3);
+    padding: 6px 10px;
+    color: #000;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 500;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  /* Стили для нижней части слайда */
+  .cube-slider .cube-bottom {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 70px;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0 0 20px 20px;
+    z-index: 2;
+    align-items: center;
+  }
+  
+  .cube-slider .cube-bottom p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.1;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .cube-slider .cube-bottom p {
+      font-size: 12px;
+    }
+  }
+  
+  /* Стиль для ссылок внизу слайда */
+  .cube-slider .cube-bottom a {
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .cube-slider .cube-bottom a:before,
+  .cube-slider .cube-bottom a:after {
+    content: "";
+    border-bottom: 2px solid #fff;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -10px;
+    opacity: 0;
+    transition: 0.3s;
+    display: inline-block;
+    pointer-events: none;
+  }
+  
+  .cube-slider .cube-bottom a:before {
+    border-bottom: 1px solid #bfe2ff;
+    opacity: 1;
+    bottom: 0;
+  }
+  
+  .cube-slider .cube-bottom a:hover:after {
+    bottom: 0;
+    opacity: 1;
+  }

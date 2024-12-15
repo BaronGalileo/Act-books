@@ -1,0 +1,12 @@
+.book-present-wrapper {
+    width: 80vw;
+    height: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+    background-image: url("../../images/stars.gif");
+    background-size: 20% 20%; /* Размер фона 10% от ширины и высоты блока */
+    background-position: center; 
+}

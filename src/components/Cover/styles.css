@@ -1,0 +1,121 @@
+.cover-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../../images/Subtract.png");
+    background-position: center bottom -34px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    position: relative;
+}
+
+.conteiners-images {
+    position: absolute;
+    bottom:57px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    overflow-y: visible;
+}
+
+.conteiner-image {
+    bottom: -15%;
+    width: 100%;
+    height: 60%;
+    position: relative;
+    display: flex;
+    justify-content: space-between; 
+    overflow-y: visible;
+  }
+
+.static-book-rabbit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+}
+
+.rabbit-book-img {
+    display: flex;
+    width: 120%;
+    height: 120%;
+    z-index: 2;
+}
+
+.conteiner-image:nth-child(1) {
+    right: 1%;
+    background-color: transparent;
+}
+
+.conteiner-image:nth-child(2) {
+    right: 13%;
+    background-color: transparent;
+}
+
+.conteiner-image:nth-child(4) {
+    right: 7%;
+}
+.conteiner-image:nth-child(5) {
+    right: 20%;
+}
+
+
+.tree {
+    transition: transform 0.2s ease-in-out;
+}
+
+.conteiner-image:hover .tree {
+    animation: sway 0.4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes sway {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(0.1deg);
+    }
+    25% {
+        transform: rotate(0.2deg);
+    }
+    35% {
+        transform: rotate(0.1deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    60% {
+        transform: rotate(1deg);
+    }
+    75% {
+        transform: rotate(-0.8deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.butterfly {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 1%;
+    width: 94vw;
+    height: 15vh;
+}
+
+.static-tree {
+    position: absolute;
+    bottom: -28%;
+    right: -100%;
+    z-index: 0; 
+    overflow-x: hidden;          
+
+}

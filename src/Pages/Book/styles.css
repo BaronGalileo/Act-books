@@ -1,0 +1,65 @@
+.book {
+    height: 90vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Обязательное "прилипание" к секциям при скролле */
+}
+  
+
+.item {
+    height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    scroll-snap-align: start; /* Секция будет "прилипать" сверху */
+    transition: background-color 0.5s ease; /* Плавный переход для фона */
+}
+
+
+/* .left {
+    width: 80vw;
+    display: flex;
+    justify-content: flex-start;
+} */
+
+.center {
+    text-align: center;
+}
+
+.item-admin {
+    background-color: rgb(146, 211, 241);
+}
+
+.item:nth-child(2) {
+    background-color: #FBF4E9;
+}
+
+.item-catalog {
+    height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    scroll-snap-align: start; /* Секция будет "прилипать" сверху */
+    transition: background-color 0.5s ease; /* Плавный переход для фона */
+}
+
+/* .item:nth-child(2) {
+    background-color: rgb(255, 0, 13);
+} */
+
+/* .item:nth-child(4) {
+    background-color: #FFB6B5;
+} */
+
+/* .item:nth-child(5) {
+    background-color: rgb(40, 212, 6);
+} */
+
+/* .item:nth-child(5) {
+    background-color: rgb(15, 15, 15);
+} */
+
+/* .item:nth-child(7) {
+    background-color: rgb(226, 223, 18);
+} */

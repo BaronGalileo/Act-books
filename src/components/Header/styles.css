@@ -1,0 +1,7 @@
+.header-wrapper {
+    height: 100%;
+    margin: 5px;
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блики на овальной кнопке</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .button {
+      position: relative;
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #ff66b2;  /* Розовый цвет */
+      color: white;
+      border: none;
+      border-radius: 50px;  /* Овальная форма */
+      cursor: pointer;
+      overflow: hidden;
+      outline: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .button::before, .button::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 40px;  /* Круглая форма */
+      transform: rotate(170deg);
+      width: 30px;
+      height: 8px;
+      opacity: 0.6;
+      pointer-events: none;
+      /* animation: bubble 1.5s ease-out infinite; */
+    }
+
+    /* Первый пузырёк */
+    .button::before {
+      top: 10px;
+      left: 10px;  /* Позиция в левом верхнем углу */
+      /* animation-delay: 0s; */
+    }
+
+    /* Второй пузырёк */
+    .button::after {
+      top: 25px;
+      left: 20px;  /* Немного ниже и правее первого пузырька */
+      /* animation-delay: 0.3s; */
+    }
+
+    /* @keyframes bubble {
+      0% {
+        transform: scale(0.6);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    } */
+
+  </style>
+</head>
+<body>
+
+  <button class="button">Нажми меня</button>
+
+</body>
+</html>

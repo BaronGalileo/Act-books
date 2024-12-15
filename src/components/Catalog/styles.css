@@ -1,0 +1,58 @@
+.catalog-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.catalog-element {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: center;
+    gap: 5px;
+
+
+}
+
+.btn-catalog-more {
+    position: absolute;
+    transform: scale(0.95);
+    transition: transform 0.2s ease-in-out;
+    transform-origin: center;
+    width: 86px;
+    height: 86px;
+    bottom: 0;
+    left: 47%;
+    background-color: transparent;
+    border: none;
+    transform: translateY(-50%);
+
+}
+
+  .btn-catalog-more img {
+    position: absolute;       
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(0.70) translate(0, 0); 
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-catalog-more:hover img {
+    transform: scale(1.1) translate(0, 0); /* При наведении изображение возвращается к нормальному размеру */
+}
+
+.btn-catalog-more:active img {
+  transform: scale(0.70) translate(0, 0); /* При наведении изображение возвращается к нормальному размеру */
+}
+
+.hidden {
+    display: none; /* Скрывает блоки, которые не должны отображаться */
+  }

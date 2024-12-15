@@ -1,0 +1,190 @@
+.butterfly-img {
+    width: 80px;
+    height: 80px;
+    right: -6%;
+    top: -7px;
+    transform: scaleX(-1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.tree-b-img {
+  width: 46vw;
+  height: 50vw;
+  transform: scaleX(-1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tree-f-img {
+  width: 37vw;
+  height: 39vw;
+  transform: scaleX(-1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.container-gif {
+    display: flex;
+    width: 200px;
+    height: 200px;
+}
+
+
+.mirror {
+  transform: scaleX(1);
+}
+
+.butterfly-non-stop {
+  transform: scaleX(1);
+}
+
+
+.butterfly-cover {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    display: flex;
+    z-index: 1;
+}
+
+.butterfly-cover.move {
+    animation: moveBlock 12s 0.3s linear forwards; /* Запуск анимации движения блока */
+  }
+
+.butterfly-cover.back {
+    animation: moveBlockBack 8s 1s linear forwards; /* Запуск анимации движения блока */
+  }
+
+
+  @keyframes moveBlock {
+    0% {
+        transform: translate(0, 0); /* Начальная позиция */
+      }
+      10% {
+        transform: translate(50px, 70px);
+      }
+      20% {
+        transform: translate(75px, -30px);
+      }
+      30% {
+        transform: translate(100px, 150px);
+      }
+      40% {
+        transform: translate(145px, 210px);
+      }
+      50% {
+        transform: translate(180px, -3px); /* Позиция на середине анимации */
+      }
+      60% {
+        transform: translate(200px, 75px); /* Позиция на середине анимации */
+      }
+      70% {
+        transform: translate(230px, 110px); /* Позиция на середине анимации */
+      }
+      80% {
+        transform: translate(300px, 90px); /* Позиция на середине анимации */
+      }
+      90% {
+        transform: translate(320px, 45px); /* Позиция на середине анимации */
+      }
+      100% {
+        transform: translate(350px, 0px); /* Конечная позиция */
+      }
+    /* from {
+      transform: translateX(0);
+      
+    }
+    to {
+      transform: translateX(300px); 
+  } */
+  
+  }
+
+  @keyframes moveBlockBack {
+    0% {
+        transform: translate(0, 0); /* Начальная позиция */
+      }
+      10% {
+        transform: translate(-50px, 0);
+      }
+      20% {
+        transform: translate(-75px, -30px);
+      }
+      30% {
+        transform: translate(-100px, 5px);
+      }
+      40% {
+        transform: translate(-110px, 36px);
+      }
+      50% {
+        transform: translate(-180px, -3px); /* Позиция на середине анимации */
+      }
+      60% {
+        transform: translate(-200px, 75px); /* Позиция на середине анимации */
+      }
+      70% {
+        transform: translate(-230px, 110px); /* Позиция на середине анимации */
+      }
+      80% {
+        transform: translate(-300px, 90px); /* Позиция на середине анимации */
+      }
+      90% {
+        transform: translate(-320px, 45px); /* Позиция на середине анимации */
+      }
+      100% {
+        transform: translate(-350px, 0px); /* Конечная позиция */
+      }
+    }
+
+  .butterfly-cover-static {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -2%;
+    right: 24%;
+    z-index: 1;
+  }
+
+  .tree-cover-static {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+
+  .rabbit-static {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    right: 16px;
+    z-index: 2;
+  }
+
+  .tree-cover-front {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+
+  .right-tree-b {
+    bottom: 0%;
+    right: -19%;
+  }
+
+  .boy-wrapper {
+    position: relative;
+    bottom: -341px;
+    left: -139px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .boy-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 200%;
+    max-height: 200%;
+  }

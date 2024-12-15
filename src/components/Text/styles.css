@@ -1,0 +1,96 @@
+.txt {
+    color: #000000;
+    font-family: "Regular", serif;
+    display: inline;
+    text-align: center;
+    padding: 2px;
+    margin: 2px;    
+}
+
+.for-h1 {
+    font-size: 45px;
+    font-stretch: 3px;
+}
+
+.bond {
+   font-family: "Bond";
+}
+
+.red-text {
+    color: #FF7773;
+}
+
+.left {
+    text-align: start;
+    margin: 3px;
+    padding: 5px;
+  }
+
+.dark-color {
+    color: #000000;
+}
+
+.bold {
+    font-family: "Bold";
+}
+
+.title-book {
+    font-size: 28px;
+    text-align: start;
+    margin: 10px;
+}
+
+.contex-book {
+    font-size: 20px;
+    text-align: start;
+
+}
+
+.book-text {
+    font-size: 27px;
+}
+
+.title-reviews {
+    position: absolute;
+    top: 25%;
+    width: 50%;
+    font-family: 'Bond';
+    color: #FFFFFF;
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+
+.txt-bolus {
+    width: 76%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;   
+}
+
+.txt-mirror {
+    transform: scaleX(-1);
+}
+
+
+.epilogue-txt {
+    display: flex;
+    width: 60%;
+    height: auto;
+    font-size: 20px;
+}
+
+.txt-footer {
+    position: absolute;
+    font-size: 52px;
+    bottom:12vw;
+    width: 55%;
+    z-index: 0;
+}
+
+.cover-txt {
+    margin: 20px;
+    padding: 20px;
+    width: 55%;
+}

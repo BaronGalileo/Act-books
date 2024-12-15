@@ -1,0 +1,39 @@
+.form-admin-wrapper {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-book {
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 1.2em;
+    border-radius: 50%;
+    background: 
+      radial-gradient(circle, #FFB7B6 0%, #FF938F 100%), /* Светлый блик сверху */
+      linear-gradient(90deg, #FFFFFF 0%, transparent 100%); /* Блик справа */
+}
+
+.add-book:hover {
+    font-size: 18px;
+}
+
+.add-book::after {
+    top: 33%;
+    left: 79%;
+    width: 26%;
+    height: 26%;
+}
+
+.button-ball::before {
+    top: 1%;
+    left: 26%;
+    width: 46%;
+    height: 25%;
+    transform: rotate(-1deg);
+}

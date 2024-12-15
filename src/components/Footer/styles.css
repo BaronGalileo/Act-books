@@ -1,0 +1,54 @@
+.footer-wrapper {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-footer {
+    width: 27%;
+    height: 95%;
+    padding: 2px;
+}
+
+.img-link {
+    transition: transform 0.5s ease;
+}
+
+.img-link:hover {
+    transform: scale(1.1);
+  }
+
+.img-link:active {
+    transform: scale(0.95);
+}
+
+.footer-element {
+    display: flex;
+    justify-content: center;
+}
+
+footer:hover .footer-wrapper {
+    max-height: 200%; /* Увеличиваем высоту контейнера для показа второго ряда */
+}
+
+footer:hover .btn-footer {
+    height: 47%;
+}
+
+footer:hover .btn-footer:nth-child(n+4) {
+    opacity: 1;
+}
+
+.btn-footer:nth-child(n+4) {
+    opacity: 0; /* Изначально скрытые кнопки во втором ряду */
+}
+
+.footer-wrapper {
+    max-height: 100%; /* Изначальная высота, виден только первый ряд */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }

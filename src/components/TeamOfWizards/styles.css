@@ -1,0 +1,51 @@
+.team-of-wizards-wrapper {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.team-of-wizards-element {
+    width: 100%;
+    height: 27%;
+    display: flex;
+}
+
+.mirrored-team-of-wizards-element {
+    display: flex;
+    width: 100%;
+    height: 27%;
+    flex-direction: row-reverse;
+
+}
+
+.text-bolus-wizard {
+    width: 90%;
+    height: 100%;
+    background-image: url("../../../public/images/Монтажная область 1 копия 19 1.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 110% 110%;
+    display: flex; 
+    justify-content: center; 
+    /* align-items: center;  */
+    /* text-align: center;  */
+    background-size: 97% 96%;
+}
+
+.text-bolus-wizard-right {
+    width: 90%;
+    height: 100%;
+    background-image: url("../../../public/images/Монтажная область 1 копия 19 1.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    transform: scaleX(-1);
+    display: flex; 
+    justify-content: center; 
+    /* align-items: center; 
+    text-align: center;  */
+    background-size: 97% 96%;
+}
+
+
