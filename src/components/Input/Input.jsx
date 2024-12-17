@@ -3,6 +3,7 @@ import classNames from "classnames";
 import './styles.css'
 import { Text } from "../Text/Text";
 import {  useFormContext } from "react-hook-form"
+import { findName } from "../../helpers/findName"
 
 
 
@@ -19,9 +20,13 @@ function Input({name, classText,  message, valueAsNumber, children, ...restProps
         formState: {errors}
     } = useFormContext()
 
+    const errorName =(errors, name) => {
+        const nameError = name.split('.')
+        const result = findName(errors, nameError)
+        return result
+    }
 
-    const error = errors[name]?.message
-
+    const error = errorName(errors, name)?.message;
 
     return (
         <label className="input-wrapper">

@@ -16,6 +16,25 @@
    font-family: "Bond";
 }
 
+.book-content {
+    font-family: "Bond";
+    font-size: 27px;
+    font-stretch: normal; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.6s ease;
+}
+
+.book-content:hover {
+    transform: scale(1.07); 
+}
+
+.front-txt {
+    z-index: 2;
+}
+
 .red-text {
     color: #FF7773;
 }

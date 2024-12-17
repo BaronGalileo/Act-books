@@ -15,8 +15,19 @@
     line-height: 1.2em;
     border-radius: 50%;
     background: 
-      radial-gradient(circle, #FFB7B6 0%, #FF938F 100%), /* Светлый блик сверху */
+      radial-gradient(circle, #58c6e7 0%, #43e9b7 100%), /* Светлый блик сверху */
       linear-gradient(90deg, #FFFFFF 0%, transparent 100%); /* Блик справа */
+}
+
+.add-book:active {
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 1.2em;
+    border-radius: 50%;
+    background: 
+      radial-gradient(circle, #FFB7B6 0%, #FF938F 100%), 
+      linear-gradient(90deg, #FFFFFF 0%, transparent 100%); 
 }
 
 .add-book:hover {

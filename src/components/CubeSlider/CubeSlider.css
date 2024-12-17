@@ -17,8 +17,8 @@
   .cube-slider {
     position: relative;
     background: transparent;
-    height: 500px;
-    width: 500px;
+    height: 550px;
+    width: 690px;
     display: flex;
     justify-content: center;
     border-radius: 20px;
@@ -39,21 +39,69 @@
     user-select: none;
     aspect-ratio: 1 / 1;
     transform-style: preserve-3d;
-    background: rgba(0, 0, 0, 0.2);
-    background-image: url("../../images/Бабочка02.gif");
-    background-size: 20% 20%; /* Размер фона 10% от ширины и высоты блока */
-    background-position: center; 
+    /* background: rgba(0, 0, 0, 0.2); */
+    /* background-image: url("../../images/gif_star.gif");
+    background-size: 10% 10%; 
     background-repeat: repeat;
+    background-position: 50px 50px;  */
     /* background-color: rgba(249, 250, 244, 0.1); */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    box-shadow: inset 18px 10px 22px rgb(240, 124, 123, 0.1);
+    /* box-shadow: inset 18px 10px 22px rgb(240, 124, 123, 0.1); */
   }
-  
+
+  .cube-slider .swiper-slide .boy-backgraund {
+    position: absolute;
+    top: -27px;
+    left: 327px;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../images/boy.gif");
+    background-size: 30% 30%; 
+    background-repeat: no-repeat;
+    background-position: 10px 10px; 
+  }
+
+  .cube-slider .swiper-slide .background-block {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../images/gif_star.gif");
+    background-size: 13% 13%; 
+    background-repeat: no-repeat;
+  } 
+
+  .cube-slider .swiper-slide .background-block:nth-child(2) {
+    background-size: 5% 5%;
+    top: 256px;
+    left: 20px; 
+}
+
+.cube-slider .swiper-slide .background-block:nth-child(3) {
+    background-size: 10% 10%;
+    top: 322px;
+    left: 383px; 
+}
+
+.cube-slider .swiper-slide .background-block:nth-child(4) {
+  background-size: 7% 7%;
+  top: 10px;
+  left: 125px; 
+ 
+}
+.cube-slider .swiper-slide .background-block:nth-child(5) {
+  background-size: 4% 4%;
+  top: 126px;
+  left: 383px; 
+}
+
   .cube-slider .swiper-slide img {
-    width: 80%;
+    width: 110%;
+    max-width: 110%;
     height: auto;
     z-Index: 2;
     object-fit: cover;
@@ -63,24 +111,13 @@
     border-radius: 20px;
     /* box-shadow: inset 0px 8px 20px rgb(240, 124, 123, 0.2); */
   }
-  
-  /* .cube-wrapper video {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      filter: blur(4px);
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1; 
-    } */
+
   
   
   .cube-top {
     position: absolute;
-    top: 53px;
-    right: 5px;
+    top: 90px;
+    right: 34px;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 20px rgba(0, 0, 0, 0.3);
@@ -108,13 +145,14 @@
     bottom: 0;
     width: 100%;
     min-height: 70px;
-    background: rgba(0, 0, 0, 0.2);
+    /* background: rgba(0, 0, 0, 0.2); */
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 0 0 20px 20px;
     z-index: 2;
     align-items: center;
   }
+
   
   .cube-slider .cube-bottom p {
     padding: 0;

@@ -7,9 +7,25 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.butterfly-img-static{
+  width: 80px;
+  height: 80px;
+  right: -6%;
+  top: -7px;
+  transform: scaleX(-1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.epilog {
+  width: 120px;
+  height: 120px;
+  max-width: 200%;
+  height: 200%;
+}
+
 .tree-b-img {
-  width: 46vw;
-  height: 50vw;
+  width: 40vw;
+  height: 40vw;
   transform: scaleX(-1);
   transition: transform 0.3s ease-in-out;
 }
@@ -33,7 +49,11 @@
 }
 
 .butterfly-non-stop {
+  width: 120px;
   transform: scaleX(1);
+  top: -420px;
+  left: 257px;
+  transform: rotate(340deg);
 }
 
 

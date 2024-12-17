@@ -5,12 +5,13 @@ import myGifTreeB from '../../images/tree-b.gif'
 import myGifTreeFront from '../../images/tree-f.gif'
 import myGifRabbitBook from '../../images/rabbit-book.gif'
 import myGifBoy from '../../images/boy.gif'
+import myGifStar from '../../images/gif_star.gif'
 import classNames from 'classnames';
 import './styles.css'
 
 
 
-export const GifComponents = ({classWrapper="", static_element=false, mirror=false, stoped=false, fixed=false, foto=false, gif="myGifButterfly", className="", clear=false}) => {
+export const GifComponents = ({classWrapper="", static_element=false,  mirror=false, stoped=false, fixed=false, foto=false, gif="myGifButterfly", className="", clear=false}) => {
 
   const dict_gif = {
     "myGifButterfly": myGifButterfly,
@@ -19,10 +20,13 @@ export const GifComponents = ({classWrapper="", static_element=false, mirror=fal
     "myGifTreeFront": myGifTreeFront,
     "myGifRabbitBook": myGifRabbitBook,
     "myGifBoy": myGifBoy,
+    "myGifStar": myGifStar,
   }
   
 
   const blockRef = useRef(null);
+
+  // const [brightness, setBrightness] = useState(0.9);
 
   const [position, setPosition] = useState(null);
 
@@ -32,7 +36,7 @@ export const GifComponents = ({classWrapper="", static_element=false, mirror=fal
 
   const [isCartoon, setIsCartoon] = useState(false) // проверяем есть ли анимация у classesWrapper
 
-  const [gifSrc, setGifSrc] = useState(foto)
+  const [gifSrc, setGifSrc] = useState(foto? foto : dict_gif[gif])
 
   const [isMoving, setIsMoving] = useState(false);
 
@@ -115,12 +119,12 @@ export const GifComponents = ({classWrapper="", static_element=false, mirror=fal
     if(!isMoving&&foto) {
       setGifSrc(foto);
     }
-    else if(!isCartoon&&foto){
+    else if(!isCartoon) {
       setTimeout(() => {
-        setGifSrc(foto);
-      }, 2000)
-
+        setGifSrc(foto? foto: dict_gif[gif]);
+      }, 1000);
     }
+    
   };
 
 
@@ -140,6 +144,9 @@ export const GifComponents = ({classWrapper="", static_element=false, mirror=fal
 
         onMouseEnter={stoped ? handleMouseEnter : null}
         onMouseLeave={stoped ? handleMouseLeave : null}
+        // style={isMoving&&tree ? { 
+        //   filter: `brightness(${brightness})`, 
+        // }: {}}
       />
     </div>
   );

@@ -5,3 +5,26 @@
     display: flex;
     justify-content: space-between;
 }
+
+.header-btn {
+    width: 39px;
+    height: 46px;
+    /* border-radius: 50%; */
+    overflow: hidden;
+    background-color: transparent; 
+    border: none;
+    transition: transform 0.5s ease;
+}
+
+.show-modal-btn {
+    background-color: transparent; 
+}
+
+.header-btn:hover {
+    transform: scale(1.1);
+  }
+
+.header-btn:active {
+    transform: scale(0.95);
+    outline: none;
+}

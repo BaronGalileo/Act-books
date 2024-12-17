@@ -4,6 +4,98 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
 
+}
+
+.admin-element {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.admin-element:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+}
+
+.add-book {
+    width: 240px;
+    height: 60px;
+    font-size: 17px;
+    line-height: 1.2em;
+    border-radius: 50%;
+    border: none;
+    background: 
+      radial-gradient(circle, #58c6e7 0%, #29e28c 100%), /* Светлый блик сверху */
+      linear-gradient(90deg, #FFFFFF 0%, transparent 100%); /* Блик справа */
+}
+
+
+
+.add-book.active-btn {
+    background: 
+      radial-gradient(circle, #dfc4c3 0%, #f18832 100%), 
+      linear-gradient(90deg, #FFFFFF 0%, transparent 100%); 
+}
+
+.add-book.delete-btn {
+    background: 
+      radial-gradient(circle, #ecd9d9 0%, #b1fcb8 100%), /* Светлый блик сверху */
+      linear-gradient(90deg, #FFFFFF 0%, transparent 100%); /* Блик справа */
+}
+.add-book.delete-btn:hover{
+    background: 
+      radial-gradient(circle, #faf3f3 0%, #f1b202 100%), /* Светлый блик сверху */
+      linear-gradient(90deg, #e27f7f 0%, transparent 100%); /* Блик справа */
+}
+
+.add-book:hover {
+    font-size: 18px;
+    background: 
+      radial-gradient(circle, #faf3f3 0%, #f1b202 100%), /* Светлый блик сверху */
+      linear-gradient(90deg, #e27f7f 0%, transparent 100%); /* Блик справа */
+}
+
+.add-book::after {
+    top: 33%;
+    left: 79%;
+    width: 26%;
+    height: 26%;
+}
+
+.add-book:disabled {
+    cursor: not-allowed;
+    background: 
+      radial-gradient(circle, #e0d8d8 0%, #92f7f7 100%), 
+      linear-gradient(90deg, #FFFFFF 0%, transparent 100%);
+}
+.add-book:disabled:hover:active {
+    background: linear-gradient(#EBE6D6, #ffffff);
+    box-shadow:
+     0 0 3px #f7abab inset,
+     0 1px 1px 1px rgba(117, 4, 93, 0.4),
+     0 -1px 1px 1px #D20A11;
+    color: #D20A11;
+  }
+
+  .add-book:disabled:hover:not(:active) {
+    box-shadow:
+     0 0 3px rgba(0,0,0,0) inset,
+     0 1px 1px 1px rgba(241, 3, 3, 0.5),
+     0 -1px 1px 1px rgba(247, 3, 3, 0.5);
+  }
+
+.button-ball::before {
+    top: 1%;
+    left: 26%;
+    width: 46%;
+    height: 25%;
+    transform: rotate(-1deg);
 }

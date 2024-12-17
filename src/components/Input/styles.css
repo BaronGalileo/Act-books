@@ -1,7 +1,16 @@
-.input-wrapper{
+.input-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 16px; /* Добавляет отступы внутри блока */
+    border-radius: 8px; /* Скругленные углы */
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease; /* Плавное изменение тени */
+}
+
+/* При наведении увеличиваем тень для эффекта */
+.input-wrapper:hover {
+    box-shadow:inset 0 8px 16px rgba(0, 0, 0, 0.2); /* Более выраженная тень при наведении */
 }
 
 .input-element{
@@ -24,3 +33,10 @@ input {
     margin: 5px;
     padding: 7px;
 }
+
+.image-preview img {
+    margin-top: 10px;
+    max-width: 200px;
+    height: auto;
+}
+

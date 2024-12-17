@@ -5,9 +5,65 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url("../../images/фон магия стр.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100% 90%;
+    background-size: 110% 110%;
     align-items: center;
+    background-color: #fFFCF6;
 }
+
+.backgraund-reviews {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../images/gif_pinkback.gif");
+    filter: blur(11px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 110% 110%;
+    align-items: center;
+    opacity: 0.4;
+}
+
+.fon-reviews {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../images/blue-fon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 124% 82%;
+    
+}
+
+.stars-reviews {
+    position: absolute;
+    top: 302px;
+    left: 931px;
+    width: 20%;
+    height: 20%;
+    background-image: url("../../images/gif_star.gif");
+    background-size: 50% 50%;
+    background-position: center; 
+    background-repeat: no-repeat;
+} 
+
+.stars-reviews:nth-child(4) {
+    background-size: 27% 27%;
+    top: 613px;
+    left: 62px;
+}
+
+.stars-reviews:nth-child(3) {
+    background-size: 14% 14%;
+    top: 648px;
+    left: 112px;
+}
+
+
+
+

@@ -54,7 +54,7 @@ export const Cover = () => {
                     ref={ref}
                 >
                     <GifComponents clear stoped  fixed={isVisible} foto="../images/Бабочка-статик.png"  classWrapper="butterfly-cover" className="img butterfly-img"/>
-                    <GifComponents clear stoped foto="../images/Бабочка-статик.png" static_element classWrapper="butterfly-cover-static" className="img butterfly-img"/>
+                    <GifComponents clear stoped foto="../images/Бабочка-статик.png" static_element classWrapper="butterfly-cover-static" className="img butterfly-img-static"/>
                 </div>
             <Text className="red-text bond cover-txt for-h1" >САМАЯ УДИВИТЕЛЬНАЯ КНИГА С ОБЪЕМНЫМИ КАРТИНКАМИ</Text>
             <ButtonBallCandy href="https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC">Погрузись в чудо</ButtonBallCandy>
@@ -71,7 +71,7 @@ export const Cover = () => {
                 animate={{ x: '0%' }}         
                 transition={{ duration: 2 }}
                 >
-                  <GifComponents gif="myGifTreeB" foto="../images/tree-b.png" clear stoped static_element classWrapper="tree-cover-static" className="tree-b-img"/>
+                  <GifComponents gif="myGifTreeB"  foto="../images/tree-b.png" clear stoped static_element classWrapper="tree-cover-static" className="tree-b-img"/>
                 </motion.div>
                 </div>
                 <div className="conteiner-image">
@@ -133,7 +133,7 @@ export const Cover = () => {
                 </div>
                 <div className="conteiner-image">
                   <div className="static-tree ">
-                    <GifComponents gif="myGifTreeB" foto="../images/tree-b.png" clear mirror stoped static_element classWrapper="tree-cover-static right-tree-b" className="tree-b-img"/>
+                    <GifComponents  gif="myGifTreeB" foto="../images/tree-b.png" clear mirror stoped static_element classWrapper="tree-cover-static right-tree-b" className="tree-b-img"/>
                   </div>
                 {/* <motion.div
                 style={{

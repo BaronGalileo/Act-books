@@ -16,8 +16,8 @@ export const CubeSlider = () => {
     <div className="cube-wrapper">
       <Swiper
         className="cube-slider swiper"
-        effect={"cube"} // Включаем 3D-куб эффект
-        grabCursor={true} // Курсор захвата
+        effect={"cube"} 
+        grabCursor={true} 
         loop={true} // Зацикливание слайдера
         speed={2000} // Скорость перехода между слайдами
         autoplay={{
@@ -35,6 +35,7 @@ export const CubeSlider = () => {
       >
         <SwiperSlide>
           <div className="cube-slider">
+            <div className='boy-backgraund'></div>
             <Img src="../images/разворотАлиса (1).png" alt="photo" />
             <div className="cube-top">1</div>
             <div className="cube-bottom">
@@ -46,6 +47,12 @@ export const CubeSlider = () => {
 
         <SwiperSlide>
           <div className="cube-slider">
+            <div className='boy-backgraund'></div>
+          <div className='background-block'></div>
+          <div className='background-block'></div>
+          <div className='background-block'></div>
+          <div className='background-block'></div>
+          <div className='background-block'></div>
             <Img src="../images/ВетерВИвах.png" alt="photo" />
             <div className="cube-top">2</div>
             <div className="cube-bottom">
@@ -57,6 +64,7 @@ export const CubeSlider = () => {
 
         <SwiperSlide>
           <div className="cube-slider">
+            <div className='boy-backgraund'></div>
             <Img src="../images/разворотАлисаВ зазер (1).png" alt="photo" />
             <div className="cube-top">3</div>
             <div className="cube-bottom">

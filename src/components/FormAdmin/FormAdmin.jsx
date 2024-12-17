@@ -8,7 +8,7 @@ export const FormAdmin = () => {
 
     return(
         <div className="form-admin-wrapper">
-            <GifComponents clear gif="myGifBoy" foto="../images/boy.png" static_element classWrapper="boy-wrapper" className="img boy-img"/>
+            {/* <GifComponents clear gif="myGifBoy" foto="../images/boy.png" static_element classWrapper="boy-wrapper" className="img boy-img"/> */}
             <div>dsfsdfs</div>
             <div>sfsfsd</div>
             <div>sfsdfsdf</div>

@@ -6,6 +6,8 @@ import { setAuth } from "../../store/authSlice"
 import { Input } from "../Input/Input";
 import {  useFormContext } from "react-hook-form";
 import './styles.css'
+import axios from "axios";
+import { ButtonBallCandy } from "../Button/ButtonBallCandy";
 
 
 
@@ -14,6 +16,8 @@ import './styles.css'
 function Login() {
 
     const isAuth = useSelector(state => state.auth)
+
+    
 
     // useEffect(() => {
     //     if(isAuth.confermAut){
@@ -54,12 +58,38 @@ function Login() {
 
 
     const onSubmit = (data) => {
-        
-        console.log("data",data)
-        const accountAdd = {
-            username: data.username,
+
+        const path = "http://world.life.destiny.fvds.ru/backend/api/auth/login"
+
+        axios.post(path, data).then(res=>{
+            console.log("res.data", res.data)
+            if(res.data.token){
+                const accountAdd = {
+                    username: data.username,
+                    auth_token: res.data.token,
+                    confermAut : {headers: {"Authorization" : `Bearer ${res.data.token}`}},
+                    }
+                    console.log("accountAdd", accountAdd)
+                    return dispatch(setAuth(accountAdd))
             }
-            return dispatch(setAuth(accountAdd))
+        })
+        .catch(err => {
+            if(err.request.status === 401){
+                alert("Вы ошиблись! Проверьте Логин и Пароль");
+                reset()
+            }
+            else if(err.request.status >= 500) {
+                alert("Извените, проблема с сервером, попробуйте зайти позже!");
+                reset()
+            }
+        })
+
+        
+        // console.log("data",data)
+        // const accountAdd = {
+        //     username: data.username,
+        //     }
+        //     return dispatch(setAuth(accountAdd))
 
 
         // axios.post(path, data)
@@ -93,11 +123,13 @@ function Login() {
     return (
         <>
         <div className="conteyner_form">
+            <div className="form-login">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input name="username" message="Обязательно заполнить!">Логин:</Input>
                 <Input name="password" type="password" message="Обязательно заполнить!">Пароль:</Input>
-                <Button  disabled={!isValid}>Войти</Button>
+                <ButtonBallCandy disabled={!isValid} className="add-book">Войти</ButtonBallCandy>
             </form>
+            </div>
         </div>
         </>
     )

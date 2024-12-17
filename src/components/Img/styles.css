@@ -68,10 +68,15 @@
     right: 9vw;
     height: 40vh;
     width: auto;
+    z-index: 1;
   }
 
   .present {
-    z-index: 1;
+    position: relative;
+    top: 116px;
+    left: 0;
+    z-index: 2;
+
   }
 
   .squirrel-img {

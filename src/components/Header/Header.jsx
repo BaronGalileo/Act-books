@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from '../Button/Button';
-import { Text } from '../Text/Text';
+import { Img } from '../Img/Img';
 import './styles.css';
 import { removeAuth } from '../../store/authSlice';
-import { Img } from '../Img/Img';
+
 
 
 
@@ -19,6 +18,28 @@ export const Header = () => {
         dispatch(removeAuth())
     }
 
+    useEffect(() => {
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' || event.key === 'Esc') {
+                const modal = document.querySelector('.modal-menu-book');
+                const blurredBackground = document.querySelector('.blurred-background');
+                modal.style.display = 'none';
+                blurredBackground.style.display = 'none';
+                document.activeElement.blur()
+            }
+          })
+
+    }, [])
+
+
+
+    const showModalBook = () => {
+        const modal = document.querySelector('.modal-menu-book');
+        const blurredBackground = document.querySelector('.blurred-background');
+        modal.style.display = 'block';
+        blurredBackground.style.display = 'block';
+    }
+
 
     return(
         <div className='header-wrapper'>
@@ -26,7 +47,8 @@ export const Header = () => {
                 <Img className="logo" src="../images/image 3.png"/>
                 <Img className="logo" src="../images/Лого Поп ап-01 1.png"/>
             </div>
-            <Img className="logo" src="../images/Лого Поп ап-01 1.png"/>
+            <button onClick={showModalBook} className='header-btn'><Img className="show-modal-btn" src="../../images/menu-btn.png"/></button>
+            {/* <Button onClick={showModalBook} clean className='show-modal-btn'>""</Button> */}
         </div>
     )
 }

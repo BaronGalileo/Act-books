@@ -28,7 +28,8 @@ export const Catalog = () => {
 
     return(
         <div className="catalog-wrapper">
-            <Text className="red-text bond for-h1">Каталог</Text>
+            <Text className="red-text bond for-h1 front-txt">Каталог</Text>
+            <div className="girlyandoch-ka"></div>
             <div className="catalog-element" ref={contentRef}
             style={{
                 height: isOpen ? `${contentHeight}px` : "700px",

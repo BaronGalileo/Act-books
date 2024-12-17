@@ -55,6 +55,7 @@ header , footer {
 a {
   color: #000000;
   font-family: "Bond", serif;
+  text-decoration: none;
   transition: transform 0.5s ease;
 }
 

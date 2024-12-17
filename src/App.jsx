@@ -10,7 +10,7 @@ import { Layout } from './components/Layout/Layout';
 function App() {
 
   const methods = useForm({
-    mode: "onChange"
+    mode: "onBlur"
   })
 
   return (

@@ -6,6 +6,7 @@
     line-height: 2em;
     vertical-align: middle;
     user-select: none;
+    border: none;
     background: 
       radial-gradient(circle, #FFB7B6 0%, #FF938F 100%), 
       linear-gradient(180deg, transparent 0%, #000000 100%), 
