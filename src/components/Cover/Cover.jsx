@@ -5,6 +5,7 @@ import './styles.css';
 import { BallonButton } from "../Button/BallonButton";
 import {GifComponents} from "../GifComponent/GifComponents";
 import { ButtonBallCandy } from "../Button/ButtonBallCandy";
+import { ButtonPerfectBall } from "../Button/ButtonPerfectBall";
 
 
 export const Cover = () => {
@@ -57,7 +58,7 @@ export const Cover = () => {
                     <GifComponents clear stoped foto="../images/Бабочка-статик.png" static_element classWrapper="butterfly-cover-static" className="img butterfly-img-static"/>
                 </div>
             <Text className="red-text bond cover-txt for-h1" >САМАЯ УДИВИТЕЛЬНАЯ КНИГА С ОБЪЕМНЫМИ КАРТИНКАМИ</Text>
-            <ButtonBallCandy href="https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC">Погрузись в чудо</ButtonBallCandy>
+            <ButtonPerfectBall href="https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC">Погрузись в чудо</ButtonPerfectBall>
             <div className="conteiners-images">
                 <div className="conteiner-image">
                 <motion.div

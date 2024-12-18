@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import './styles.css'
 import { Text } from "../Text/Text";
 import { useFormContext } from "react-hook-form";
 
 
-function ImageUpload({ name, classText, message, children, ...restProps }) {
+export const ImageUpload = ({ name, classText, nameFile, imageType=false, message, bookId=false, children, ...restProps }) => {
 
   const [imagePreview, setImagePreview] = useState(null); // состояние для предварительного просмотра изображения
 
@@ -13,21 +13,26 @@ function ImageUpload({ name, classText, message, children, ...restProps }) {
 
   const {
     register,
-    formState: { errors }
+    formState: { errors },
   } = useFormContext();
 
   const error = errors[name]?.message;
 
-  const handleImageChange = (e) => {
+  const errorNameFile = errors[`fileName`]?.message
+
+  const chooseFoto = (e) => {
     const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
-      // Создаем URL для предварительного просмотра изображения
-      setImagePreview(URL.createObjectURL(file));
-    } else {
-      // Сбрасываем предварительный просмотр, если файл не является изображением
-      setImagePreview(null);
+    const reader = new FileReader();
+  
+    reader.onload = ev => {
+      setImagePreview(ev.target.result);
     }
+    reader.readAsDataURL(file);
   };
+
+  useEffect(() => {
+
+  }, [imagePreview])
 
   return (
     <label className="input-wrapper">
@@ -36,18 +41,24 @@ function ImageUpload({ name, classText, message, children, ...restProps }) {
       <input
         {...register(name, {
           required: message ? `${message}` : false,
-          validate: value => {
-            console.log("val", value)
-            // Опционально можно добавить кастомную валидацию для изображения
+          validate: (value) => {
             return value?.[0]?.type.startsWith('image/') || 'Пожалуйста, загрузите корректное изображение';
           }
         })}
         {...restProps}
         type="file"
-        accept="image/*" 
-        onChange={handleImageChange}
+        accept="image/*,.png,.jpg," 
+        onChange={chooseFoto}
         className={(error ? "error " : "") + "input-element"}
       />
+      <input {...register(`fileName`, {
+        required: message ? `${message}` : false,
+      })}
+      type="text"
+      placeholder="Название обложки"
+      className={(error ? "error " : "") + "input-element"} 
+      />
+      <input {...register(`imageType`)} type="hidden" value={imageType}/>
       {imagePreview && (
         <div className="image-preview">
           <img src={imagePreview} alt="Preview" />
@@ -56,5 +67,3 @@ function ImageUpload({ name, classText, message, children, ...restProps }) {
     </label>
   );
 }
-
-export { ImageUpload };

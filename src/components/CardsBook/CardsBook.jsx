@@ -3,7 +3,7 @@ import './styles.css'
 import { Img } from "../Img/Img";
 import { Text } from "../Text/Text";
 import { BallonButton } from "../Button/BallonButton";
-import { ButtonBallCandy } from "../Button/ButtonBallCandy";
+import { ButtonPerfectBall } from "../Button/ButtonPerfectBall";
 
 
 export const CardsBook = ({src='', link="", title="", contex="" }) => {
@@ -23,7 +23,10 @@ export const CardsBook = ({src='', link="", title="", contex="" }) => {
                 <Text className="contex-book">{contex}</Text>
                 {/* <BallonButton href={link} clean className="candy-balloon">Хочу</BallonButton> */}
             </div>
-            <ButtonBallCandy href={link} className="button-cards">Хочу</ButtonBallCandy>
+            <div className="anchor">
+                <ButtonPerfectBall href={link} className="button-cards">Хочу</ButtonPerfectBall>
+            </div>
+            {/* <ButtonPerfectBall href={link} className="button-cards">Хочу</ButtonPerfectBall> */}
         </div>
     )
 }

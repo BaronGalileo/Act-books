@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button } from "../Button/Button";
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuth } from "../../store/authSlice"
+import { removeAuth, setAuth } from "../../store/authSlice"
 import { Input } from "../Input/Input";
 import {  useFormContext } from "react-hook-form";
 import './styles.css'
@@ -48,19 +48,15 @@ function Login() {
   
 
     const dispatch = useDispatch();
-
-    // const path = "http://127.0.0.1:8000/auth/token/login/"
-
-    // const pach_user_role = "http://127.0.0.1:8000/users/role/"
-
-
-    
+   
 
 
     const onSubmit = (data) => {
+        console.log("data", data)
+
+        // dispatch(setAuth(data))
 
         const path = "http://world.life.destiny.fvds.ru/backend/api/auth/login"
-
         axios.post(path, data).then(res=>{
             console.log("res.data", res.data)
             if(res.data.token){
@@ -69,18 +65,25 @@ function Login() {
                     auth_token: res.data.token,
                     confermAut : {headers: {"Authorization" : `Bearer ${res.data.token}`}},
                     }
-                    console.log("accountAdd", accountAdd)
+                    reset()
                     return dispatch(setAuth(accountAdd))
+                    
             }
         })
         .catch(err => {
             if(err.request.status === 401){
+                dispatch(removeAuth())
                 alert("Вы ошиблись! Проверьте Логин и Пароль");
                 reset()
             }
             else if(err.request.status >= 500) {
+                dispatch(removeAuth())
                 alert("Извените, проблема с сервером, попробуйте зайти позже!");
                 reset()
+            }
+            else {
+                dispatch(removeAuth())
+                console.log("errrr", err)
             }
         })
 

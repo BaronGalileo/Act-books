@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Модальное окно с эффектом размытия</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      transition: background 0.3s ease;
-    }
-
-    .button-ball {
-    position: relative;
+.button-ball-perfect {
+    position: relative; /* Важный момент - кнопка должна быть относительно позиционированной */
     margin: 5px;
     width: 300px;
     height: 110px;
@@ -33,12 +15,10 @@
     box-shadow: 
       inset 0 -16px 23px rgba(0, 0, 0, 0.4),  
       0 15px 30px rgba(0, 0, 0, 0.2);  
-    /* transform: perspective(200px) rotateX(1deg) rotateY(10deg); 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; */
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;  /* Центрирование текста по горизонтали */
+    text-align: center;  
     color: #000000;
     font-family: "Bond", serif;
     text-decoration: none;
@@ -52,10 +32,35 @@
     box-sizing: border-box;
     height: 88px;
     width: 380px;
-  }
+}
 
-  .spot {
+.button-ball-perfect:hover,
+.button-ball-perfect:hover .spot,
+.button-ball-perfect:hover .spot-circ,
+.button-ball-perfect:hover .spot-right,
+.button-ball-perfect:hover .spot-ellipse {
+    transform: scale(1.2); /* Увеличиваем элементы */
+    opacity: 0.9; /* Опционально: уменьшаем прозрачность */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Плавный переход */
+}
+
+.spot {
     position: absolute;
+    z-index: 2;
+    top: 26%;
+    left: 67%;
+    width: 3%;
+    height: 6%;
+    background: radial-gradient(circle, rgb(255, 254, 254) 34%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 50%;
+    transform: rotate(360deg);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.spot-circ {
+    position: absolute; /* Все элементы должны быть абсолютными для правильного позиционирования */
+    z-index: 2;
     top: 27%;
     left: 9%;
     width: 3%;
@@ -63,25 +68,13 @@
     background: radial-gradient(circle, rgb(255, 254, 254) 34%, rgba(255, 255, 255, 0) 100%);
     border-radius: 50%;
     transform: rotate(339deg);
+    transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 1;
-    z-index: 2;
-  }
+}
 
-  .spot-circ {
-    position: absolute;
-    top: 27%;
-    left: 9%;
-    width: 3%;
-    height: 8%;
-    background: radial-gradient(circle, rgb(255, 254, 254) 34%, rgba(255, 255, 255, 0) 100%);
-    border-radius: 50%;
-    transform: rotate(339deg);
-    opacity: 1;
+.spot-right {
+    position: absolute; /* Все элементы должны быть абсолютными для правильного позиционирования */
     z-index: 2;
-  }
-
-  .spot-right {
-    position: absolute;
     top: 26%;
     left: 64%;
     width: 3%;
@@ -89,13 +82,13 @@
     background: radial-gradient(circle, rgb(255, 254, 254) 34%, rgba(255, 255, 255, 0) 100%);
     border-radius: 50%;
     transform: rotate(359deg);
+    transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 1;
-    z-index: 2;
 }
 
 .spot-ellipse {
-    content: '';
-    position: absolute;
+    position: absolute; /* Все элементы должны быть абсолютными для правильного позиционирования */
+    z-index: 2;
     top: 24%;
     left: 69%;
     width: 16%;
@@ -103,12 +96,11 @@
     background: radial-gradient(ellipse, rgb(255, 254, 254) 34%, rgba(255, 255, 255, 0) 75%);
     border-radius: 50%;
     transform: rotate(361deg);
+    transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 1;
-    z-index: 2;
 }
-      /* animation: pulse 2s infinite; Плавная анимация */
 
-  .button-ball::after {
+.button-ball-perfect::after {
     content: '';
     position: absolute;
     top: 5px;
@@ -119,12 +111,9 @@
     border-radius: 49%;
     transform: rotate(337deg);
     opacity: 0.5;
+}
 
-  }
-
-
-
-  .button-ball::before {
+.button-ball-perfect::before {
     content: '';
     position: absolute;
     top: 7%;
@@ -136,47 +125,47 @@
     transform: rotate(360deg);
     opacity: 0.2;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    /* background: linear-gradient(45deg, #c0392b, #f39c12, #f1c40f, #2ecc71, #3498db, #2980b9, #9b59b6, #8e44ad, #c0392b, #f39c12, #f1c40f, #2ecc71, #3498db, #2980b9, #9b59b6, #8e44ad); */
 }
 
-  .button-ball:hover {
+/* .button-ball-perfect:hover {
     font-size: 29px;
-    /* transform: perspective(200px) scale(1.1) rotateX(2deg) rotateY(5deg);  */
-  }
+}
 
-
-  .button-ball:active {
+.button-ball-perfect:active {
     transform: perspective(200px) scale(0.95) rotateX(1deg) rotateY(10deg); 
     box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.6), 0 5px 15px rgba(0, 0, 0, 0.3); 
-  }
+} */
 
-
-  .button-cards {
-    width: 200px;
-    height: 70px;
-  }
-
-  .center {
+.center {
     display: flex;
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 35%;
-  }
-  </style>
-</head>
-<body>
+}
+.button-cards {
+    top: -42px;
+    left: -134px;
+    width: 265px;
+    height: 61px;
+}
+.epilogue-btn {
+    z-index: 3;
+}
 
-  <!-- Кнопка для открытия модального окна -->
-   <div class="center">
-    <div class="spot"></div>
-    <div class="spot-right"></div>
-    <div class="spot-circ"></div>
-    <div class="spot-ellipse"></div>
-    <!-- <div class="button-ball"></div> -->
-    <button class="button-ball">Открыть модальное окно</button>
-   </div>
+.btn-cube {
+    top: -43px;
+    left: -161px;
+    width: 345px;
+    height: 84px;
+}
+.anchor {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
+.btn-cube a:before {
+    opacity: 0;
 
-
-</body>
-</html>
+}

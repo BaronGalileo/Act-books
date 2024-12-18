@@ -172,13 +172,13 @@
   }
 
   .rabbit-static {
-    width: 100%;
-    height: 100%;
+    width: 118%;
+    height: 134%;
     position: relative;
-    top: 0;
-    right: 16px;
+    top: -64px;
+    right: 60px;
     z-index: 2;
-  }
+}
 
   .tree-cover-front {
     width: 100%;

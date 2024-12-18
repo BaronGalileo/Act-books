@@ -31,14 +31,15 @@ export const Book = () => {
         const formattedDate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
         setStartTime(Date.now());
         setReferrer(referrerUrl);
-        axios.get("http://world.life.destiny.fvds.ru/backend/api/books")
-            .then(res => {
+        const path = "http://world.life.destiny.fvds.ru/backend/api/books"
+        axios.get(path)
+        .then(res => {
             // Проверяем успешный ответ и выводим данные в консоль
             console.log("Books data:", res.data);
         })
         .catch(error => {
             // Обрабатываем ошибки, если запрос не удался
-            console.error("Error fetching books:", error);
+            console.log("Error fetching books:", error);
         });
 
         fetch('http://ip-api.com/json')
