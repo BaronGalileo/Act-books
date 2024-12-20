@@ -80,16 +80,12 @@
 }
 
 .txt-bolus {
-    width: 76%;
+    width: 98%;
     height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: start;   
-}
-
-.txt-mirror {
-    transform: scaleX(-1);
 }
 
 
@@ -98,6 +94,7 @@
     width: 60%;
     height: auto;
     font-size: 20px;
+    z-index: 3;
 }
 
 .txt-footer {

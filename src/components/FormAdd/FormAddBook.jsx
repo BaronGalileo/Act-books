@@ -24,6 +24,8 @@ export const FormAddBook = () => {
 
     const { handleSubmit, reset, formState: { isValid } } = useFormContext();
 
+    const [imagePreview, setImagePreview] = useState(null);
+
     const [fileData, setFileData] = useState(null)
 
     useEffect(() => {
@@ -37,6 +39,8 @@ export const FormAddBook = () => {
                 
             })
             .then(res => {
+                alert("Книга успешно добавлена!")
+                setImagePreview(null)
                 reset()
             })
             .catch(error => {
@@ -88,7 +92,7 @@ export const FormAddBook = () => {
                     <Input name="url" message="Обязательно заполнить!">Ссылка на книгу</Input>
                 </div>
                 <div className="data-book-add-element">
-                    <ImageUpload name="file" message="Обязательно заполнить" nameFile="Тест" imageType="COVER">Изображение обложки</ImageUpload>
+                    <ImageUpload imagePreview={imagePreview} setImagePreview={setImagePreview}  name="file" message="Обязательно заполнить" nameFile="Тест" imageType="BOOK_IMAGE">Изображение обложки</ImageUpload>
                     <ButtonBallCandy disabled={!isValid} className="add-book">Добавить книгу</ButtonBallCandy>
                 </div>
             </div>

@@ -1,51 +1,87 @@
 .team-of-wizards-wrapper {
-    width: 90%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    background-image: url("../../images/млечный\ путь.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.team-wizards-wrapper-row {
+    display: flex;
+    width: 100%;
+    height: 92%;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
 }
 
 .team-of-wizards-element {
     width: 100%;
     height: 27%;
+    margin: 36px 0 0 0;
     display: flex;
-}
-
-.mirrored-team-of-wizards-element {
-    display: flex;
-    width: 100%;
-    height: 27%;
-    flex-direction: row-reverse;
-
+    align-items: center
 }
 
 .text-bolus-wizard {
-    width: 90%;
+    width: 34vw;
     height: 100%;
-    background-image: url("../../../public/images/Монтажная область 1 копия 19 1.png");
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 110% 110%;
     display: flex; 
-    justify-content: center; 
-    /* align-items: center;  */
-    /* text-align: center;  */
-    background-size: 97% 96%;
+    justify-content: center;
+    align-items: center; 
+
 }
 
-.text-bolus-wizard-right {
-    width: 90%;
-    height: 100%;
-    background-image: url("../../../public/images/Монтажная область 1 копия 19 1.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    transform: scaleX(-1);
-    display: flex; 
-    justify-content: center; 
-    /* align-items: center; 
-    text-align: center;  */
-    background-size: 97% 96%;
+.wizards-absol {
+    position: relative;
+    top: -49%;
+    left: 0;
+    width: 100%;
+    height: 40%;
 }
+
+.wizards-backround-gif {
+    position: absolute;
+    top: -119px;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    background-image: url("../../images/gif_milkywaystars.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.wizards-backround-png {
+    position: absolute;
+    top: 334px;
+    left: 405px;
+    width: 1035px;
+    height: 615px;
+    background-image: url("../../images/облачко.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    z-index: 1;
+}
+
+.wizards-backround-png-mirror {
+    position: absolute;
+    top: 345px;
+    left: -4px;
+    width: 1035px;
+    height: 615px;
+    background-image: url("../../images/облачко.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    transform: rotate(180deg);
+    z-index: 1;
+}
+
 
 

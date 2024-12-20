@@ -27,12 +27,12 @@ export const Slider = () => {
             <button className='btn-reviews-slider left'
                 onClick={prevSlide}
             >
-                <Img src='../images/кнопка л.png'/>
+                <Img className="btn-slider-reviews" src='../images/кнопка л.png'/>
             </button>
             <button className='btn-reviews-slider right'
                 onClick={nextSlide}
             >
-                <Img src='../images/кнопка п.png'/>
+                <Img className="btn-slider-reviews" src='../images/кнопка п.png'/>
             </button>
         </div>
 

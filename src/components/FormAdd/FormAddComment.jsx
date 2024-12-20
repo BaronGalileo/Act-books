@@ -43,8 +43,7 @@ export const FormAddComment = () => {
     // }, [isAuth])
     const { handleSubmit, reset, formState: { isValid } } = useFormContext();
 
-    // const methods = useForm();
-  
+    const path = "http://world.life.destiny.fvds.ru/backend/api/comment" 
 
     const dispatch = useDispatch();
 
@@ -57,33 +56,28 @@ export const FormAddComment = () => {
 
 
     const onSubmit = (data) => {
+        console.log("data", data, isAuth.confermAut)
+        debugger
 
-        const path = "http://world.life.destiny.fvds.ru/backend/api/books"
-        console.log("data", data)
+        axios.post(path, data, isAuth.confermAut).then(res=>{
+            alert("Комментарий успешно добавлен")
+            reset()
+        })
+        .catch(err => {
+            if(err.request.status === 401){
+                alert("Вы ошиблись! Проверьте Логин и Пароль");
+                reset()
+            }
+            else if(err.request.status >= 500) {
+                alert("Извените, проблема с сервером, попробуйте зайти позже!");
+                reset()
+            }
+            else {
+                alert("Извените, что-то пошло не так!")
+                reset()
 
-        // axios.post(path, data, {
-        //     headers: {
-        //         'Authorization': `Bearer ${isAuth.auth_token}`,
-        //         'Content-Type': 'application/json'
-        //     }
-        // } ).then(res=>{
-        //     console.log("post", path, data, isAuth.confermAut )
-        //     console.log("res.data", res.data)
-        // })
-        // .catch(err => {
-        //     if(err.request.status === 401){
-        //         alert("Вы ошиблись! Проверьте Логин и Пароль");
-        //         reset()
-        //     }
-        //     else if(err.request.status >= 500) {
-        //         alert("Извените, проблема с сервером, попробуйте зайти позже!");
-        //         reset()
-        //     }
-        //     else {
-        //         console.log("err", err)
-        //         console.log("post", path, data, isAuth.confermAut )
-        //     }
-        // })
+            }
+        })
 
         
     }
@@ -96,8 +90,8 @@ export const FormAddComment = () => {
         <form  onSubmit={handleSubmit(onSubmit)}>
             <div className="contener-add-book">
                 <div className="data-book-add-element">
-                    <Input name="book.title" message="Обязательно заполнить!">Комментарий</Input>
-                    <Input name="book.author" message="Обязательно заполнить!">Автор комментария</Input>
+                    <Input name="content" message="Обязательно заполнить!">Комментарий</Input>
+                    <Input name="author" message="Обязательно заполнить!">Автор комментария</Input>
                     <ButtonBallCandy disabled={!isValid} className="add-book">Добавить комментарий</ButtonBallCandy>
                 </div>
             </div>

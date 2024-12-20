@@ -52,7 +52,7 @@
   width: 120px;
   transform: scaleX(1);
   top: -420px;
-  left: 257px;
+  left: 266px;
   transform: rotate(340deg);
 }
 
@@ -108,13 +108,6 @@
       100% {
         transform: translate(350px, 0px); /* Конечная позиция */
       }
-    /* from {
-      transform: translateX(0);
-      
-    }
-    to {
-      transform: translateX(300px); 
-  } */
   
   }
 
@@ -153,6 +146,79 @@
         transform: translate(-350px, 0px); /* Конечная позиция */
       }
     }
+
+    @keyframes moveMobile {
+      0% {
+          transform: translate(0, 0); 
+        }
+        10% {
+          transform: translate(20px, 45px);
+        }
+        20% {
+          transform: translate(35px, -20px);
+        }
+        30% {
+          transform: translate(42px, 70px);
+        }
+        40% {
+          transform: translate(55px, 150px);
+        }
+        50% {
+          transform: translate(70px, -3px); 
+        }
+        60% {
+          transform: translate(85px, 43px); 
+        }
+        70% {
+          transform: translate(100px, 110px); 
+        }
+        80% {
+          transform: translate(120px, 90px); 
+        }
+        90% {
+          transform: translate(170px, 45px); 
+        }
+        100% {
+          transform: translate(205px, 71px); 
+        }
+    
+    }
+  
+    @keyframes moveMobileBack {
+      0% {
+          transform: translate(0, 0); /* Начальная позиция */
+        }
+        10% {
+          transform: translate(-45px, 10px);
+        }
+        20% {
+          transform: translate(-75px, -30px);
+        }
+        30% {
+          transform: translate(-80px, 25px);
+        }
+        40% {
+          transform: translate(-100px, 80px);
+        }
+        50% {
+          transform: translate(-125px, -10px); /* Позиция на середине анимации */
+        }
+        60% {
+          transform: translate(-135px, 55px); /* Позиция на середине анимации */
+        }
+        70% {
+          transform: translate(-150px, 90px); /* Позиция на середине анимации */
+        }
+        80% {
+          transform: translate(-160px, 30px); /* Позиция на середине анимации */
+        }
+        90% {
+          transform: translate(-170px, -5px); /* Позиция на середине анимации */
+        }
+        100% {
+          transform: translate(-205px, -71px); /* Конечная позиция */
+        }
+  }
 
   .butterfly-cover-static {
     width: 100px;

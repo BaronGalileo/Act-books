@@ -11,6 +11,7 @@ import {
  } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 import authReducer from './authSlice'
+import bookReducer from './booksSlice'
 
 
 
@@ -18,6 +19,7 @@ import authReducer from './authSlice'
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  book: bookReducer,
 
 })
 

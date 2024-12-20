@@ -5,9 +5,7 @@ import { Text } from "../Text/Text";
 import { useFormContext } from "react-hook-form";
 
 
-export const ImageUpload = ({ name, classText, nameFile, imageType=false, message, bookId=false, children, ...restProps }) => {
-
-  const [imagePreview, setImagePreview] = useState(null); // состояние для предварительного просмотра изображения
+export const ImageUpload = ({ name, classText, imagePreview, setImagePreview, nameFile, imageType=false, message, bookId=false, children, ...restProps }) => {
 
   const classes = classNames('txt', 'dark-color', classText);
 
@@ -18,17 +16,20 @@ export const ImageUpload = ({ name, classText, nameFile, imageType=false, messag
 
   const error = errors[name]?.message;
 
-  const errorNameFile = errors[`fileName`]?.message
-
   const chooseFoto = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-  
-    reader.onload = ev => {
-      setImagePreview(ev.target.result);
+    if (file instanceof Blob) {
+      const reader = new FileReader();
+      reader.onload = ev => {
+        setImagePreview(ev.target.result);
+      }
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null)
+      alert("Передан неверный объект, ожидается картинка");
     }
-    reader.readAsDataURL(file);
   };
+
 
   useEffect(() => {
 

@@ -44,7 +44,7 @@
     /* box-shadow: inset 18px 10px 22px rgb(240, 124, 123, 0.1); */
   }
 
-  .cube-slider .swiper-slide .boy-backgraund {
+  /* .cube-slider .swiper-slide .boy-backgraund {
     position: absolute;
     top: -27px;
     left: 327px;
@@ -54,7 +54,7 @@
     background-size: 30% 30%; 
     background-repeat: no-repeat;
     background-position: 10px 10px; 
-  }
+  } */
 
   .cube-slider .swiper-slide .background-block {
     position: absolute;

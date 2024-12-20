@@ -26,8 +26,6 @@ export const GifComponents = ({classWrapper="", static_element=false,  mirror=fa
 
   const blockRef = useRef(null);
 
-  // const [brightness, setBrightness] = useState(0.9);
-
   const [position, setPosition] = useState(null);
 
   const [screenSize, setScreenSize] = useState({
@@ -38,19 +36,32 @@ export const GifComponents = ({classWrapper="", static_element=false,  mirror=fa
 
   const [gifSrc, setGifSrc] = useState(foto? foto : dict_gif[gif])
 
+  const [isMounting, setIsMounting] = useState(true)
+
   const [isMoving, setIsMoving] = useState(false);
 
   const [isTurn, setIsTurn] = useState(mirror)
 
+  const isMobileScreen = screenSize.width <= 360;
+
   const getPosition = () => {
     if (blockRef.current&&!static_element) {
       const rect = blockRef.current.getBoundingClientRect();
-      setPosition({
-        top: rect.top,
-        left: rect.left,
-        width: rect.width,
-        height: rect.height,
-      });
+      if(isMobileScreen&&isMounting) {
+        setPosition({
+          top: rect.top + 17,
+          left: rect.left +18,
+          width: rect.width,
+          height: rect.height,
+        })
+      } else {
+        setPosition({
+          top: rect.top,
+          left: rect.left,
+          width: rect.width,
+          height: rect.height,
+        });
+      }
     } else if (static_element) {
       setPosition(null)
     }
@@ -63,6 +74,8 @@ export const GifComponents = ({classWrapper="", static_element=false,  mirror=fa
 
     }
     getPosition();
+    setIsMounting(false) // чтобы после движения картинка оставалась на том же месте
+
   
     const handleResize = () => {
       setScreenSize({
@@ -114,7 +127,7 @@ export const GifComponents = ({classWrapper="", static_element=false,  mirror=fa
     stoped=false
   }
 
-  // Функция для остановки анимации (заменяем на статичную картинку)
+
   const handleMouseLeave = () => {
     if(!isMoving&&foto) {
       setGifSrc(foto);
@@ -144,9 +157,6 @@ export const GifComponents = ({classWrapper="", static_element=false,  mirror=fa
 
         onMouseEnter={stoped ? handleMouseEnter : null}
         onMouseLeave={stoped ? handleMouseLeave : null}
-        // style={isMoving&&tree ? { 
-        //   filter: `brightness(${brightness})`, 
-        // }: {}}
       />
     </div>
   );

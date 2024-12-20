@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { format } from 'date-fns';
 import "./styles.css"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Cover } from "../../components/Cover/Cover";
 import { BookPresentation } from "../../components/BookPresentation/BookPresentation"
 import { Reviews } from "../../components/Reviews/Reviews";
@@ -11,12 +11,20 @@ import { AdminPanel } from "../../components/AdminPanel/AdminPanel";
 import { Catalog } from "../../components/Catalog/Catalog";
 import { TeamOfWizards } from "../../components/TeamOfWizards/TeamOfWizards";
 import { Epilogue } from "../../components/Epilogue/Epilogue";
+import ImageComponent from "../../components/Test/ImageData";
+import { Img } from "../../components/Img/Img";
+import { de } from "date-fns/locale";
+import { setBooks } from "../../store/booksSlice";
 
 
 
 export const Book = () => {
 
     const isAuth = useSelector(state => state.auth)
+
+    const books = useSelector(state => state.book)
+
+    const dispatch = useDispatch();
 
     const [referrer, setReferrer] = useState('');
 
@@ -26,31 +34,38 @@ export const Book = () => {
 
     const [elapsedTime, setElapsedTime] = useState(0);
 
+    const [imageData, setImageData] = useState(null)
+
+    const [consent, setConsent] = useState(null); //согласие на сбор данных
+
+
     useEffect(() => {
-        const referrerUrl = document.referrer;
-        const formattedDate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-        setStartTime(Date.now());
-        setReferrer(referrerUrl);
+        const isConsentGiven = window.confirm("Вы согласны на сбор данных?");
+        if (isConsentGiven&&!isAuth.isAuth) {
+            setConsent(true); 
+        } else {
+            setConsent(false); 
+        }
         const path = "http://world.life.destiny.fvds.ru/backend/api/books"
         axios.get(path)
         .then(res => {
-            // Проверяем успешный ответ и выводим данные в консоль
-            console.log("Books data:", res.data);
+            dispatch(setBooks(res.data))
+            })
+            .catch(error => {
+                console.log("Error fetching books:", error);
+            });
+        axios.get(path)
+        .then(res => {
+            const testImage = res.data[0].images[0].imageData
+            setImageData(testImage)
+
+
+
         })
         .catch(error => {
-            // Обрабатываем ошибки, если запрос не удался
             console.log("Error fetching books:", error);
         });
 
-        fetch('http://ip-api.com/json')
-          .then(response => response.json())
-          .then(data => {
-            setIpAddress(data.query);
-            console.log("ip", data.query, data)
-          })
-          .catch(error => {
-            console.log('Error fetching IP address:', error);
-          });
         const sendTimeToServer = (timeSpent) => {
             console.log("вышел", timeSpent)
         }
@@ -59,7 +74,6 @@ export const Book = () => {
         const handleBeforeUnload = (event) => {
             const timeSpent = Date.now() - startTime; // Вычисляем прошедшее время
             sendTimeToServer(timeSpent); // Отправляем время на сервер
-            console.log("event", event?.target.activeElement.href)
         }
 
         window.addEventListener('beforeunload', handleBeforeUnload);
@@ -69,6 +83,26 @@ export const Book = () => {
           };
     }, []);
 
+    useEffect(() => {
+        if(consent) {
+            const referrerUrl = document.referrer;
+            const formattedDate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+            setStartTime(Date.now());
+            setReferrer(referrerUrl);
+
+            fetch('http://ip-api.com/json')
+                .then(response => response.json())
+                .then(data => {
+                setIpAddress(data.query);
+                console.log("ip", data.query, data)
+            })
+            .catch(error => {
+                console.log('Error fetching IP address:', error);
+          });
+        }
+
+    }, [consent])
+
     const hideBlock = () => {
         const modal = document.querySelector('.modal-menu-book');
         const blurredBackground = document.querySelector('.blurred-background');
@@ -76,13 +110,6 @@ export const Book = () => {
         blurredBackground.style.display = 'none';
     }
 
-
-
-
-    const show = () => {
-        console.log("referrer",referrer )
-        console.log("ipAddress",ipAddress )
-    }
 
     return(
         <div className="book">
@@ -121,10 +148,10 @@ export const Book = () => {
             <div id="book-presentation" className="item bookPresentation" >
                <BookPresentation/> 
             </div>
-            <div id="video" className="item" >
+            {/* <div id="video" className="item" >
                 <TestSlider/>
                 
-            </div>
+            </div> */}
             <div id="reviews" className="item" >
                 <Reviews/>
             </div>

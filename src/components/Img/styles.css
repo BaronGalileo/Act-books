@@ -57,9 +57,21 @@
     height: 90%;
   }
 
+  .wizard-foto-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    height: 10vw; 
+    border-radius: 50%; 
+    border: 5px solid #FF7773;
+}
+
   .wizard-foto {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;  /* делает изображение круглым */
+    display: block;
   }
 
   .malvina {

@@ -4,14 +4,28 @@ import { Img } from "../Img/Img";
 import { Text } from "../Text/Text";
 
 
-export const Wizard = ({src="", contex="", to_the_right=false}) => {
+export const Wizard = ({src="", contex="", mirror=false}) => {
 
     return(
-        <div className={to_the_right ? "mirrored-team-of-wizards-element" : "team-of-wizards-element"}>
-            <Img src={src} className="wizard-foto"/>
-            <div className={to_the_right ? "text-bolus-wizard-right" : "text-bolus-wizard"}>
-                <Text className={to_the_right ? "txt-bolus txt-mirror" : "txt-bolus"}>{contex}</Text>
-            </div>
-        </div>
+        <>
+        {!mirror ?
+            <div className="team-of-wizards-element">
+                <div className="wizard-foto-container">
+                    <Img src={src} className="wizard-foto"/>
+                </div>
+                <div className="text-bolus-wizard">
+                    <Text className="txt-bolus">{contex}</Text>
+                </div>
+            </div> :
+            <div className="team-of-wizards-element">
+                <div className="text-bolus-wizard">
+                    <Text className="txt-bolus">{contex}</Text>
+                </div>
+                <div className="wizard-foto-container">
+                    <Img src={src} className="wizard-foto"/>
+                </div>
+            </div>}
+
+        </>
     )
 }

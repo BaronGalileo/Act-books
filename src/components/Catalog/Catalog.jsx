@@ -52,7 +52,7 @@ export const Catalog = () => {
             <button id="toggleButton" className='btn-catalog-more'
                 onClick={toggleContent}
             >
-                {isOpen ? <Img src='../images/not-select-grin.png'/> : <Img src='../images/select-grin.png'/>}
+                {isOpen ? <Img  className="btn-catalog-more pull" src='../images/not-select-grin.png'/> : <Img className="btn-catalog-more add" src='../images/select-grin.png'/>}
             </button>
             
         </div>

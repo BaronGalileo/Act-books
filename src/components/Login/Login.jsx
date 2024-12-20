@@ -17,29 +17,6 @@ function Login() {
 
     const isAuth = useSelector(state => state.auth)
 
-    
-
-    // useEffect(() => {
-    //     if(isAuth.confermAut){
-    //         axios.get(pach_user_role, isAuth.confermAut)
-    //         .then(res => {
-    //             res.data.roles.map(val => {
-    //                 if(val[0]){
-    //                     const accountAdd = {
-    //                         name: val[0]?.name,
-    //                         username: isAuth.username,
-    //                         confermAut : isAuth.confermAut,
-    //                         user_role: val[0]?.role,
-    //                         auth_token: isAuth.auth_token,
-    //                     }
-    //                     return dispatch(setAuth(accountAdd))
-    //                 }
-    //                 return null
-    //             })
-    //         })
-    //     }
-    // }, [isAuth])
-
     const {
         handleSubmit,
         reset,
@@ -52,9 +29,6 @@ function Login() {
 
 
     const onSubmit = (data) => {
-        console.log("data", data)
-
-        // dispatch(setAuth(data))
 
         const path = "http://world.life.destiny.fvds.ru/backend/api/auth/login"
         axios.post(path, data).then(res=>{
@@ -86,37 +60,6 @@ function Login() {
                 console.log("errrr", err)
             }
         })
-
-        
-        // console.log("data",data)
-        // const accountAdd = {
-        //     username: data.username,
-        //     }
-        //     return dispatch(setAuth(accountAdd))
-
-
-        // axios.post(path, data)
-        // .then(res => {
-        //     const account = {
-        //         username: data.username,
-        //         auth_token: res.data.auth_token,
-        //         confermAut : {headers: {"Authorization" : `Token ${res.data.auth_token}`}},               
-        //         ...res.data}
-        //     dispatch(setAuth(account))
-        //     reset()
-        
-        // })
-        // .catch(err => {
-        //     if(err.request.status === 401){
-        //         alert("Вы ошиблись! Проверьте Логин и Пароль");
-        //         reset()
-        //     }
-        //     else if(err.request.status >= 500) {
-        //         alert("Извените, проблема с сервером, попробуйте зайти позже!");
-        //         reset()
-        //     }
-
-        // })
     }
 
 

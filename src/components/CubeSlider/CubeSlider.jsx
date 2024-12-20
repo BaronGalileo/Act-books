@@ -31,57 +31,57 @@ export const CubeSlider = () => {
           shadowScale: 1, // Масштаб тени
         }}
         lazy={true}
-        modules={[EffectCube, Pagination]}
+        modules={[EffectCube, Pagination, Autoplay]}
       >
         <SwiperSlide>
           <div className="cube-slider">
+          {/* <div className='background-block'></div>
           <div className='background-block'></div>
-          <div className='background-block'></div>
-          <div className='background-block'></div>
+          <div className='background-block'></div> */}
             <Img src="../images/разворотАлиса (1).png" alt="photo" />
             <div className="cube-top">1</div>
-            <div className="cube-bottom">
+            {/* <div className="cube-bottom">
               <Text>Описание книги</Text>
               <div className="anchor">
                 <ButtonPerfectBall href="https://ast.ru/" className="btn-cube">Хочу</ButtonPerfectBall>
               </div>
-            </div>
+            </div> */}
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
           <div className="cube-slider">
+          {/* <div className='background-block'></div>
           <div className='background-block'></div>
           <div className='background-block'></div>
           <div className='background-block'></div>
-          <div className='background-block'></div>
-          <div className='background-block'></div>
+          <div className='background-block'></div> */}
             <Img src="../images/ВетерВИвах.png" alt="photo" />
             <div className="cube-top">2</div>
-            <div className="cube-bottom">
+            {/* <div className="cube-bottom">
               <Text>Описание книги, там тарам!</Text>
               <div className="anchor">
                 <ButtonPerfectBall href="https://ast.ru/" className="btn-cube">Хочу</ButtonPerfectBall>
               </div>
-            </div>
+            </div> */}
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
           <div className="cube-slider">
+            {/* <div className='background-block'></div>
             <div className='background-block'></div>
             <div className='background-block'></div>
             <div className='background-block'></div>
-            <div className='background-block'></div>
-            <div className='background-block'></div>
+            <div className='background-block'></div> */}
             <Img src="../images/разворотАлисаВ зазер (1).png" alt="photo" />
             <div className="cube-top">3</div>
-            <div className="cube-bottom">
+            {/* <div className="cube-bottom">
               <Text>Ветер в ивах это увлекательные приключения братцев бурундуков в Америке. Красочные картинки и веселые истории не оставят ровнодушным никого</Text>
               <div className="anchor">
                 <ButtonPerfectBall href="https://ast.ru/" className="btn-cube">Хочу</ButtonPerfectBall>
               </div>
-            </div>
+            </div> */}
           </div>
         </SwiperSlide>
       </Swiper>

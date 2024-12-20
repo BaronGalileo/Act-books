@@ -2,7 +2,9 @@ import React from "react";
 import classNames from "classnames";
 import "./styles.css"
 
-export const Img = ({ className, clear, src = "defaultNoData.png", alt = "testImg", ...restProps }) => {
+export const Img = ({ className, clear, imageData=false,  src = "defaultNoData.png", alt = "testImg", ...restProps }) => {
+
+    const imageUrl = `data:image/png;base64,${imageData}`;
 
     const classes = classNames(
         !clear? 'img' : null,
@@ -10,7 +12,7 @@ export const Img = ({ className, clear, src = "defaultNoData.png", alt = "testIm
     )
 
     return <img className={classes}
-                src={src} 
+                src={imageData ? imageUrl :src} 
                 alt={alt} 
                 {...restProps} 
                 loading={"lazy"}/>
