@@ -35,7 +35,7 @@ export const Book = () => {
 
     useEffect(() => {
         const isConsentGiven = window.confirm("Вы согласны на сбор данных?");
-        if (isConsentGiven) {
+        if (isConsentGiven&&!isAuth.isAuth) {
             const referrerUrl = document.referrer;
             const formattedDate = new Date().toISOString();
 
@@ -66,62 +66,59 @@ export const Book = () => {
           }); 
         }
 
-        const path = "http://world.life.destiny.fvds.ru/backend/api/books"
-        axios.get(path)
-        .then(res => {
-            dispatch(setBooks(res.data))
-            })
-            .catch(error => {
-                console.log("Error fetching books:", error);
-            });
+        // const path = "http://world.life.destiny.fvds.ru/backend/api/books"
+        // axios.get(path)
+        // .then(res => {
+        //     dispatch(setBooks(res.data))
+        //     })
+        //     .catch(error => {
+        //         console.log("Error fetching books:", error);
+        //     });
 
 
         const handleBeforeUnload = (event) => {
-            console.log("sassas",interactivStatistica)
             const currentStatistica = interactivRef.current;
             const pageUrl = event.target.activeElement.href
-            if(isConsentGiven) {
+            const pageUrlIsShop = pageUrl === "https://www.chitai-gorod.ru/publisher/ast-118732?page=1&filters%5Bcategories%5D=110090"
+            if(isConsentGiven&&!isAuth.isAuth) {
                 const formattedDate = new Date().toISOString();
 
                 const dataInteractiv = [
                     {
                         "userIp": `${interactivStatistica.userIp}`,
-                        "eventType": "butterflyCount",
-                        "eventDetails": "butterflyCount",
+                        "eventType": "BUTTER_FLY_COUNT",
                         "timestamp": `${formattedDate}`,
                         "countEvent": `${currentStatistica.butterflyCount}`
                     },
                     {
                         "userIp": `${interactivStatistica.userIp}`,
-                        "eventType": "treeCount",
-                        "eventDetails": "treeCount",
+                        "eventType": "TREE_COUNT",
                         "timestamp": `${formattedDate}`,
                         "countEvent": `${currentStatistica.treeCount}`
                     },
                     {
                         "userIp": `${interactivStatistica.userIp}`,
-                        "eventType": "cubCount",
-                        "eventDetails": "cubCount",
+                        "eventType": "CUB_COUNT",
                         "timestamp": `${formattedDate}`,
                         "countEvent": `${currentStatistica.cubCount}`
                     },
                     {
                         "userIp": `${currentStatistica.userIp}`,
-                        "eventType": "commentCount",
+                        "eventType": "COMMENT_COUNT",
                         "eventDetails": "commentCount",
                         "timestamp": `${formattedDate}`,
                         "countEvent": `${currentStatistica.commentCount}`
                     },
                     {
                         "userIp": `${currentStatistica.userIp}`,
-                        "eventType": "catalogCount",
+                        "eventType": "CATALOG_COUNT",
                         "eventDetails": "catalogCount",
                         "timestamp": `${formattedDate}`,
                         "countEvent": `${currentStatistica.catalogCount}`
                     },
                     {
                         "userIp": `${currentStatistica.userIp}`,
-                        "eventType": "contentCount",
+                        "eventType": "CONTENT_COUNT",
                         "eventDetails": "contentCount",
                         "timestamp": `${formattedDate}`,
                         "countEvent": `${currentStatistica.contentCount}`
@@ -133,7 +130,18 @@ export const Book = () => {
                         "timestamp": `${formattedDate}`,
                         "countEvent": 1
                     }
-                ]
+                ]               
+                
+                if (pageUrl) {
+                    dataInteractiv.push({
+                        "userIp": `${currentStatistica.userIp}`,
+                        "eventType": `${pageUrlIsShop ? "MAIN_SHOP" : "VIEW"}`,
+                        "pageUrl": `${pageUrl}`,
+                        "timestamp": `${formattedDate}`,
+                        "countEvent": 1
+                    });
+                }
+
                 dispatch(removeInteractiv())
                 const blob = new Blob([JSON.stringify(dataInteractiv)], { type: 'application/json' });
                 if (navigator.sendBeacon) {
@@ -193,7 +201,7 @@ export const Book = () => {
                 </div>
             </div>
             <div class="blurred-background"></div>
-            {isAuth.isAuth && 
+            {!isAuth.isAuth && 
             <div className="item item-admin" >
                 <AdminPanel/>
             </div>}

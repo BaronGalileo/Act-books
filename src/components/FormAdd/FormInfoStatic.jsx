@@ -3,6 +3,9 @@ import "./styles.css"
 import { ButtonBallCandy } from "../Button/ButtonBallCandy";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { Text } from "../Text/Text";
+import { ModalWindows } from "../ModalWindows/ModalWindows";
+import { BlokTablo } from "../BlokTablo/BlokTablo";
 
 
 export const FormInfoStatic = () => {
@@ -37,10 +40,9 @@ export const FormInfoStatic = () => {
 
     const [interactivElements, setInteractivElements] = useState(null)
 
-
-
-
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState(""); // Содержимое модалки
+  
 
     useEffect(() => {
         //колличество пользователей
@@ -101,10 +103,6 @@ export const FormInfoStatic = () => {
 
     }, [])
 
-    // const butterflyCount = useSelector((state) => state.events.butterflyCount);
-    // const treeCount = useSelector((state) => state.events.treeCount);
-    // const cubCount = useSelector((state) => state.events.cubCount);
-
     const show = () => {
         // console.log("SHOW", isAuth)
         console.log("test", test)
@@ -112,22 +110,67 @@ export const FormInfoStatic = () => {
 
     }
 
-    // const redux = () => {
-    //     const x = 1
-    //     dispatch(incrementButterfly({"butterfly":{"countEvent": x}}))
-    // }
+    const handleModalOpen = (content) => {
+        setModalContent(content);
+        setIsModalOpen(true);
+      };
+    
+      const handleModalClose = () => {
+        setIsModalOpen(false);
+        setModalContent("");
+      };
+
+    const clicka = () => {
+        console.log("КЛИКА")
+    }
 
 
 
     return(
-        <div className="contener-add-book">
+        <div className="statistica-wrapper">
+            <div className="statistica-element">
+            <BlokTablo title="Число пользователей промо-сайта" src="./images/iconsUsers.png" contex="4"/>
+            </div>
+            <div className="statistica-element" onClick={() => handleModalOpen(<BlokTablo title="Ссылки по которым к нам пришли" src="./images/iconsLink.png"/>)}>
+            <BlokTablo title="Ссылки по которым к нам пришли" src="./images/iconsLink.png"/>
+            </div>
+            <div className="statistica-element">
+                <BlokTablo title="Время проведенное на сайте" src="./images/iconsTime.png"/>
+                <div className="statistica-element-row">
+                    <div>
+                        <Text>Обшее время</Text>
+                        <Text className="inform-txt-statistica"></Text>
+                        <div className="tablo-static">
+                            <Text className="inform-txt-statistica">4</Text>
+                        </div>
+                    </div>
+                    <div>
+                        <Text>Среднее время</Text>
+                        <Text className="inform-txt-statistica"></Text>
+                        <div className="tablo-static">
+                            <Text className="inform-txt-statistica">4</Text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="statistica-element">
+                <BlokTablo title="Колличество переходов на основной магазин" src="./images/iconsStore.png" contex="100"/>
+            </div>
+            <div className="statistica-element" onClick={() => handleModalOpen(<BlokTablo title="Любимая книга (ссылка на заинтересовавшую книгу)" src="./images/iconsBook.png" contex="список ссылок"/>)}>
+                <BlokTablo title="Любимая книга (ссылка на заинтересовавшую книгу)" src="./images/iconsBook.png"/>
+            </div>
+            <div className="statistica-element" onClick={() => handleModalOpen(
+                <BlokTablo title="Интерактивность" src="./images/iconsMouse.png" contex="вид кликов и счетчик"/>
+            )}>
+                <BlokTablo title="Интерактивность" src="./images/iconsMouse.png"/>
+                <Text as="h2">Интерактивность</Text>
+                <Text>Выпадающий список</Text>
+            </div>
+      {isModalOpen && (
+        <ModalWindows onClose={handleModalClose} content={modalContent} />
+      )}
 
-    {/* <h1>Счётчики событий</h1>
-      <p>Butterfly: {butterflyCount}</p>
-      <p>Tree: {treeCount}</p>
-      <p>Cub: {cubCount}</p> */}
-           FormInfoStatic 
-           <ButtonBallCandy onClick={show} className="add-book">Посмотреть</ButtonBallCandy>
+           {/* <ButtonBallCandy onClick={show} className="add-book">Посмотреть</ButtonBallCandy> */}
            {/* <ButtonBallCandy onClick={redux} className="add-book">redux</ButtonBallCandy> */}
 
            {/* <button onClick={() => dispatch(incrementButterfly())}>Клик по Butterfly</button>

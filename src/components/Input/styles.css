@@ -1,7 +1,8 @@
 .input-wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    width: 44vw;
     padding: 16px; /* Добавляет отступы внутри блока */
     border-radius: 8px; /* Скругленные углы */
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1); 

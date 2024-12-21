@@ -743,6 +743,10 @@ a {
 
 /* footer */
 /* admin */
+.admin-txt-h2 {
+  font-size: 18px;
+}
+
 .form-login {
   width: 224%;
 }

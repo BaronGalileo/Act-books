@@ -84,7 +84,7 @@
 }
 
 .item-admin {
-    background-color: rgb(146, 211, 241);
+    background-color: #E1FAFF;
 }
 
 
@@ -102,19 +102,7 @@
     transition: background-color 0.5s ease; /* Плавный переход для фона */
 }
 
-/* .item:nth-child(2) {
-    background-color: rgb(255, 0, 13);
-} */
-
-/* .item:nth-child(4) {
-    background-color: #FFB6B5;
-} */
-
-/* .item:nth-child(5) {
-    background-color: rgb(40, 212, 6);
-} */
-
-/* .item:nth-child(5) {
-    background-color: rgb(15, 15, 15);
-} */
+.video-item {
+    overflow: hidden;
+}
 

@@ -8,7 +8,7 @@
 }
 
 .for-h1 {
-    font-size: 45px;
+    font-size: 60px;
     font-stretch: 3px;
 }
 
@@ -99,15 +99,18 @@
 
 .txt-footer {
     position: absolute;
-    font-size: 52px;
-    bottom:12vw;
-    width: 55%;
+    font-size: 60px;
+    bottom: 8vw;
+    width: 58%;
     z-index: 0;
 }
 
 .cover-txt {
     margin: 20px;
     padding: 20px;
-    width: 55%;
+    width: 71%;
+}
+.wizards-txt {
+    margin-top: 17px;
 }
 

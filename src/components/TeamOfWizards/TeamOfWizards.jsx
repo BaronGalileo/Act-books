@@ -10,7 +10,7 @@ export const TeamOfWizards = () => {
 
     return(
         <div className="team-of-wizards-wrapper">
-            <Text as="h1" className="bond red-text">КОМАНДА ВОЛШЕБНИКОВ</Text>
+            <Text  className="txt red-text bond for-h1 front-txt wizards-txt">КОМАНДА ВОЛШЕБНИКОВ</Text>
             <div className="team-wizards-wrapper-row ">
                 <div>
                     <Wizard src="../images/Ольга.png" contex="«Последние 100 лет знаменитую пьесу С. Я. Маршака слушали, читали и смотрели в театре и дети, и взрослые. У детей ХХI века появилась возможность стать её непосредственным участником: примерив на себя роли героев пьесы, разыграть представление дома!»"/>

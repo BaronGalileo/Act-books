@@ -16,7 +16,7 @@ export const Epilogue = () => {
              позволяя стать участником событий и получить ни с чем не сравнимые эмоции.</Text>
             <ButtonPerfectBall href="https://www.chitai-gorod.ru/publisher/ast-118732?page=1&filters%5Bcategories%5D=110090"  className="epilogue-btn">Выбрать книгу</ButtonPerfectBall>
             <Img className="malvina" src="../images/malvina.png"></Img>
-            <Text as="h1" className="bond red-text txt-footer">ПОДАРИ КНИГУ — ПОДАРИ ВОЛШЕБСТВО</Text>
+            <Text  className="bond red-text txt-footer for-h1">ПОДАРИ КНИГУ — ПОДАРИ ВОЛШЕБСТВО</Text>
             <Img className="present" src="../images/подарки.png"/>
             <GifComponents clear    classWrapper="butterfly-non-stop" className="img butterfly-img epilog"/>
         </div>

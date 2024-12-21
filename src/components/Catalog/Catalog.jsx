@@ -44,7 +44,7 @@ export const Catalog = () => {
 
     return(
         <div className="catalog-wrapper">
-            <Text className="red-text bond for-h1 front-txt">Каталог</Text>
+            <Text className="red-text bond for-h1 front-txt">КАТАЛОГ</Text>
             <div className="girlyandoch-ka"></div>
             <div className="catalog-element" ref={contentRef}
             style={{
