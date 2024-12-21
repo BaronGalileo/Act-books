@@ -74,7 +74,7 @@ export const Book = () => {
         const isConsentGiven = window.confirm("Вы согласны на сбор данных?");
         if (isConsentGiven&&!isAuth.isAuth) {
             const referrerUrl = document.referrer
-            console("referrer", referrerUrl)
+            console.log("referrer", referrerUrl)
 
             const formattedDate = new Date().toISOString();
 
@@ -240,7 +240,7 @@ export const Book = () => {
                 </div>
             </div>
             <div class="blurred-background"></div>
-            {!isAuth.isAuth && 
+            {isAuth.isAuth && 
             <div className="item item-admin" >
                 <AdminPanel/>
             </div>}
