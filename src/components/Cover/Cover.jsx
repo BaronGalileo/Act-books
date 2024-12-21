@@ -4,11 +4,15 @@ import { motion } from 'framer-motion';
 import './styles.css';
 import {GifComponents} from "../GifComponent/GifComponents";
 import { ButtonPerfectBall } from "../Button/ButtonPerfectBall";
+import { incrementButterfly, incrementTree } from "../../store/interactivSlise";
+import { useDispatch } from "react-redux";
 
 
 export const Cover = () => {
     const [isVisible, setIsVisible] = useState(false); // Состояние для отслеживания видимости
     const ref = useRef(null); // Реф для привязки к элементу
+
+    const dispatch = useDispatch()
   
     useEffect(() => {
       // Функция для обновления состояния видимости
@@ -52,8 +56,8 @@ export const Cover = () => {
                     className='butterfly'
                     ref={ref}
                 >
-                    <GifComponents clear stoped  fixed={isVisible} foto="../images/Бабочка-статик.png"  classWrapper="butterfly-cover" className="img butterfly-img"/>
-                    <GifComponents clear stoped foto="../images/Бабочка-статик.png" static_element classWrapper="butterfly-cover-static" className="img butterfly-img-static"/>
+                    <GifComponents functionInteractiv={incrementButterfly()} clear stoped  fixed={isVisible} foto="../images/Бабочка-статик.png"  classWrapper="butterfly-cover" className="img butterfly-img"/>
+                    <GifComponents functionInteractiv={incrementButterfly()} clear stoped foto="../images/Бабочка-статик.png" static_element classWrapper="butterfly-cover-static" className="img butterfly-img-static"/>
                 </div>
             <Text className="red-text bond cover-txt for-h1" >САМАЯ УДИВИТЕЛЬНАЯ КНИГА С ОБЪЕМНЫМИ КАРТИНКАМИ</Text>
             <ButtonPerfectBall className="cover-btn" href="https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC">Погрузись в чудо</ButtonPerfectBall>
@@ -70,7 +74,7 @@ export const Cover = () => {
                 animate={{ x: '0%' }}         
                 transition={{ duration: 2 }}
                 >
-                  <GifComponents gif="myGifTreeB"  foto="../images/tree-b.png" clear stoped static_element classWrapper="tree-cover-static left-tree-back" className="tree-b-img"/>
+                  <GifComponents functionInteractiv={incrementTree()} gif="myGifTreeB"  foto="../images/tree-b.png" clear stoped static_element classWrapper="tree-cover-static left-tree-back" className="tree-b-img"/>
                 </motion.div>
                 </div>
                 <div className="conteiner-image">
@@ -85,7 +89,7 @@ export const Cover = () => {
                 initial={{ x: '20%' }}            
                 animate={{ x: '0%' }}         
                 transition={{ duration: 3 }}>
-                    <GifComponents gif="myGifTreeFront"  foto="../images/tree-f.png" clear stoped static_element classWrapper="tree-cover-static front-left-tree" className="tree-f-img"/>
+                    <GifComponents functionInteractiv={incrementTree()} gif="myGifTreeFront"  foto="../images/tree-f.png" clear stoped static_element classWrapper="tree-cover-static front-left-tree" className="tree-f-img"/>
                 </motion.div>
                 </div>
                 <div className="conteiner-image">
@@ -104,12 +108,12 @@ export const Cover = () => {
                 initial={{ x: '-20%' }}            
                 animate={{ x: '0%' }}         
                 transition={{ duration: 2 }}>
-                    <GifComponents gif="myGifTreeFront"  foto="../images/tree-f.png" clear mirror stoped static_element classWrapper="tree-cover-static front-left-right" className="tree-f-img"/>
+                    <GifComponents functionInteractiv={incrementTree()} gif="myGifTreeFront"  foto="../images/tree-f.png" clear mirror stoped static_element classWrapper="tree-cover-static front-left-right" className="tree-f-img"/>
                 </motion.div>
                 </div>
                 <div className="conteiner-image">
                   <div className="static-tree ">
-                    <GifComponents  gif="myGifTreeB" foto="../images/tree-b.png" clear mirror stoped static_element classWrapper="tree-cover-static right-tree-b" className="tree-b-img"/>
+                    <GifComponents functionInteractiv={incrementTree()}  gif="myGifTreeB" foto="../images/tree-b.png" clear mirror stoped static_element classWrapper="tree-cover-static right-tree-b" className="tree-b-img"/>
                   </div>
                 </div>
 

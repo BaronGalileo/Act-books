@@ -32,7 +32,7 @@
   }
 
   .baner {
-    width: 100%;
+    width: 87%;
     height: auto;
     z-index: 0;
   }
@@ -50,8 +50,8 @@
 
   .background-balls {
     position: absolute;
-    max-width: 86%;
-    top: -35px;
+    max-width: 84%;
+    top: -30px;
     left: 88;
     width: 85%;
     height: 90%;

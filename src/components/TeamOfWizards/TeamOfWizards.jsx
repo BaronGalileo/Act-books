@@ -6,7 +6,7 @@ import { Wizard } from "./Wizard";
 
 export const TeamOfWizards = () => {
 
-    const isMobileScreen = window.innerWidth <= 360;
+    const isMobileScreen = window.innerWidth <= 450;
 
     return(
         <div className="team-of-wizards-wrapper">

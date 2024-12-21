@@ -3,21 +3,37 @@ import './styles.css'
 import { Text } from '../Text/Text'
 import { CardsBook } from '../CardsBook/CardsBook'
 import { Img } from "../Img/Img";
+import { useDispatch } from "react-redux";
+import { incrementCatalog } from "../../store/interactivSlise";
 
 
 export const Catalog = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const contentRef = useRef(null); 
-  const [contentHeight, setContentHeight] = useState(700); 
+  let visibleHeight = document.documentElement.clientHeight >=800
+  const [mobileHeight, setMobileHeight] = useState(700)
+
+  const [contentHeight, setContentHeight] = useState(visibleHeight? 700 : 450); 
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (contentRef.current) {
       setContentHeight(contentRef.current.scrollHeight); 
     }
+    if(!visibleHeight) {
+      setMobileHeight(450)
+    }
   }, []); 
 
+  useEffect(() => {
+
+  }, [isOpen])
+
   const toggleContent = () => {
+    dispatch(incrementCatalog())
+
     const show = document.querySelector(".item-catalog");
     if(!isOpen) {
         show.style.height=`${contentHeight + 300}px`
@@ -32,7 +48,7 @@ export const Catalog = () => {
             <div className="girlyandoch-ka"></div>
             <div className="catalog-element" ref={contentRef}
             style={{
-                height: isOpen ? `${contentHeight}px` : "700px",
+                height: isOpen ? `${contentHeight}px` : `${mobileHeight}px`,
                 overflow: "hidden",
                 transition: "height 0.2s ease",
               }}>

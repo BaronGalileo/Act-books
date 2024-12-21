@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './styles.css'
 import { TextInBall } from '../TextInBall/TextInBall';
 import { Img } from '../Img/Img';
+import { useDispatch } from 'react-redux';
+import { incrementComment } from '../../store/interactivSlise';
 
 export const Slider = () => {
     const slides = [
@@ -11,13 +13,17 @@ export const Slider = () => {
         'wqqwdl;lk',
     ];
 
+    const dispatch = useDispatch()
+
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const nextSlide = () => {
+        dispatch(incrementComment())
         setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
     };
 
     const prevSlide = () => {
+        dispatch(incrementComment())
         setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
     };
 

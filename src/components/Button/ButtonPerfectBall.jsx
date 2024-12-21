@@ -12,14 +12,10 @@ export const ButtonPerfectBall = ({children = 'Default button', onClick =() => {
             return onClick(e);
         }
     }
+    const classes = clean
+    ? classNames(className, { active })
+    : classNames('button-ball-perfect', className, { active });
     
-    const classes = clean ? classNames(
-            className,
-            { active }) : classNames(
-                'button-ball-perfect',
-                className,
-                { active },
-            )
 
 
     const Tag = restProps.href ? 'a' : 'button';

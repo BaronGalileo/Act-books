@@ -10,11 +10,11 @@ export const Epilogue = () => {
 
     return(
         <div className="epilogue-wrapper">
-            <Text className="epilogue-txt">Какой событие навсегда может запомниться вашему ребенку? Конечно же незабываемое 
-                путешествие в волшебный мир сказок. Серия “Самая удивительная книга с объемными 
-                картинками” открывает перед читателем в прямом смысле сказочные миры, позволяя стать 
-                участником событий и получить ни с чем не сравнимые эмоции</Text>
-            <ButtonPerfectBall href="https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC"  className="epilogue-btn">Выбрать книгу</ButtonPerfectBall>
+            <Text className="epilogue-txt">Какое событие навсегда может запомниться вашему ребенку?
+             Конечно же, незабываемое путешествие в волшебный мир сказок! Серия «Самая удивительная
+             книга с объёмными картинками» открывает перед читателем в прямом смысле сказочные миры,
+             позволяя стать участником событий и получить ни с чем не сравнимые эмоции.</Text>
+            <ButtonPerfectBall href="https://www.chitai-gorod.ru/publisher/ast-118732?page=1&filters%5Bcategories%5D=110090"  className="epilogue-btn">Выбрать книгу</ButtonPerfectBall>
             <Img className="malvina" src="../images/malvina.png"></Img>
             <Text as="h1" className="bond red-text txt-footer">ПОДАРИ КНИГУ — ПОДАРИ ВОЛШЕБСТВО</Text>
             <Img className="present" src="../images/подарки.png"/>

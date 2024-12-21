@@ -8,10 +8,11 @@ import myGifBoy from '../../images/boy.gif'
 import myGifStar from '../../images/gif_star.gif'
 import classNames from 'classnames';
 import './styles.css'
+import { useDispatch } from 'react-redux';
 
 
 
-export const GifComponents = ({classWrapper="", static_element=false,  mirror=false, stoped=false, fixed=false, foto=false, gif="myGifButterfly", className="", clear=false}) => {
+export const GifComponents = ({classWrapper="", functionInteractiv=false, static_element=false,  mirror=false, stoped=false, fixed=false, foto=false, gif="myGifButterfly", className="", clear=false}) => {
 
   const dict_gif = {
     "myGifButterfly": myGifButterfly,
@@ -22,6 +23,8 @@ export const GifComponents = ({classWrapper="", static_element=false,  mirror=fa
     "myGifBoy": myGifBoy,
     "myGifStar": myGifStar,
   }
+
+  const dispatch = useDispatch()
   
 
   const blockRef = useRef(null);
@@ -42,7 +45,7 @@ export const GifComponents = ({classWrapper="", static_element=false,  mirror=fa
 
   const [isTurn, setIsTurn] = useState(mirror)
 
-  const isMobileScreen = screenSize.width <= 360;
+  const isMobileScreen = screenSize.width <= 450;
 
   const getPosition = () => {
     if (blockRef.current&&!static_element) {
@@ -142,7 +145,8 @@ export const GifComponents = ({classWrapper="", static_element=false,  mirror=fa
 
 
   return (
-    <div  
+    <div 
+      onMouseEnter={functionInteractiv ? () => dispatch(functionInteractiv) : null} 
       ref={blockRef} 
       className={`${classesWrapper} ${isMoving&&!isTurn ? 'move' : ''} ${isMoving&&isTurn ? 'back' : ''}`}
       onAnimationStart={handleAnimationStart}

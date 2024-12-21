@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import './styles.css'
-import { Img } from '../Img/Img';
-import GifComponent from './GifCompon';
-import TestGif from './TestGif';
-import { GifComponents } from '../GifComponent/GifComponents';
+// import React, { useState } from 'react';
+// import './styles.css'
+// import { Img } from '../Img/Img';
+// import GifComponent from './GifCompon';
+// import TestGif from './TestGif';
+// import { GifComponents } from '../GifComponent/GifComponents';
 // import { TextInBall } from '../TextInBall/TextInBall';
 // import { Img } from '../Img/Img';
 
@@ -68,12 +68,36 @@ import { GifComponents } from '../GifComponent/GifComponents';
 //     );
 // };
 
-export const TestSlider = () => {
+// export const TestSlider = () => {
 
-    return(
-        <div className='test-wrapper'>
-            <GifComponents gif="myGifStars" classWrapper="test-wrapper"/>
-        </div>
+//     return(
+//         <div className='test-wrapper'>
+//             <GifComponents gif="myGifStars" classWrapper="test-wrapper"/>
+//         </div>
 
-    )
-}
+//     )
+// }
+import { Text } from '../Text/Text';
+import './styles.css'
+
+
+export const PerspectiveText = ({classNames="", as, startSize = 100, endSize = 40, text, ...restProps }) => {
+    const calculateFontSize = (index) => {
+      return `${startSize - (startSize - endSize) * (index / text.length)}%`;
+    };
+
+    const Tag = restProps.href ? 'a' : 'div';
+  
+    return (
+    <Tag className="text-container"
+    {...restProps}>
+        <h3>
+          {text.split('').map((char, index) => (
+            <span key={index} style={{ fontSize: calculateFontSize(index) }}>
+              {char}
+            </span>
+          ))}
+        </h3>
+    </Tag>
+    );
+  };

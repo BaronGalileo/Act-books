@@ -2,11 +2,14 @@ import React from "react";
 import './styles.css'
 import { Img } from "../Img/Img";
 import { Text } from "../Text/Text";
-import { BallonButton } from "../Button/BallonButton";
 import { ButtonPerfectBall } from "../Button/ButtonPerfectBall";
+import { useDispatch } from "react-redux";
+import { incrementCatalog } from "../../store/interactivSlise";
 
 
 export const CardsBook = ({src='', link="", title="", contex="" }) => {
+
+    const dispatch = useDispatch()
 
     return(
         <div className="cards-book-wrapper">
@@ -22,9 +25,8 @@ export const CardsBook = ({src='', link="", title="", contex="" }) => {
                 <Text className="contex-book">{contex}</Text>
             </div>
             <div className="anchor">
-                <ButtonPerfectBall href={link} className="button-cards">Хочу</ButtonPerfectBall>
+                <ButtonPerfectBall onClick={() => dispatch(incrementCatalog())} href={link} className="button-cards">Хочу</ButtonPerfectBall>
             </div>
-            {/* <ButtonPerfectBall href={link} className="button-cards">Хочу</ButtonPerfectBall> */}
         </div>
     )
 }

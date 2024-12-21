@@ -1,87 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCube, Pagination, Autoplay } from 'swiper/modules';
+import { EffectCube, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-cube';
 import './CubeSlider.css';
 import { Img } from '../Img/Img';
 import { Text } from '../Text/Text';
-import { ButtonPerfectBall } from "../Button/ButtonPerfectBall";
-
+import { useDispatch } from 'react-redux';
+import { incrementCub } from '../../store/interactivSlise';
 
 export const CubeSlider = () => {
+  const [direction, setDirection] = useState('next'); // Управляем направлением автопрокрутки
+  const swiperRef = useRef(null); // Ссылка на Swiper, чтобы контролировать его
 
+  const dispatch = useDispatch()
+
+  const handleSlideChange = (swiper) => {
+    const isLastSlide = swiper.isEnd;  // Проверяем, достиг ли слайдер последнего слайда
+
+    if (isLastSlide) {
+      setDirection('prev'); // Если достигнут последний слайд, меняем направление на обратное
+    } else if (swiper.isBeginning) {
+      setDirection('next'); // Если на первом слайде, ставим прокрутку в обычном направлении
+    }
+  };
 
   return (
     <div className="cube-wrapper">
       <Swiper
         className="cube-slider swiper"
-        effect={"cube"} 
-        grabCursor={true} 
-        loop={true} // Зацикливание слайдера
-        speed={2000} // Скорость перехода между слайдами
+        effect={"cube"}
+        grabCursor={true}
+        loop={false} // Зацикливание слайдера
+        speed={2600} // Скорость перехода между слайдами
         autoplay={{
-          delay: 2600, // Задержка перед переходом к следующему слайду
+          delay: 2000, // Задержка перед переходом к следующему слайду
           pauseOnMouseEnter: true, // Приостановить автопрокрутку на паузе при наведении
+          reverseDirection: direction === 'prev', // Меняем направление в зависимости от состояния
         }}
         cubeEffect={{
-          shadow: true, // Включаем тень для куба
-          slideShadows: true, // Включаем тени на слайде
-          shadowOffset: 33, // Отступ тени
-          shadowScale: 1, // Масштаб тени
+          shadow: true,
+          shadowOffset: 10, // уменьшение отступа тени
+          slideShadows: true,
+          shadowScale: 0.94, // уменьшение масштаба тени
         }}
-        lazy={true}
-        modules={[EffectCube, Pagination, Autoplay]}
+        lazy={false}
+        modules={[EffectCube, Autoplay]}
+        onSlideChange={handleSlideChange} // Слушаем событие изменения слайда
+        ref={swiperRef} // Получаем доступ к самому Swiper
       >
-        <SwiperSlide>
+        <SwiperSlide key="slide1">
           <div className="cube-slider">
-          {/* <div className='background-block'></div>
-          <div className='background-block'></div>
-          <div className='background-block'></div> */}
-            <Img src="../images/разворотАлиса (1).png" alt="photo" />
-            <div className="cube-top">1</div>
-            {/* <div className="cube-bottom">
-              <Text>Описание книги</Text>
-              <div className="anchor">
-                <ButtonPerfectBall href="https://ast.ru/" className="btn-cube">Хочу</ButtonPerfectBall>
-              </div>
-            </div> */}
+            <Img  onMouseEnter={() => dispatch(incrementCub())} src="../images/cub1.png" alt="photo" />
+            <div className="cube-top"><Text>Яркие картинки</Text></div>
           </div>
         </SwiperSlide>
-
-        <SwiperSlide>
+        <SwiperSlide key="slide2">
           <div className="cube-slider">
-          {/* <div className='background-block'></div>
-          <div className='background-block'></div>
-          <div className='background-block'></div>
-          <div className='background-block'></div>
-          <div className='background-block'></div> */}
-            <Img src="../images/ВетерВИвах.png" alt="photo" />
-            <div className="cube-top">2</div>
-            {/* <div className="cube-bottom">
-              <Text>Описание книги, там тарам!</Text>
-              <div className="anchor">
-                <ButtonPerfectBall href="https://ast.ru/" className="btn-cube">Хочу</ButtonPerfectBall>
-              </div>
-            </div> */}
+            <Img onMouseEnter={() => dispatch(incrementCub())} src="../images/cub2.png" alt="photo" />
+            <div className="cube-top"><Text>Качественные иллюстрации</Text></div>
           </div>
         </SwiperSlide>
-
-        <SwiperSlide>
+        <SwiperSlide key="slide3">
           <div className="cube-slider">
-            {/* <div className='background-block'></div>
-            <div className='background-block'></div>
-            <div className='background-block'></div>
-            <div className='background-block'></div>
-            <div className='background-block'></div> */}
-            <Img src="../images/разворотАлисаВ зазер (1).png" alt="photo" />
-            <div className="cube-top">3</div>
-            {/* <div className="cube-bottom">
-              <Text>Ветер в ивах это увлекательные приключения братцев бурундуков в Америке. Красочные картинки и веселые истории не оставят ровнодушным никого</Text>
-              <div className="anchor">
-                <ButtonPerfectBall href="https://ast.ru/" className="btn-cube">Хочу</ButtonPerfectBall>
-              </div>
-            </div> */}
+            <Img onMouseEnter={() => dispatch(incrementCub())} src="../images/cub3.png" alt="photo" />
+            <div className="cube-top"><Text>Интерактивные элементы</Text></div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide key="slide4">
+          <div className="cube-slider">
+            <Img  onMouseEnter={() => dispatch(incrementCub())} src="../images/cub5.png" alt="photo" />
+            <div className="cube-top"><Text>Театр у вас дома</Text></div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide key="slide5">
+          <div className="cube-slider">
+            <Img onMouseEnter={() => dispatch(incrementCub())} src="../images/cub4.png" alt="photo" />
+            <div className="cube-top"><Text>Развитие воображения</Text></div>
           </div>
         </SwiperSlide>
       </Swiper>

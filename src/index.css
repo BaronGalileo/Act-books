@@ -39,6 +39,9 @@ html, body {
 footer:hover {
   height: 10vh;
 }
+footer:active {
+  height: 10vh;
+}
 
 
 header , footer {
@@ -284,17 +287,17 @@ a {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   /* .cover-btn {
     width: 300px;
     height: 120px;
   } */
 
-  .cover-wrapper {
-    background-position: center bottom -1px;
-    background-repeat: no-repeat;
-    background-size: 164% 38%;
-    position: relative;
+.cover-wrapper {
+  background-position: center bottom -1px;
+  background-repeat: no-repeat;
+  background-size: 164% 38%;
+  position: relative;
 }
 .rabbit-static {
   top: -221px;
@@ -303,60 +306,60 @@ a {
 
 .rabbit-book-img {
   display: flex;
-  width: 191px;
-  height: 171px;
+  width: 230%;
+  height: auto;
 }
-  .butterfly-cover {
-    width: 80px;
-    height: 64px;
+.butterfly-cover {
+  width: 80px;
+  height: 64px;
 }
-  .butterfly-cover.move {
-    animation: moveMobile 12s 0.3s linear forwards; /* Запуск анимации движения блока */
-  }
-  .butterfly-cover.back {
-    animation: moveMobileBack 8s 1s linear forwards; /* Запуск анимации движения блока */
-  }
-  .butterfly-cover-static {
-    top: 24%;
-    right: 27%;
-  }
+.butterfly-cover.move {
+  animation: moveMobile 12s 0.3s linear forwards; /* Запуск анимации движения блока */
+}
+.butterfly-cover.back {
+  animation: moveMobileBack 8s 1s linear forwards; /* Запуск анимации движения блока */
+}
+.butterfly-cover-static {
+  top: 24%;
+  right: 27%;
+}
 
-  .butterfly-img-static {
-    width: 70px;
-  }
-  .img {
-    max-width: 80%;
-  }
-  .logo {
-    height: 73%;
-  }
-  .cover-txt {
-    margin-top: 50px;
-    padding: 0px;
-    width: 90%;
-    font-size: 27px;
-  }
+.butterfly-img-static {
+  width: 70px;
+}
+.img {
+  max-width: 80%;
+}
+.logo {
+  height: 73%;
+}
+.cover-txt {
+  margin-top: 50px;
+  padding: 0px;
+  width: 90%;
+  font-size: 27px;
+}
 
-  .cover-wrapper {
-    align-items: center;    
-  }
+.cover-wrapper {
+  align-items: center;    
+}
 
-  .center {
-    display: flex;
-    position: absolute;
-    top: 25%;
-    left: 14%;
-  }
-  .button-ball-perfect {
-    width: 238px;
-    height: 54px;
-    font-size: 19px;
-    top: 51px;
-    left: 0px;
-  }
+.center {
+  display: flex;
+  position: absolute;
+  top: 25%;
+  left: 14%;
+}
+.button-ball-perfect {
+  width: 238px;
+  height: 54px;
+  font-size: 19px;
+  top: 51px;
+  left: 0px;
+}
 
-  .right-tree-b {
-    right: -46%;
+.right-tree-b {
+  right: -46%;
 }
 .conteiners-images {
   position: absolute;
@@ -414,13 +417,45 @@ a {
   max-width: 123%;
 }
 
+.stars-nato {
+  left: 2%;
+}
+
+.book-presentation-page-wrapper {
+  overflow: hidden;
+}
+.book-present-wrapper {
+  padding-bottom: 17%;
+}
+.cube-top {
+  top: -25%;
+}
+
+/* video */
+
+.gif-Pinocchio {
+  bottom: -11vw;
+  left: 47%;
+}
+
 /* reviews*/
 
 .stars-reviews {
-  top: 346px;
+  top: 41%;
   left: 209px;
   width: 30%;
   height: 13%;
+}
+
+.stars-reviews:nth-child(4) {
+  top: 68%;
+  left: 1%;
+}
+
+.stars-reviews:nth-child(3) {
+  background-size: 15% 15%;
+  top: 74%;
+  left: 11%;
 }
 .background-balls {
   max-width: 100%;
@@ -452,7 +487,7 @@ a {
 
 .slider-reviews-wrapper {
   width: 100%;
-  height: 51%;
+  height: 55%;
   top: 53%;
   left: 0;
 }
@@ -498,6 +533,7 @@ a {
 }
 .catalog-element {
   gap: 0px;
+  margin: -10px 0 0 0;
 }
 .girlyandoch-ka {
   top: 40px;
@@ -549,15 +585,18 @@ a {
 }
 .btn-catalog-more {
   max-width: 60%;
+  bottom: -54px;
 }
 .btn-catalog-more img {
   top: 30px;
   left: -10px;
-  width: 98%;
-  height: 62%;
+  width: 45px;
+  height: 45px;
+  z-index: 1;
 }
 .btn-catalog-more img.pull {
   top: -62px;
+  z-index: 1;
 }
 
 /* wizardsTeam */
@@ -619,9 +658,10 @@ a {
 .butterfly-non-stop {
   width: 120px;
   transform: scaleX(1);
-  top: -267px;
+  top: -243px;
   left: 5px;
   transform: rotate(340deg);
+  z-index: 3;
 }
 
 .epilogue-txt {
@@ -647,6 +687,7 @@ a {
 .malvina {
   right: 0vw;
   height: 49vh;
+  z-index: 4;
 }
 
 /* modal-menu*/
@@ -673,6 +714,7 @@ a {
 }
 .book-content {
   transform: rotate(355deg);
+
 }
 
 .navigation-links-element {

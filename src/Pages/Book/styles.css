@@ -16,6 +16,11 @@
     transition: background-color 0.5s ease; /* Плавный переход для фона */
 }
 
+
+.reviews-item {
+    z-index: 1;
+}
+
 .modal-menu-book {
     display: none; /* Скрыто по умолчанию */
     position: fixed;
@@ -74,12 +79,6 @@
   }
 
 
-/* .left {
-    width: 80vw;
-    display: flex;
-    justify-content: flex-start;
-} */
-
 .center {
     text-align: center;
 }
@@ -88,8 +87,9 @@
     background-color: rgb(146, 211, 241);
 }
 
+
 .item:nth-child(2) {
-    background-color: #FBF4E9;
+    overflow: hidden;
 }
 
 .item-catalog {
@@ -118,6 +118,3 @@
     background-color: rgb(15, 15, 15);
 } */
 
-/* .item:nth-child(7) {
-    background-color: rgb(226, 223, 18);
-} */

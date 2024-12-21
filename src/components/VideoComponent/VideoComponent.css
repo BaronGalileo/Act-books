@@ -1,0 +1,33 @@
+.video-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.video-slide {
+    width: 80%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.position-video-container {
+    position: relative;
+    width: 100%;
+    height: 2%;
+}
+.gif-Pinocchio {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    bottom: -3vw;
+    left: 79%;
+    background-image: url("../../images/boy.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 100% 100%;
+
+}

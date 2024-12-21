@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom'; 
 import { Img } from '../Img/Img';
 import './styles.css';
-import { removeAuth } from '../../store/authSlice';
+import { incrementContent } from '../../store/interactivSlise';
 
 
 
@@ -15,12 +15,8 @@ export const Header = () => {
 
     const isAuth = useSelector(state => state.auth)
 
-    const del = () => {
-        dispatch(removeAuth())
-    }
-
     const location = useLocation();
-    console.log("gdg", location.pathname)
+
 
     useEffect(() => {
         window.addEventListener('keydown', function(event) {
@@ -39,6 +35,7 @@ export const Header = () => {
 
     const showModalBook = () => {
         if(location.pathname !== "/admin") {
+            dispatch(incrementContent())
             const modal = document.querySelector('.modal-menu-book');
             const blurredBackground = document.querySelector('.blurred-background');
             modal.style.display = 'block';
@@ -56,7 +53,6 @@ export const Header = () => {
             </div>
 
             <button onClick={showModalBook} className='header-btn'><Img className="show-modal-btn" src="../../images/menu-btn.png"/></button>
-            {/* <Button onClick={showModalBook} clean className='show-modal-btn'>""</Button> */}
         </div>
     )
 }

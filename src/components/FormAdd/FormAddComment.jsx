@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "../Button/Button";
-import { Navigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setAuth } from "../../store/authSlice"
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Input } from "../Input/Input";
-import {  useForm, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import './styles.css'
 import axios from "axios";
-import { ImageUpload } from "../Input/ImageUpload";
 import { ButtonBallCandy } from "../Button/ButtonBallCandy";
 
 
@@ -20,44 +16,11 @@ export const FormAddComment = () => {
     const isAuth = useSelector(state => state.auth)
 
     
-
-    // useEffect(() => {
-    //     if(isAuth.confermAut){
-    //         axios.get(pach_user_role, isAuth.confermAut)
-    //         .then(res => {
-    //             res.data.roles.map(val => {
-    //                 if(val[0]){
-    //                     const accountAdd = {
-    //                         name: val[0]?.name,
-    //                         username: isAuth.username,
-    //                         confermAut : isAuth.confermAut,
-    //                         user_role: val[0]?.role,
-    //                         auth_token: isAuth.auth_token,
-    //                     }
-    //                     return dispatch(setAuth(accountAdd))
-    //                 }
-    //                 return null
-    //             })
-    //         })
-    //     }
-    // }, [isAuth])
     const { handleSubmit, reset, formState: { isValid } } = useFormContext();
 
     const path = "http://world.life.destiny.fvds.ru/backend/api/comment" 
 
-    const dispatch = useDispatch();
-
-    // const path = "http://127.0.0.1:8000/auth/token/login/"
-
-    // const pach_user_role = "http://127.0.0.1:8000/users/role/"
-
-
-    
-
-
     const onSubmit = (data) => {
-        console.log("data", data, isAuth.confermAut)
-        debugger
 
         axios.post(path, data, isAuth.confermAut).then(res=>{
             alert("Комментарий успешно добавлен")
@@ -75,13 +38,11 @@ export const FormAddComment = () => {
             else {
                 alert("Извените, что-то пошло не так!")
                 reset()
-
             }
         })
 
         
     }
-// 'Content-Type': 'multipart/form-data',
     
 
     return (

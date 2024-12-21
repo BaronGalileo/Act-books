@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { format } from 'date-fns';
+import React, { useEffect, useRef, useState } from "react";
 import "./styles.css"
 import { useDispatch, useSelector } from "react-redux";
 import { Cover } from "../../components/Cover/Cover";
 import { BookPresentation } from "../../components/BookPresentation/BookPresentation"
 import { Reviews } from "../../components/Reviews/Reviews";
 import axios from 'axios';
-import { TestSlider} from '../../components/Test/TestSlider'
 import { AdminPanel } from "../../components/AdminPanel/AdminPanel";
 import { Catalog } from "../../components/Catalog/Catalog";
 import { TeamOfWizards } from "../../components/TeamOfWizards/TeamOfWizards";
 import { Epilogue } from "../../components/Epilogue/Epilogue";
-import ImageComponent from "../../components/Test/ImageData";
-import { Img } from "../../components/Img/Img";
-import { de } from "date-fns/locale";
 import { setBooks } from "../../store/booksSlice";
+import { VideoComponent } from "../../components/VideoComponent/VideoComponent";
+import { removeInteractiv, setReferer, setUserIp } from "../../store/interactivSlise";
 
 
 
@@ -22,30 +19,53 @@ export const Book = () => {
 
     const isAuth = useSelector(state => state.auth)
 
+    const interactivStatistica = useSelector(state => state.events)
+
     const books = useSelector(state => state.book)
 
     const dispatch = useDispatch();
 
-    const [referrer, setReferrer] = useState('');
+    const pathActiviti = 'http://world.life.destiny.fvds.ru/backend/api/activity'
 
-    const [ipAddress, setIpAddress] = useState('');
+    const interactivRef = useRef(interactivStatistica);
+    interactivRef.current = interactivStatistica;  // Обновляем реф на новое состояние
 
-    const [startTime, setStartTime] = useState(Date.now());
 
-    const [elapsedTime, setElapsedTime] = useState(0);
-
-    const [imageData, setImageData] = useState(null)
-
-    const [consent, setConsent] = useState(null); //согласие на сбор данных
 
 
     useEffect(() => {
         const isConsentGiven = window.confirm("Вы согласны на сбор данных?");
-        if (isConsentGiven&&!isAuth.isAuth) {
-            setConsent(true); 
-        } else {
-            setConsent(false); 
+        if (isConsentGiven) {
+            const referrerUrl = document.referrer;
+            const formattedDate = new Date().toISOString();
+
+            fetch('http://ip-api.com/json')
+                .then(response => response.json())
+                .then(data => {
+                    dispatch(setUserIp(data.query))
+                    dispatch(setReferer(referrerUrl))
+                    const dataForService = [
+                        {
+                          userIp: `${data.query}`,
+                          eventType: "ENTER",
+                          referer: `${referrerUrl}`,
+                          timestamp: `${formattedDate}`,
+                          countEvent: 1,
+                        },
+                      ];
+                    axios.post(pathActiviti, dataForService, isAuth.confermAut )
+                    .then(res => {
+                        console.log("statistica", res.data)
+                    })
+                    .catch(err => {
+                        console.log("ERRROR",dataForService, err)
+                    })
+            })
+            .catch(error => {
+                console.log('Error fetching IP address:', error);
+          }); 
         }
+
         const path = "http://world.life.destiny.fvds.ru/backend/api/books"
         axios.get(path)
         .then(res => {
@@ -54,27 +74,81 @@ export const Book = () => {
             .catch(error => {
                 console.log("Error fetching books:", error);
             });
-        axios.get(path)
-        .then(res => {
-            const testImage = res.data[0].images[0].imageData
-            setImageData(testImage)
-
-
-
-        })
-        .catch(error => {
-            console.log("Error fetching books:", error);
-        });
-
-        const sendTimeToServer = (timeSpent) => {
-            console.log("вышел", timeSpent)
-        }
 
 
         const handleBeforeUnload = (event) => {
-            const timeSpent = Date.now() - startTime; // Вычисляем прошедшее время
-            sendTimeToServer(timeSpent); // Отправляем время на сервер
-        }
+            console.log("sassas",interactivStatistica)
+            const currentStatistica = interactivRef.current;
+            const pageUrl = event.target.activeElement.href
+            if(isConsentGiven) {
+                const formattedDate = new Date().toISOString();
+
+                const dataInteractiv = [
+                    {
+                        "userIp": `${interactivStatistica.userIp}`,
+                        "eventType": "butterflyCount",
+                        "eventDetails": "butterflyCount",
+                        "timestamp": `${formattedDate}`,
+                        "countEvent": `${currentStatistica.butterflyCount}`
+                    },
+                    {
+                        "userIp": `${interactivStatistica.userIp}`,
+                        "eventType": "treeCount",
+                        "eventDetails": "treeCount",
+                        "timestamp": `${formattedDate}`,
+                        "countEvent": `${currentStatistica.treeCount}`
+                    },
+                    {
+                        "userIp": `${interactivStatistica.userIp}`,
+                        "eventType": "cubCount",
+                        "eventDetails": "cubCount",
+                        "timestamp": `${formattedDate}`,
+                        "countEvent": `${currentStatistica.cubCount}`
+                    },
+                    {
+                        "userIp": `${currentStatistica.userIp}`,
+                        "eventType": "commentCount",
+                        "eventDetails": "commentCount",
+                        "timestamp": `${formattedDate}`,
+                        "countEvent": `${currentStatistica.commentCount}`
+                    },
+                    {
+                        "userIp": `${currentStatistica.userIp}`,
+                        "eventType": "catalogCount",
+                        "eventDetails": "catalogCount",
+                        "timestamp": `${formattedDate}`,
+                        "countEvent": `${currentStatistica.catalogCount}`
+                    },
+                    {
+                        "userIp": `${currentStatistica.userIp}`,
+                        "eventType": "contentCount",
+                        "eventDetails": "contentCount",
+                        "timestamp": `${formattedDate}`,
+                        "countEvent": `${currentStatistica.contentCount}`
+                    },
+                    {
+                        "userIp": `${currentStatistica.userIp}`,
+                        "eventType": "EXIT",
+                        "pageUrl": `${pageUrl}`,
+                        "timestamp": `${formattedDate}`,
+                        "countEvent": 1
+                    }
+                ]
+                dispatch(removeInteractiv())
+                const blob = new Blob([JSON.stringify(dataInteractiv)], { type: 'application/json' });
+                if (navigator.sendBeacon) {
+                    navigator.sendBeacon(pathActiviti, blob);
+                  } else {
+                    axios.post(pathActiviti, dataInteractiv)
+                      .then(res => {
+                        console.log(res.data);
+                      })
+                      .catch(err => {
+                        console.log("ERR", err);
+                      });
+                  }
+                };
+            }
 
         window.addEventListener('beforeunload', handleBeforeUnload);
 
@@ -83,25 +157,6 @@ export const Book = () => {
           };
     }, []);
 
-    useEffect(() => {
-        if(consent) {
-            const referrerUrl = document.referrer;
-            const formattedDate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-            setStartTime(Date.now());
-            setReferrer(referrerUrl);
-
-            fetch('http://ip-api.com/json')
-                .then(response => response.json())
-                .then(data => {
-                setIpAddress(data.query);
-                console.log("ip", data.query, data)
-            })
-            .catch(error => {
-                console.log('Error fetching IP address:', error);
-          });
-        }
-
-    }, [consent])
 
     const hideBlock = () => {
         const modal = document.querySelector('.modal-menu-book');
@@ -148,11 +203,10 @@ export const Book = () => {
             <div id="book-presentation" className="item bookPresentation" >
                <BookPresentation/> 
             </div>
-            {/* <div id="video" className="item" >
-                <TestSlider/>
-                
-            </div> */}
-            <div id="reviews" className="item" >
+            <div id="video" className="item video-item" >
+                <VideoComponent/>                
+            </div>
+            <div id="reviews" className="item reviews-item" >
                 <Reviews/>
             </div>
             <div id="catalog" className="item-catalog" >
@@ -162,7 +216,7 @@ export const Book = () => {
                 <TeamOfWizards/>
                 
             </div>
-            <div id="epilogue" className="item" >
+            <div id="epilogue" className="item epilogue-item" >
                 <Epilogue/>
             </div>
         </div>

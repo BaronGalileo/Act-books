@@ -10,9 +10,25 @@
     perspective: 1000px; /* Перспектива для 3D-эффекта */
     width: 100%;
     border-radius: 20px;
-    height: 100%;  
+    height: 84%; 
     z-Index: 1;
   }
+
+  .swiper-wrapper .swiper-slide.swiper-slide-duplicate {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Отключаем события для скрытого слайда */
+    transition: opacity 0.1s ease; /* Плавный переход */
+  }
+  
+  /* Показ слайда, когда он активируется */
+  .swiper-slide.swiper-slide-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; /* Включаем события для активного слайда */
+  }
+
+   
   
   .cube-slider {
     position: relative;
@@ -21,7 +37,7 @@
     width: 690px;
     display: flex;
     justify-content: center;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     align-items: center;
   }
   
@@ -56,7 +72,7 @@
     background-position: 10px 10px; 
   } */
 
-  .cube-slider .swiper-slide .background-block {
+  /* .cube-slider .swiper-slide .background-block {
     position: absolute;
     top: 40px;
     left: 60px;
@@ -89,7 +105,7 @@
   background-size: 4% 4%;
   top: 126px;
   left: 383px; 
-}
+} */
 
   .cube-slider .swiper-slide img {
     width: 110%;
@@ -100,7 +116,7 @@
     object-position: center center;
     display: block;
     backface-visibility: hidden;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     /* box-shadow: inset 0px 8px 20px rgb(240, 124, 123, 0.2); */
   }
 
@@ -108,9 +124,13 @@
   
   .cube-top {
     position: absolute;
-    top: 90px;
-    right: 34px;
-    background: rgba(255, 255, 255, 0.7);
+    top: 0;
+    left: 0;
+    /* background: rgba(255, 255, 255, 0.7); */
+    /* background-image: url('../../images/fon-cube-top.png');
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-size: 100% 100%; */
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 20px rgba(0, 0, 0, 0.3);
     padding: 6px 10px;
@@ -118,17 +138,31 @@
     border-radius: 50%;
     font-size: 20px;
     font-weight: 500;
-    height: 40px;
-    width: 40px;
+    height: 10%;
+    width: 80%;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
     z-index: 2;
   }
+  .cube-top::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -54px;
+    bottom: -30px;
+    background-image: url('../../images/fon-cube-top.png');
+    background-repeat: no-repeat;
+    background-position: 100% 95%;
+    background-size: 110% 160%;
+    /* border-radius: -16%; */
+    z-index: -1;
+}
   
   /* Стили для нижней части слайда */
-  .cube-slider .cube-bottom {
+  /* .cube-slider .cube-bottom {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -137,33 +171,32 @@
     bottom: 40px;
     width: 100%;
     min-height: 70px;
-    /* background: rgba(0, 0, 0, 0.2); */
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 0 0 20px 20px;
     z-index: 2;
     align-items: center;
-  }
+  } */
 
   
-  .cube-slider .cube-bottom p {
+  /* .cube-slider .cube-bottom p {
     padding: 0;
     margin: 0;
     font-size: 14px;
     line-height: 1.1;
   }
-  
-  @media screen and (max-width: 767px) {
+   */
+  /* @media screen and (max-width: 767px) {
     .cube-slider .cube-bottom p {
       font-size: 12px;
     }
-  }
+  } */
   
   /* Стиль для ссылок внизу слайда */
-  .cube-slider .cube-bottom a {
+  /* .cube-slider .cube-bottom a {
     position: relative;
     text-decoration: none;
-  }
+  } */
   
   /* .cube-slider .cube-bottom a:before,
   .cube-slider .cube-bottom a:after {
@@ -185,7 +218,7 @@
     bottom: 0;
   } */
   
-  .cube-slider .cube-bottom a:hover:after {
+  /* .cube-slider .cube-bottom a:hover:after {
     bottom: 0;
     opacity: 1;
-  }
+  } */

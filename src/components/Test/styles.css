@@ -91,4 +91,24 @@
   height: 100%;
 }
 
+.text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.text-container h3 {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container h3 span {
+  display: inline-block;
+  transition: font-size 0.2s ease-in-out;
+}
+
 
