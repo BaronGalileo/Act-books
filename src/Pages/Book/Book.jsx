@@ -30,13 +30,52 @@ export const Book = () => {
     const interactivRef = useRef(interactivStatistica);
     interactivRef.current = interactivStatistica;  // Обновляем реф на новое состояние
 
+    const [utmParams, setUtmParams] = useState({
+        utmSource: '',
+        utmMedium: '',
+        utmCampaign: '',
+        utmContent: '',
+        utmTerm: ''
+      });
+
+      // Функция для извлечения UTM-параметра из строки запроса
+  const getUtmParameter = (param) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  };
+
+
+  useEffect(() => {
+    // Извлекаем UTM-метки при загрузке компонента
+    const utmSource = getUtmParameter('utm_source') || 'default_source';
+    const utmMedium = getUtmParameter('utm_medium') || 'default_medium';
+    const utmCampaign = getUtmParameter('utm_campaign') || 'default_campaign';
+    const utmContent = getUtmParameter('utm_content') || 'default_content';
+    const utmTerm = getUtmParameter('utm_term') || 'default_term';
+
+    // Обновляем состояние с извлеченными значениями
+    setUtmParams({
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      utmContent,
+      utmTerm
+    });
+
+    // Логируем для отладки
+    console.log('Extracted UTM Parameters:', { utmSource, utmMedium, utmCampaign, utmContent, utmTerm });
+  }, []);
+
+
 
 
 
     useEffect(() => {
         const isConsentGiven = window.confirm("Вы согласны на сбор данных?");
         if (isConsentGiven&&!isAuth.isAuth) {
-            const referrerUrl = document.referrer;
+            const referrerUrl = document.referrer
+            console("referrer", referrerUrl)
+
             const formattedDate = new Date().toISOString();
 
             fetch('http://ip-api.com/json')
@@ -66,20 +105,20 @@ export const Book = () => {
           }); 
         }
 
-        // const path = "http://world.life.destiny.fvds.ru/backend/api/books"
-        // axios.get(path)
-        // .then(res => {
-        //     dispatch(setBooks(res.data))
-        //     })
-        //     .catch(error => {
-        //         console.log("Error fetching books:", error);
-        //     });
+        const path = "http://world.life.destiny.fvds.ru/backend/api/books"
+        axios.get(path)
+        .then(res => {
+            dispatch(setBooks(res.data))
+            })
+            .catch(error => {
+                console.log("Error fetching books:", error);
+            });
 
 
         const handleBeforeUnload = (event) => {
             const currentStatistica = interactivRef.current;
             const pageUrl = event.target.activeElement.href
-            const pageUrlIsShop = pageUrl === "https://www.chitai-gorod.ru/publisher/ast-118732?page=1&filters%5Bcategories%5D=110090"
+            const pageUrlIsShop = pageUrl === "https://www.chitai-gorod.ru/lp/samaya-udivitelnaya-kniga-s-obyomnymi-kartinkami"
             if(isConsentGiven&&!isAuth.isAuth) {
                 const formattedDate = new Date().toISOString();
 
