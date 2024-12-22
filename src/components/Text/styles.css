@@ -56,13 +56,15 @@
 .title-book {
     font-size: 28px;
     text-align: start;
-    margin: 10px;
 }
 
 .contex-book {
     font-size: 20px;
     text-align: start;
-
+    overflow: hidden;          /* Скрывает текст, который выходит за пределы блока */
+    text-overflow: ellipsis;   /* Добавляет многоточие */
+    white-space: nowrap;       /* Запрещает перенос текста на новую строку */
+    height: 60px;              /* Ограничиваем высоту блока */
 }
 
 .book-text {

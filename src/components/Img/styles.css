@@ -39,14 +39,14 @@
 
   .cardsBook-img {
     max-width: 200%;
-    width: 330px;
+    width: 450px;
     height: auto;
     position: relative;
-    left: 67px;
-    top: 38px;
-    transform: rotate(-15deg);
+    left: 6px;
+    top: 24px;
+    transform: rotate(-29deg);
     z-index: 1;
-  }
+}
 
   .background-balls {
     position: absolute;

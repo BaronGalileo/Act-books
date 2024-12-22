@@ -6,13 +6,14 @@ import { Img } from "../Img/Img";
 import { useDispatch } from "react-redux";
 import { incrementCatalog } from "../../store/interactivSlise";
 import axios from "axios";
+import { setBooks } from "../../store/booksSlice";
 
 
 export const Catalog = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const [books, setBooks] = useState([null])
+  const [isBooks, setIsBooks] = useState(null)
   const contentRef = useRef(null); 
   let visibleHeight = document.documentElement.clientHeight >=800
   const [mobileHeight, setMobileHeight] = useState(700)
@@ -24,21 +25,25 @@ export const Catalog = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    axios.get(path)
+    .then(res => {
+        setIsBooks(res.data)
+        dispatch(setBooks(res.data))
+        })
+        .catch(error => {
+            console.log("Error fetching books:", error);
+        });
+  }, []);
+  
+  useEffect(() => {
     if (contentRef.current) {
       setContentHeight(contentRef.current.scrollHeight); 
     }
     if(!visibleHeight) {
       setMobileHeight(450)
     }
-    axios.get(path)
-    .then(res => {
-        setBooks(res.data)
-        dispatch(setBooks(res.data))
-        })
-        .catch(error => {
-            console.log("Error fetching books:", error);
-        });
-  }, []); 
+
+  }, [isBooks])
 
   useEffect(() => {
 
@@ -50,6 +55,13 @@ export const Catalog = () => {
       return URL.createObjectURL(imageFiles[0]);  // Создаем URL для первого файла
     }
     return '';  // Если нет файлов или файловый объект не найден
+  };
+
+  const getImageFromBase64 = (imageData) => {
+    if (imageData) {
+      return `data:image/png;base64,${imageData}`; // Создаем ссылку для изображения
+    }
+    return ''; // Возвращаем пустую строку, если изображения нет
   };
 
   const toggleContent = () => {
@@ -73,21 +85,9 @@ export const Catalog = () => {
                 overflow: "hidden",
                 transition: "height 0.2s ease",
               }}>
-                {/* {books&&books.map((item, index) => (
-                  <CardsBook link={item.url} src={item.books.images[0]} title={item.title} contex={item.author}/>
-                ))}                */}
-                {/* <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="hgsajhdgasgclkjsbckjqgsjkcjbkjbcs;lkjbs;clkbc"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/12 месяцев.jpg" title="Название Книги" contex="Описание книги"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Волшебник изум.jpg" title="Название Книги" contex="Описание книги"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Все о кролике.jpg" title="Название Книги" contex="Описание книги"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="Описание книги"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="hgsajhdgasgclkjsbckjqgsjkcjbkjbcs;lkjbs;clkbc"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="hgsajhdgasgclkjsbckjqgsjkcjbkjbcs;lkjbs;clkbc"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="hgsajhdgasgclkjsbckjqgsjkcjbkjbcs;lkjbs;clkbc"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="hgsajhdgasgclkjsbckjqgsjkcjbkjbcs;lkjbs;clkbc"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="hgsajhdgasgclkjsbckjqgsjkcjbkjbcs;lkjbs;clkbc"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="hgsajhdgasgclkjsbckjqgsjkcjbkjbcs;lkjbs;clkbc"/>
-                <CardsBook link="https://ast.ru/" src="../images/Обложки/Алиса в зазеркаье.jpg" title="Название Книги" contex="hgsajhdgasgclkjsbckjqgsjkcjbkjbcs;lkjbs;clkbc"/> */}
+                {isBooks&&isBooks.map((item, index) => (
+                  <CardsBook key={item} title={item.title} link={item.url} src={getImageFromBase64(item.images[0]?.imageData)} contex={item.author}/>
+                ))}               
             </div>
             <button id="toggleButton" className='btn-catalog-more'
                 onClick={toggleContent}

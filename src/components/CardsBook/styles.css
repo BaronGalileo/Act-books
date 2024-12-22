@@ -33,16 +33,15 @@
 }
 
 .frame-book {
-    height: 367px;
+    height: 396px;
     width: 390px;
     position: absolute;
-    top: -81px;
+    top: -109px;
     left: -66px;
     border-radius: 20px;
     z-index: 1;
     overflow: hidden;
     background: transparent;
-
 }
 
 
@@ -51,6 +50,5 @@
     width: 88%;
     height: 33%;
     background-color: #F2FFD4;
-    justify-content: center;
     /* margin-bottom: 7px; */
 }

@@ -7,8 +7,9 @@ export const ModalWindows = ({ onClose, content }) => {
     <div className="modal-overlay">
       <div className="modal-content">
         <div>{content}</div>
-        <ButtonBallCandy onClick={onClose} className="modal-button-admin">Закрыть</ButtonBallCandy>
+        <div><ButtonBallCandy onClick={onClose} className="modal-button-admin">Закрыть</ButtonBallCandy></div>
       </div>
+        
     </div>
   );
 };

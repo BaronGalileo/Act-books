@@ -12,7 +12,7 @@ export const FormInfoStatic = () => {
 
     const isAuth = useSelector(state => state.auth)
 
-    const books = useSelector(state => state.book)
+    const books = useSelector(state => state.book.books)
 
     const test = useSelector(state => state.events)
 
@@ -149,6 +149,13 @@ export const FormInfoStatic = () => {
         'https://ast.ru/book/koshkin-dom-illyustratsii-o-ionaytis-849304/': "Кошкин дом",
         'https://ast.ru/book/vsye-o-krolike-pitere-851481/': "Всё о кролике Питере",
         'https://ast.ru/book/skazki-859286/': "Сказки",
+        'https://t.me/izdatelstvoast': "Telegram",
+        'https://www.youtube.com/user/AstIzdatelstvo': "youtube",
+        'https://vk.com/izdatelstvoast': "VK",
+        'https://dzen.ru/izdatelstvoast?utm_referrer=ast.ru': "dzen",
+        'https://ok.ru/izdatelstvoast': "Одноклассники",
+        'https://tenchat.ru/izdatelstvoast': "TenChat"
+
     }
 
     const dict_activiti = {
@@ -193,7 +200,7 @@ export const FormInfoStatic = () => {
             <div className="statistica-element" onClick={() => handleModalOpen(linkPage ? <>
                 <BlokTablo classNameWrapper="blok-raw" title="Любимая книга" header  contex="Колличество переходов" src="./images/iconsBook.png"/> 
                 {linkPage.map((item, index) => (
-                    <BlokTablo key={index} classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={item.pageUrl}>{dict_books_links[item.pageUrl]}</a>} contex={item.views}/>
+                        <BlokTablo key={index} classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={item.pageUrl}>{dict_books_links[item.pageUrl]}</a>} contex={item.views}/>
                     ))}
                 </> : "Извините, Проблема с сервером")}>
 

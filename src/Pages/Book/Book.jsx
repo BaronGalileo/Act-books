@@ -70,15 +70,6 @@ export const Book = () => {
           }); 
         }
 
-        const path = "http://world.life.destiny.fvds.ru/backend/api/books"
-        axios.get(path)
-        .then(res => {
-            dispatch(setBooks(res.data))
-            })
-            .catch(error => {
-                console.log("Error fetching books:", error);
-            });
-
 
         const handleBeforeUnload = (event) => {
             const currentStatistica = interactivRef.current;
