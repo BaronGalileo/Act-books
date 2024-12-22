@@ -6,7 +6,7 @@ import { Img } from '../Img/Img';
 export const Footer = () => {
     return(
             <div className='footer-wrapper'>
-                <a className='btn-footer' href="t.me/izdatelstvoast">
+                <a className='btn-footer' href="https://t.me/izdatelstvoast">
                 <Img className="img-link" src="../../images/teleg.png" alt="Описание картинки"/>
                 </a>
                 <a className='btn-footer' href="https://www.youtube.com/user/AstIzdatelstvo">

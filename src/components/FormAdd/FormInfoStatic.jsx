@@ -136,7 +136,7 @@ export const FormInfoStatic = () => {
 
 
     const dict_books_links = {
-        'https://ast.ru/cat/detyam-i-roditelyam/literatura-dlya-malyshey/':"Литература для малышей",
+        'https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC':"Главная страница",
         'https://ast.ru/book/alisa-v-strane-chudes-ill-m-mitrofanova-834090/': "Алиса в Стране Чудес ",
         'https://ast.ru/book/volshebnik-izumrudnogo-goroda-risunki-v-chelaka-839979/': "Волшебник Изумрудного города",
         'https://ast.ru/book/veter-v-ivakh-ris-o-ionaytis-846821/': "Ветер в ивах",

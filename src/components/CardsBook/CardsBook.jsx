@@ -25,7 +25,7 @@ export const CardsBook = ({src='', link="", title="", contex="" }) => {
                 <Text className="contex-book">{contex}</Text>
             </div>
             <div className="anchor">
-                <ButtonPerfectBall onClick={() => dispatch(incrementCatalog())} href={link} className="button-cards">Хочу</ButtonPerfectBall>
+                <ButtonPerfectBall onClick={() => dispatch(incrementCatalog())} href={link} className="button-cards">ХОЧУ</ButtonPerfectBall>
             </div>
         </div>
     )
