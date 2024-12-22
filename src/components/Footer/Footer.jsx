@@ -7,7 +7,7 @@ export const Footer = () => {
     return(
             <div className='footer-wrapper'>
                 <a className='btn-footer' href="https://t.me/izdatelstvoast">
-                <Img className="img-link" src="../../images/teleg.png" alt="Описание картинки"/>
+                <Img className="img-link" src="../../images/telegram.png" alt="Описание картинки"/>
                 </a>
                 <a className='btn-footer' href="https://www.youtube.com/user/AstIzdatelstvo">
                 <Img className="img-link" src="../../images/youtube.png" alt="Описание картинки"/>

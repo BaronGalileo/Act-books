@@ -18,7 +18,7 @@ export const FormAddComment = () => {
     
     const { handleSubmit, reset, formState: { isValid } } = useFormContext();
 
-    const path = "http://world.life.destiny.fvds.ru/backend/api/comment" 
+    const path = "http://world.life.destiny.fvds.ru/backend/api/comments" 
 
     const onSubmit = (data) => {
 

@@ -8,7 +8,7 @@ import axios from 'axios';
 
 export const Slider = () => {
 
-    const [slider, setSkider] = useState(null)
+    const [slider, setSlider] = useState(null)
 
     const path_comments = "http://world.life.destiny.fvds.ru/backend/api/comments"
 
@@ -16,7 +16,7 @@ export const Slider = () => {
         axios.get(path_comments)
         .then(res=>{
             const slides = res.data.map(review => review.content);
-            setSkider(slides)
+            setSlider(slides)
 
         })
         .catch(err=> {
