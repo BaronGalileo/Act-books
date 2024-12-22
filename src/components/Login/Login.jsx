@@ -51,7 +51,7 @@ function Login() {
             }
             else if(err.request.status >= 500) {
                 dispatch(removeAuth())
-                alert("Извените, проблема с сервером, попробуйте зайти позже!");
+                alert("Извините, проблема с сервером, попробуйте зайти позже!");
                 reset()
             }
             else {
