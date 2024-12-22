@@ -136,8 +136,19 @@ export const FormInfoStatic = () => {
 
 
     const dict_books_links = {
-        'https://ast.ru/':"Главная страница",
-        'https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC': "Двенадцать месяцев"
+        'https://ast.ru/cat/detyam-i-roditelyam/literatura-dlya-malyshey/':"Литература для малышей",
+        'https://ast.ru/book/alisa-v-strane-chudes-ill-m-mitrofanova-834090/': "Алиса в Стране Чудес ",
+        'https://ast.ru/book/volshebnik-izumrudnogo-goroda-risunki-v-chelaka-839979/': "Волшебник Изумрудного города",
+        'https://ast.ru/book/veter-v-ivakh-ris-o-ionaytis-846821/': "Ветер в ивах",
+        'https://ast.ru/book/snezhnaya-koroleva-shchelkunchik-gospozha-metelitsa-853202/': "Снежная королева. Щелкунчик. Госпожа Метелица",
+        'https://ast.ru/book/zimnyaya-skazka-867810/': "Зимняя сказка",
+        'https://ast.ru/book/skazka-o-tsare-saltane-ris-v-chelaka-855360/': "Сказка о царе Салтане",
+        'https://ast.ru/book/alisa-v-zazerkale-ill-m-mitrofanova-851448/': "Алиса в Зазеркалье",
+        'https://ast.ru/book/dvenadtsat-mesyatsev-slavyanskaya-skazka-ris-v-shvarova-i-e-almazovoy-853856/': "Двенадцать месяцев",
+        'https://ast.ru/book/priklyucheniya-buratino-ili-zolotoy-klyuchik-risunki-l-vladimirskogo-844251/': "Приключения Буратино, или Золотой ключик",
+        'https://ast.ru/book/koshkin-dom-illyustratsii-o-ionaytis-849304/': "Кошкин дом",
+        'https://ast.ru/book/vsye-o-krolike-pitere-851481/': "Всё о кролике Питере",
+        'https://ast.ru/book/skazki-859286/': "Сказки",
     }
 
     const dict_activiti = {
@@ -177,7 +188,7 @@ export const FormInfoStatic = () => {
             <div className="statistica-element">
                 <BlokTablo title="Колличество переходов на основной магазин" src="./images/iconsStore.png"/>
                 {linkStar&&
-                <BlokTablo  classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={linkStar[0].linkId}>Основной магазин</a>} contex={linkStar[0].clicks}/>}
+                <BlokTablo  classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={linkStar[0]?.linkId}>Основной магазин</a>} contex={linkStar[0]?.clicks}/>}
             </div>
             <div className="statistica-element" onClick={() => handleModalOpen(linkPage ? <>
                 <BlokTablo classNameWrapper="blok-raw" title="Любимая книга" header  contex="Колличество переходов" src="./images/iconsBook.png"/> 

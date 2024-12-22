@@ -186,7 +186,7 @@ export const Book = () => {
                 <div className="navigation-links">
                     <div className="navigation-links-element">
                         <div className="stars-book-content"></div>
-                        <a  className="book-content" href="#cover" onClick={hideBlock}>Самая удивительная книга с объемными картинками</a>
+                        <a  className="book-content" href="#cover" onClick={hideBlock}>Самая удивительная книга с объёмными картинками</a>
                         <div className="stars-book-content"></div>
                         <a className="book-content" href="#book-presentation" onClick={hideBlock}>Открой для себя мир волшебства</a>
                         <div className="stars-book-content"></div>

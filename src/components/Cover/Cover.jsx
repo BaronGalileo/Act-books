@@ -59,8 +59,8 @@ export const Cover = () => {
                     <GifComponents functionInteractiv={incrementButterfly()} clear stoped  fixed={isVisible} foto="../images/Бабочка-статик.png"  classWrapper="butterfly-cover" className="img butterfly-img"/>
                     <GifComponents functionInteractiv={incrementButterfly()} clear stoped foto="../images/Бабочка-статик.png" static_element classWrapper="butterfly-cover-static" className="img butterfly-img-static"/>
                 </div>
-            <Text className="red-text bond cover-txt for-h1" >САМАЯ УДИВИТЕЛЬНАЯ КНИГА С ОБЪЕМНЫМИ КАРТИНКАМИ</Text>
-            <ButtonPerfectBall className="cover-btn" href="https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC">Погрузись в чудо</ButtonPerfectBall>
+            <Text className="red-text bond cover-txt for-h1" >САМАЯ УДИВИТЕЛЬНАЯ КНИГА С ОБЪЁМНЫМИ КАРТИНКАМИ</Text>
+            <ButtonPerfectBall className="cover-btn" href="https://ast.ru/cat/detyam-i-roditelyam/literatura-dlya-malyshey/">Погрузись в чудо</ButtonPerfectBall>
             <div className="conteiners-images">
                 <div className="conteiner-image">
                 <motion.div
