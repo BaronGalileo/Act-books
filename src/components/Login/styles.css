@@ -10,10 +10,9 @@
 
 .form-login {
     display: flex;
-    height: 56%;
-    width: 56%;
+    height: 41%;
+    width: 92%;
 }
-
 form {
     display: flex;
     flex-direction: column;

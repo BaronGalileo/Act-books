@@ -14,10 +14,8 @@ function TestAdd() {
       alert("Please select a valid image file.");
     }
   };
-  debugger
   // Обработчик отправки формы
   const handleSubmit = async (e) => {
-    debugger
     e.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
 
     if (!file) {
@@ -35,11 +33,9 @@ function TestAdd() {
         method: "POST",
         body: formData, // Тело запроса — это FormData
       });
-      debugger
 
       if (response.ok) {
         const data = await response.json(); // Преобразуем ответ в JSON
-        console.log("File uploaded successfully:", data);
         alert("File uploaded successfully!");
       } else {
         console.error("Failed to upload file:", response.statusText);

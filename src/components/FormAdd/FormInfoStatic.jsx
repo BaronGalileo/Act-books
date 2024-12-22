@@ -12,6 +12,8 @@ export const FormInfoStatic = () => {
 
     const isAuth = useSelector(state => state.auth)
 
+    const books = useSelector(state => state.book)
+
     const test = useSelector(state => state.events)
 
     const dispatch = useDispatch()
@@ -56,8 +58,7 @@ export const FormInfoStatic = () => {
         //массив ссылок от куда пришли на промо-страницу
         axios.get(path_referers_array, isAuth.confermAut)
         .then(res => {
-            console.log("referersArray", res.data)
-            setReferersArray(res.data?.count)
+            setReferersArray(res.data)
         })
         .catch(err=> {
             console.log("referersArray", err)
@@ -65,8 +66,7 @@ export const FormInfoStatic = () => {
         //время проведенное на сайте
         axios.get(path_time_on_site, isAuth.confermAut)
         .then(res => {
-            console.log("path_time_on_site", res.data)
-            setTimeOnSite(res.data?.count)
+            setTimeOnSite(res.data)
         })
         .catch(err=> {
             console.log("path_time_on_site", err)
@@ -74,7 +74,6 @@ export const FormInfoStatic = () => {
         //ссылка на магазин
         axios.get(path_link_star, isAuth.confermAut)
         .then(res => {
-            console.log("setLinkStar", res.data)
             setLinkStar(res.data)
         })
         .catch(err=> {
@@ -84,7 +83,6 @@ export const FormInfoStatic = () => {
         //ссылка на страницы
         axios.get(path_link_page, isAuth.confermAut)
         .then(res => {
-            console.log("setLinkPage", res.data)
             setLinkPage(res.data)
         })
         .catch(err=> {
@@ -93,7 +91,6 @@ export const FormInfoStatic = () => {
          //интерактивные элементы
         axios.get(path_events, isAuth.confermAut)
         .then(res => {
-            console.log("setInteractivElements", res.data)
             setInteractivElements(res.data)
         })
         .catch(err=> {
@@ -103,10 +100,27 @@ export const FormInfoStatic = () => {
 
     }, [])
 
+    const convertTime = (milliseconds) => {
+        const totalSeconds = milliseconds / 1000;  // Переводим миллисекунды в секунды
+        const hours = Math.floor(totalSeconds / 3600);  // Получаем количество полных часов
+        const minutes = Math.floor((totalSeconds % 3600) / 60);  // Получаем количество полных минут
+        const seconds = Math.floor(totalSeconds % 60);  // Получаем оставшиеся секунды
+    
+        // Возвращаем результат в формате "часы:минуты:секунды"
+        return `${hours}h ${minutes}m ${seconds}s`;
+    }
+
+
+
     const show = () => {
-        // console.log("SHOW", isAuth)
-        console.log("test", test)
-        // dispatch(removeInteractiv())
+        console.log("countUsers", countUsers)
+        console.log("referersArray", referersArray)
+        console.log("timeOnSite", timeOnSite)
+        console.log("linkStar", linkStar)
+        console.log("linkPage", linkPage)
+        console.log("interactivElements", interactivElements)
+        console.log("books", books)
+        // dispatch(removeInteractivbooks)
 
     }
 
@@ -120,8 +134,18 @@ export const FormInfoStatic = () => {
         setModalContent("");
       };
 
-    const clicka = () => {
-        console.log("КЛИКА")
+
+    const dict_books_links = {
+        'https://ast.ru/':"Главная страница",
+        'https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC': "Двенадцать месяцев"
+    }
+
+    const dict_activiti = {
+        'CATALOG_COUNT': "Нажатие на меню",
+        'COMMENT_COUNT': "Просмотр комментариев",
+        'TREE_COUNT': "Взаимодействие с деревьями",
+        'BUTTER_FLY_COUNT': "Взаимодействие с бабочками",
+        'CUB_COUNT': "Взаимодействие с кубом"
     }
 
 
@@ -129,56 +153,54 @@ export const FormInfoStatic = () => {
     return(
         <div className="statistica-wrapper">
             <div className="statistica-element">
-            <BlokTablo title="Число пользователей промо-сайта" src="./images/iconsUsers.png" contex="4"/>
+            <BlokTablo title="Число пользователей промо-сайта" src="./images/iconsUsers.png" contex={countUsers}/>
             </div>
-            <div className="statistica-element" onClick={() => handleModalOpen(<BlokTablo title="Ссылки по которым к нам пришли" src="./images/iconsLink.png"/>)}>
+            <div className="statistica-element" onClick={() => handleModalOpen(referersArray ? <>
+                <BlokTablo classNameWrapper="blok-raw" title="Ссылки по которым к нам пришли" header  contex="Колличество" src="./images/iconsLink.png"/> 
+                {referersArray.map((item, index) => (
+                    <BlokTablo key={index} classNameWrapper="blok-raw" title={item.source ? item.source: "Источник трафика не определен"} contex={item.visit}/>
+                    ))}
+                </>
+            : "Извините, Проблема с сервером")}>
             <BlokTablo title="Ссылки по которым к нам пришли" src="./images/iconsLink.png"/>
             </div>
             <div className="statistica-element">
                 <BlokTablo title="Время проведенное на сайте" src="./images/iconsTime.png"/>
+
                 <div className="statistica-element-row">
-                    <div>
-                        <Text>Обшее время</Text>
-                        <Text className="inform-txt-statistica"></Text>
-                        <div className="tablo-static">
-                            <Text className="inform-txt-statistica">4</Text>
-                        </div>
-                    </div>
-                    <div>
-                        <Text>Среднее время</Text>
-                        <Text className="inform-txt-statistica"></Text>
-                        <div className="tablo-static">
-                            <Text className="inform-txt-statistica">4</Text>
-                        </div>
-                    </div>
+                    {timeOnSite?.timeOnSite&&
+                    <BlokTablo  classNameWrapper="blok-raw" title="Общее" contex={convertTime(timeOnSite?.timeOnSite)}/>}
+                    {timeOnSite?.avgTimeOnSite&&
+                    <BlokTablo  classNameWrapper="blok-raw" title="Среднее" contex={convertTime(timeOnSite?.avgTimeOnSite)}/>}
                 </div>
             </div>
             <div className="statistica-element">
-                <BlokTablo title="Колличество переходов на основной магазин" src="./images/iconsStore.png" contex="100"/>
+                <BlokTablo title="Колличество переходов на основной магазин" src="./images/iconsStore.png"/>
+                {linkStar&&
+                <BlokTablo  classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={linkStar[0].linkId}>Основной магазин</a>} contex={linkStar[0].clicks}/>}
             </div>
-            <div className="statistica-element" onClick={() => handleModalOpen(<BlokTablo title="Любимая книга (ссылка на заинтересовавшую книгу)" src="./images/iconsBook.png" contex="список ссылок"/>)}>
+            <div className="statistica-element" onClick={() => handleModalOpen(linkPage ? <>
+                <BlokTablo classNameWrapper="blok-raw" title="Любимая книга" header  contex="Колличество переходов" src="./images/iconsBook.png"/> 
+                {linkPage.map((item, index) => (
+                    <BlokTablo key={index} classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={item.pageUrl}>{dict_books_links[item.pageUrl]}</a>} contex={item.views}/>
+                    ))}
+                </> : "Извините, Проблема с сервером")}>
+
                 <BlokTablo title="Любимая книга (ссылка на заинтересовавшую книгу)" src="./images/iconsBook.png"/>
             </div>
-            <div className="statistica-element" onClick={() => handleModalOpen(
-                <BlokTablo title="Интерактивность" src="./images/iconsMouse.png" contex="вид кликов и счетчик"/>
-            )}>
+            <div className="statistica-element" onClick={() => handleModalOpen(interactivElements ? <>
+                <BlokTablo classNameWrapper="blok-raw" title="Взаимодействие с элементом" header  contex="Колличество нажатий" src="./images/iconsMouse.png"/> 
+                {interactivElements.map((item, index) => (
+                    <BlokTablo key={index} classNameWrapper="blok-raw" title={dict_activiti[item.typeElement]} contex={item.interactions}/>
+                    ))}
+                </> : "Извините, Проблема с сервером")}>
                 <BlokTablo title="Интерактивность" src="./images/iconsMouse.png"/>
-                <Text as="h2">Интерактивность</Text>
-                <Text>Выпадающий список</Text>
             </div>
       {isModalOpen && (
         <ModalWindows onClose={handleModalClose} content={modalContent} />
       )}
 
-           {/* <ButtonBallCandy onClick={show} className="add-book">Посмотреть</ButtonBallCandy> */}
-           {/* <ButtonBallCandy onClick={redux} className="add-book">redux</ButtonBallCandy> */}
-
-           {/* <button onClick={() => dispatch(incrementButterfly())}>Клик по Butterfly</button>
-      <button onClick={() => dispatch(incrementTree())}>Клик по Tree</button>
-      <button onClick={() => dispatch(incrementCub())}>Клик по Cub</button>
-      <button onClick={() => dispatch(incrementComment())}>Клик по Cub</button>
-      <button onClick={() => dispatch(incrementCatalog())}>Клик по Cub</button>
-      <button onClick={() => dispatch(incrementContent())}>Клик по Cub</button> */}
+           <ButtonBallCandy onClick={show} className="add-book">Посмотреть</ButtonBallCandy>
         </div>
     )
 }

@@ -30,51 +30,17 @@ export const Book = () => {
     const interactivRef = useRef(interactivStatistica);
     interactivRef.current = interactivStatistica;  // Обновляем реф на новое состояние
 
-    const [utmParams, setUtmParams] = useState({
-        utmSource: '',
-        utmMedium: '',
-        utmCampaign: '',
-        utmContent: '',
-        utmTerm: ''
-      });
-
-      // Функция для извлечения UTM-параметра из строки запроса
-  const getUtmParameter = (param) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-  };
-
-
-  useEffect(() => {
-    // Извлекаем UTM-метки при загрузке компонента
-    const utmSource = getUtmParameter('utm_source') || 'default_source';
-    const utmMedium = getUtmParameter('utm_medium') || 'default_medium';
-    const utmCampaign = getUtmParameter('utm_campaign') || 'default_campaign';
-    const utmContent = getUtmParameter('utm_content') || 'default_content';
-    const utmTerm = getUtmParameter('utm_term') || 'default_term';
-
-    // Обновляем состояние с извлеченными значениями
-    setUtmParams({
-      utmSource,
-      utmMedium,
-      utmCampaign,
-      utmContent,
-      utmTerm
-    });
-
-    // Логируем для отладки
-    console.log('Extracted UTM Parameters:', { utmSource, utmMedium, utmCampaign, utmContent, utmTerm });
-  }, []);
-
-
-
+    const getUtmParameter = (param) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    };
 
 
     useEffect(() => {
-        const isConsentGiven = window.confirm("Вы согласны на сбор данных?");
-        if (isConsentGiven&&!isAuth.isAuth) {
-            const referrerUrl = document.referrer
-            console.log("referrer", referrerUrl)
+        if(!isAuth.isAuth){
+            const isConsentGiven = window.confirm("Вы согласны на сбор данных?");
+        if (isConsentGiven) {
+            const utmSource = getUtmParameter('utm_source') || '';
 
             const formattedDate = new Date().toISOString();
 
@@ -82,19 +48,18 @@ export const Book = () => {
                 .then(response => response.json())
                 .then(data => {
                     dispatch(setUserIp(data.query))
-                    dispatch(setReferer(referrerUrl))
+                    dispatch(setReferer(utmSource))
                     const dataForService = [
                         {
                           userIp: `${data.query}`,
                           eventType: "ENTER",
-                          referer: `${referrerUrl}`,
+                          referer: `${utmSource}`,
                           timestamp: `${formattedDate}`,
                           countEvent: 1,
                         },
                       ];
                     axios.post(pathActiviti, dataForService, isAuth.confermAut )
                     .then(res => {
-                        console.log("statistica", res.data)
                     })
                     .catch(err => {
                         console.log("ERRROR",dataForService, err)
@@ -188,7 +153,6 @@ export const Book = () => {
                   } else {
                     axios.post(pathActiviti, dataInteractiv)
                       .then(res => {
-                        console.log(res.data);
                       })
                       .catch(err => {
                         console.log("ERR", err);
@@ -202,6 +166,9 @@ export const Book = () => {
         return () => {
             window.removeEventListener('beforeunload', handleBeforeUnload);
           };
+
+        }
+        
     }, []);
 
 

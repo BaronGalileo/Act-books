@@ -32,7 +32,6 @@ function Login() {
 
         const path = "http://world.life.destiny.fvds.ru/backend/api/auth/login"
         axios.post(path, data).then(res=>{
-            console.log("res.data", res.data)
             if(res.data.token){
                 const accountAdd = {
                     username: data.username,
@@ -71,8 +70,8 @@ function Login() {
         <div className="conteyner_form">
             <div className="form-login">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Input name="username" message="Обязательно заполнить!">Логин:</Input>
-                <Input name="password" type="password" message="Обязательно заполнить!">Пароль:</Input>
+                <Input classNameWrapper="form-login" name="username" message="Обязательно заполнить!">Логин:</Input>
+                <Input classNameWrapper="form-login" name="password" type="password" message="Обязательно заполнить!">Пароль:</Input>
                 <ButtonBallCandy disabled={!isValid} className="add-book">Войти</ButtonBallCandy>
             </form>
             </div>

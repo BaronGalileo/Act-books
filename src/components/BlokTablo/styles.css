@@ -7,6 +7,16 @@
     align-items: center;
 }
 
+.blok-raw {
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 .blok-tablo-element {
     display: flex;
     width: 100%;
@@ -15,7 +25,7 @@
 }
 .blok-tablo-element:nth-child(2) {
     width: 60%;
-    height: 55%;
+    height: 35%;
     background-color: #DFF3FF;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

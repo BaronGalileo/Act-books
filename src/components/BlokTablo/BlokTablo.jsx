@@ -5,7 +5,7 @@ import { Img } from "../Img/Img";
 import classNames from 'classnames';
 
 
-export const BlokTablo = ({clean=false, title, contex, src, classNameWrapper="", classNameElement}) => {
+export const BlokTablo = ({clean=false, title, contex, header=false,  src=false, classNameWrapper="", classNameElement=""}) => {
 
     const classesWrapper = clean ? classNames(
         classNameWrapper) : classNames(
@@ -21,13 +21,13 @@ export const BlokTablo = ({clean=false, title, contex, src, classNameWrapper="",
 
     return(
         <div className={classesWrapper}>
-            <div className="blok-tablo-element">
-                <Img className="logo-admin" src={src}/>
-                <Text as="h2">{title}</Text>
+            <div className={classesElement}>
+                {src&&<Img className="logo-admin" src={src}/>}
+                <Text className="admin-txt-h2" as="h2">{title}</Text>
             </div>
             {contex&&
-            <div className="blok-tablo-element">
-                <Text>{contex}</Text>
+            <div className={classesElement}>
+                {!header ? <Text>{contex}</Text> : <Text className="admin-txt-h2" as="h2">{contex}</Text>}
             </div>}
 
         </div>

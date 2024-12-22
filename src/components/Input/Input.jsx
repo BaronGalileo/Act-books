@@ -7,12 +7,17 @@ import { findName } from "../../helpers/findName"
 
 
 
-function Input({name, classText,  message, valueAsNumber, children, ...restProps}) {
+function Input({name, classNameWrapper,  classText,  message, valueAsNumber, children, ...restProps}) {
 
     const classes = classNames(
         'txt',
         'dark-color',
         classText
+    )
+
+    const classWrapper = classNames(
+        "input-wrapper",
+        classNameWrapper,
     )
 
     const {
@@ -29,7 +34,7 @@ function Input({name, classText,  message, valueAsNumber, children, ...restProps
     const error = errorName(errors, name)?.message;
 
     return (
-        <label className="input-wrapper">
+        <label className={classWrapper}>
             <Text className={classes}>{children}</Text>
             <span>{error}</span>
             <input
