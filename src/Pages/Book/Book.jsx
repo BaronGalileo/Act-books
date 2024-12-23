@@ -9,7 +9,6 @@ import { AdminPanel } from "../../components/AdminPanel/AdminPanel";
 import { Catalog } from "../../components/Catalog/Catalog";
 import { TeamOfWizards } from "../../components/TeamOfWizards/TeamOfWizards";
 import { Epilogue } from "../../components/Epilogue/Epilogue";
-import { setBooks } from "../../store/booksSlice";
 import { VideoComponent } from "../../components/VideoComponent/VideoComponent";
 import { removeInteractiv, setReferer, setUserIp } from "../../store/interactivSlise";
 

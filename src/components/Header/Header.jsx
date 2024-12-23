@@ -38,8 +38,14 @@ export const Header = () => {
             dispatch(incrementContent())
             const modal = document.querySelector('.modal-menu-book');
             const blurredBackground = document.querySelector('.blurred-background');
-            modal.style.display = 'block';
-            blurredBackground.style.display = 'block';
+            if (modal&&blurredBackground) {
+                modal.style.display = 'block';
+                blurredBackground.style.display = 'block';
+            } else {
+                console.error('Элемент не найден');
+            }
+            // modal.style.display = 'block';
+            // blurredBackground.style.display = 'block';
 
         }
     }
