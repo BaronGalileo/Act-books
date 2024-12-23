@@ -111,19 +111,6 @@ export const FormInfoStatic = () => {
     }
 
 
-
-    const show = () => {
-        console.log("countUsers", countUsers)
-        console.log("referersArray", referersArray)
-        console.log("timeOnSite", timeOnSite)
-        console.log("linkStar", linkStar)
-        console.log("linkPage", linkPage)
-        console.log("interactivElements", interactivElements)
-        console.log("books", books)
-        // dispatch(removeInteractivbooks)
-
-    }
-
     const handleModalOpen = (content) => {
         setModalContent(content);
         setIsModalOpen(true);
@@ -174,13 +161,13 @@ export const FormInfoStatic = () => {
             <BlokTablo title="Число пользователей промо-сайта" src="./images/iconsUsers.png" contex={countUsers}/>
             </div>
             <div className="statistica-element" onClick={() => handleModalOpen(referersArray ? <>
-                <BlokTablo classNameWrapper="blok-raw" title="Ссылки по которым к нам пришли" header  contex="Колличество" src="./images/iconsLink.png"/> 
+                <BlokTablo classNameWrapper="blok-raw" title="Ссылки, по которым к нам пришли" header  contex="Колличество" src="./images/iconsLink.png"/> 
                 {referersArray.map((item, index) => (
                     <BlokTablo key={index} classNameWrapper="blok-raw" title={item.source ? item.source: "Источник трафика не определен"} contex={item.visit}/>
                     ))}
                 </>
             : "Извините, Проблема с сервером")}>
-            <BlokTablo title="Ссылки по которым к нам пришли" src="./images/iconsLink.png"/>
+            <BlokTablo title="Ссылки, по которым к нам пришли" src="./images/iconsLink.png"/>
             </div>
             <div className="statistica-element">
                 <BlokTablo title="Время проведенное на сайте" src="./images/iconsTime.png"/>
@@ -198,13 +185,13 @@ export const FormInfoStatic = () => {
                 <BlokTablo  classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={linkStar[0]?.linkId}>Основной магазин</a>} contex={linkStar[0]?.clicks}/>}
             </div>
             <div className="statistica-element" onClick={() => handleModalOpen(linkPage ? <>
-                <BlokTablo classNameWrapper="blok-raw" title="Любимая книга" header  contex="Колличество переходов" src="./images/iconsBook.png"/> 
+                <BlokTablo classNameWrapper="blok-raw" title="Популярные страницы" header  contex="Колличество переходов" src="./images/iconsPages.png"/> 
                 {linkPage.map((item, index) => (
                         <BlokTablo key={index} classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={item.pageUrl}>{dict_books_links[item.pageUrl]}</a>} contex={item.views}/>
                     ))}
                 </> : "Извините, Проблема с сервером")}>
 
-                <BlokTablo title="Любимая книга (ссылка на заинтересовавшую книгу)" src="./images/iconsBook.png"/>
+                <BlokTablo title="Популярные страницы" src="./images/iconsPages.png"/>
             </div>
             <div className="statistica-element" onClick={() => handleModalOpen(interactivElements ? <>
                 <BlokTablo classNameWrapper="blok-raw" title="Взаимодействие с элементом" header  contex="Колличество нажатий" src="./images/iconsMouse.png"/> 
@@ -218,7 +205,6 @@ export const FormInfoStatic = () => {
         <ModalWindows onClose={handleModalClose} content={modalContent} />
       )}
 
-           <ButtonBallCandy onClick={show} className="add-book">Посмотреть</ButtonBallCandy>
         </div>
     )
 }
