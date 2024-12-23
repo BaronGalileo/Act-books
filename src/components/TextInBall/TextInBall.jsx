@@ -6,7 +6,7 @@ export const TextInBall = ({text}) => {
 
     return(
         <div className="text-in-ball">
-            <Text>{text}</Text>
+            <Text className="txt-comment-mobile">{text}</Text>
         </div>
     )
 }

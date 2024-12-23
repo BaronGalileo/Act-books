@@ -123,7 +123,7 @@ export const FormInfoStatic = () => {
 
 
     const dict_books_links = {
-        'https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC':"Главная страница",
+        'https://ast.ru/series/samaya-udivitelnaya-kniga-s-obemnymi-kartinkami-7e485f/?SORT=NEW_SORT&SORT_BY=DESC':"Главная страница серии книг АСТ",
         'https://ast.ru/book/alisa-v-strane-chudes-ill-m-mitrofanova-834090/': "Алиса в Стране Чудес ",
         'https://ast.ru/book/volshebnik-izumrudnogo-goroda-risunki-v-chelaka-839979/': "Волшебник Изумрудного города",
         'https://ast.ru/book/veter-v-ivakh-ris-o-ionaytis-846821/': "Ветер в ивах",
@@ -161,7 +161,7 @@ export const FormInfoStatic = () => {
             <BlokTablo title="Число пользователей промо-сайта" src="./images/iconsUsers.png" contex={countUsers}/>
             </div>
             <div className="statistica-element" onClick={() => handleModalOpen(referersArray ? <>
-                <BlokTablo classNameWrapper="blok-raw" title="Ссылки, по которым к нам пришли" header  contex="Колличество" src="./images/iconsLink.png"/> 
+                <BlokTablo classNameWrapper="blok-raw" title="Ссылки, по которым к нам пришли" header  contex="Количество" src="./images/iconsLink.png"/> 
                 {referersArray.map((item, index) => (
                     <BlokTablo key={index} classNameWrapper="blok-raw" title={item.source ? item.source: "Источник трафика не определен"} contex={item.visit}/>
                     ))}
@@ -170,7 +170,7 @@ export const FormInfoStatic = () => {
             <BlokTablo title="Ссылки, по которым к нам пришли" src="./images/iconsLink.png"/>
             </div>
             <div className="statistica-element">
-                <BlokTablo title="Время проведенное на сайте" src="./images/iconsTime.png"/>
+                <BlokTablo title="Время, проведенное на сайте" src="./images/iconsTime.png"/>
 
                 <div className="statistica-element-row">
                     {timeOnSite?.timeOnSite&&
@@ -180,12 +180,12 @@ export const FormInfoStatic = () => {
                 </div>
             </div>
             <div className="statistica-element">
-                <BlokTablo title="Колличество переходов на основной магазин" src="./images/iconsStore.png"/>
+                <BlokTablo title="Количество переходов на основной магазин" src="./images/iconsStore.png"/>
                 {linkStar&&
                 <BlokTablo  classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={linkStar[0]?.linkId}>Основной магазин</a>} contex={linkStar[0]?.clicks}/>}
             </div>
             <div className="statistica-element" onClick={() => handleModalOpen(linkPage ? <>
-                <BlokTablo classNameWrapper="blok-raw" title="Популярные страницы" header  contex="Колличество переходов" src="./images/iconsPages.png"/> 
+                <BlokTablo classNameWrapper="blok-raw" title="Популярные страницы" header  contex="Количество переходов" src="./images/iconsPages.png"/> 
                 {linkPage.map((item, index) => (
                         <BlokTablo key={index} classNameWrapper="blok-raw" title={<a className="txt admin-txt-h2" href={item.pageUrl}>{dict_books_links[item.pageUrl]}</a>} contex={item.views}/>
                     ))}
@@ -194,7 +194,7 @@ export const FormInfoStatic = () => {
                 <BlokTablo title="Популярные страницы" src="./images/iconsPages.png"/>
             </div>
             <div className="statistica-element" onClick={() => handleModalOpen(interactivElements ? <>
-                <BlokTablo classNameWrapper="blok-raw" title="Взаимодействие с элементом" header  contex="Колличество нажатий" src="./images/iconsMouse.png"/> 
+                <BlokTablo classNameWrapper="blok-raw" title="Взаимодействие с элементом" header  contex="Количество нажатий" src="./images/iconsMouse.png"/> 
                 {interactivElements.map((item, index) => (
                     <BlokTablo key={index} classNameWrapper="blok-raw" title={dict_activiti[item.typeElement]} contex={item.interactions}/>
                     ))}

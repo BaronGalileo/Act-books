@@ -296,7 +296,7 @@ a {
 .cover-wrapper {
   background-position: center bottom -1px;
   background-repeat: no-repeat;
-  background-size: 164% 38%;
+  background-size: 140% 54%;
   position: relative;
 }
 .rabbit-static {
@@ -448,6 +448,10 @@ a {
   height: 13%;
 }
 
+.txt-comment-mobile {
+  font-size: 9px;
+}
+
 .stars-reviews:nth-child(4) {
   top: 68%;
   left: 1%;
@@ -529,6 +533,7 @@ a {
   justify-content: flex-start
 
 }
+
 .front-txt {
   font-size: 38px;
 }
@@ -560,15 +565,24 @@ a {
 .title-book {
   font-size: 20px;
   text-align: start;
-  margin: 4px;
+  margin: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 170px;
+  height: 75px;
+}
+
+.contex-book {
+  font-size: 15px;
+  height: 27px;
 }
 .cardsBook-img {
-  max-width: 91%;
-  width: 143px;
+  max-width: 152%;
+  width: 223px;
   height: auto;
   position: relative;
-  left: 23px;
-  top: 53px;
+  left: -17px;
+  top: 22px;
   transform: rotate(-15deg);
   z-index: 1;
 }
@@ -581,7 +595,6 @@ a {
   border-radius: 20px;
   z-index: 1;
   overflow: hidden;
-  /* background-color: aquamarine; */
   background: transparent;
 }
 .btn-catalog-more {
