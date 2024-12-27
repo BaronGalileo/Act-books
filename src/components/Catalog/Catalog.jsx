@@ -27,12 +27,12 @@ export const Catalog = () => {
   useEffect(() => {
     axios.get(path)
     .then(res => {
-        setIsBooks(res.data)
-        dispatch(setBooks(res.data))
-        })
-        .catch(error => {
-            console.log("Error fetching books:", error);
-        });
+      setIsBooks(res.data)
+      dispatch(setBooks(res.data))
+      })
+    .catch(error => {
+      console.log("Error fetching books:", error);
+      });
   }, []);
   
   useEffect(() => {
@@ -75,6 +75,75 @@ export const Catalog = () => {
     setIsOpen(!isOpen);
   };
 
+  const dataBooksNotServer = [
+    {
+      "author":"Кэрролл Льюис",
+      "title": "Алиса в Стране Чудес",
+      "url": "https://ast.ru/book/alisa-v-strane-chudes-ill-m-mitrofanova-834090/",
+      "images": "../images/Обложки/11.png"
+    },
+    {
+      "author":"Волков Александр Мелентьевич",
+      "title": "Волшебник Изумрудного города",
+      "url": "https://ast.ru/book/volshebnik-izumrudnogo-goroda-risunki-v-chelaka-839979/",
+      "images": "../images/Обложки/1.png"
+    },
+    {
+      "author":"Грэм Кеннет",
+      "title": "Ветер в ивах",
+      "url": "https://ast.ru/book/veter-v-ivakh-ris-o-ionaytis-846821/",
+      "images": "../images/Обложки/2.png"
+    },
+    {
+      "author":"Андерсен Ганс Христиан, Гофман Эрнст Теодор Амадей,  Гримм Вильгельм, Гримм Якоб",
+      "title": "Снежная королева. Щелкунчик. Госпожа Метелица",
+      "url": "https://ast.ru/book/snezhnaya-koroleva-shchelkunchik-gospozha-metelitsa-853202/",
+      "images": "../images/Обложки/3.png"
+    },
+    {
+      "author":"Пикулева Нина Васильевна",
+      "title": "Зимняя сказка",
+      "url": "https://ast.ru/book/zimnyaya-skazka-867810/",
+      "images": "../images/Обложки/4.png"
+    },
+    {
+      "author":"Пушкин Александр Сергеевич",
+      "title": "Сказка о царе Салтане",
+      "url": "https://ast.ru/book/skazka-o-tsare-saltane-ris-v-chelaka-855360/",
+      "images": "../images/Обложки/5.png"
+    },    {
+      "author":"Кэрролл Льюис",
+      "title": "Алиса в Зазеркалье",
+      "url": "https://ast.ru/book/alisa-v-zazerkale-ill-m-mitrofanova-851448/",
+      "images": "../images/Обложки/6.png"
+    },    {
+      "author":"Маршак Самуил Яковлевич",
+      "title": "Двенадцать месяцев",
+      "url": "https://ast.ru/book/dvenadtsat-mesyatsev-slavyanskaya-skazka-ris-v-shvarova-i-e-almazovoy-853856/",
+      "images": "../images/Обложки/7.png"
+    },    {
+      "author":"Толстой Алексей Николаевич",
+      "title": "Приключения Буратино, или Золотой ключик",
+      "url": "https://ast.ru/book/priklyucheniya-buratino-ili-zolotoy-klyuchik-risunki-l-vladimirskogo-844251/",
+      "images": "../images/Обложки/8.png"
+    },    {
+      "author":"Маршак Самуил Яковлевич",
+      "title": "Кошкин дом",
+      "url": "https://ast.ru/book/koshkin-dom-illyustratsii-o-ionaytis-849304/",
+      "images": "../images/Обложки/9.png"
+    },    {
+      "author":"Сутеев Владимир Григорьевич",
+      "title": "Сказки",
+      "url": "https://ast.ru/book/skazki-859286/",
+      "images": "../images/Обложки/12.png"
+    },    {
+      "author":"Поттер Беатрис",
+      "title": "Всё о кролике Питере",
+      "url": "https://ast.ru/book/vsye-o-krolike-pitere-851481/",
+      "images": "../images/Обложки/10.png"
+    },
+  ]
+
     return(
         <div className="catalog-wrapper">
             <Text className="red-text bond for-h1 front-txt">КАТАЛОГ</Text>
@@ -87,7 +156,11 @@ export const Catalog = () => {
               }}>
                 {isBooks&&isBooks.map((item, index) => (
                   <CardsBook key={item} title={item.title} link={item.url} src={getImageFromBase64(item.images[0]?.imageData)} contex={item.author}/>
-                ))}               
+                ))}
+                // Возвращаем пустую строку, если изображения нет
+                {!isBooks&&dataBooksNotServer.map((item, index) => (
+                  <CardsBook key={item} title={item.title} link={item.url} src={item.images} contex={item.author}/>
+                ))}                
             </div>
             <button id="toggleButton" className='btn-catalog-more'
                 onClick={toggleContent}
