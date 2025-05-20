@@ -59,7 +59,7 @@
 .wizards-backround-png {
     position: absolute;
     top: 334px;
-    left: 405px;
+    right: 0; /* привязка к правому краю */
     width: 1035px;
     height: 615px;
     background-image: url("../../images/облачко.png");
@@ -68,6 +68,19 @@
     background-size: 100% 100%;
     z-index: 1;
 }
+
+/* .wizards-backround-png {
+    position: absolute;
+    top: 334px;
+    left: 405px;
+    width: 1035px;
+    height: 615px;
+    background-image: url("../../images/облачко.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    z-index: 1;
+} */
 
 .wizards-backround-png-mirror {
     position: absolute;

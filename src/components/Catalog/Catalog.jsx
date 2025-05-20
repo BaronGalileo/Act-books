@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import './styles.css'
-import { Text } from '../Text/Text'
-import { CardsBook } from '../CardsBook/CardsBook'
-import { Img } from "../Img/Img";
-import { useDispatch } from "react-redux";
-import { incrementCatalog } from "../../store/interactivSlise";
 import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { setBooks } from "../../store/booksSlice";
+import { incrementCatalog } from "../../store/interactivSlise";
+import { CardsBook } from '../CardsBook/CardsBook';
+import { Img } from "../Img/Img";
+import { Text } from '../Text/Text';
+import './styles.css';
 
 
 export const Catalog = () => {
@@ -61,7 +61,7 @@ export const Catalog = () => {
     if (imageData) {
       return `data:image/png;base64,${imageData}`; // Создаем ссылку для изображения
     }
-    return ''; // Возвращаем пустую строку, если изображения нет
+    return ''
   };
 
   const toggleContent = () => {
@@ -157,7 +157,6 @@ export const Catalog = () => {
                 {isBooks&&isBooks.map((item, index) => (
                   <CardsBook key={item} title={item.title} link={item.url} src={getImageFromBase64(item.images[0]?.imageData)} contex={item.author}/>
                 ))}
-                // Возвращаем пустую строку, если изображения нет
                 {!isBooks&&dataBooksNotServer.map((item, index) => (
                   <CardsBook key={item} title={item.title} link={item.url} src={item.images} contex={item.author}/>
                 ))}                
